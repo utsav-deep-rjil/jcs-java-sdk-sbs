@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://compute.jiocloudservices.com/doc/2016-03-01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="CreateSnapshotResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="snapshotId" type="xs:string"/>
+        <xs:element name="encrypted" type="xs:boolean"/>
+        <xs:element name="volumeSize" type="xs:int"/>
+        <xs:element name="volumeId" type="xs:string"/>
+        <xs:element name="startTime" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CreateVolumeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="volumeId" type="xs:string"/>
+        <xs:element name="volumeType" type="xs:string"/>
+        <xs:element name="attachmentSet" type="xs:string"/>
+        <xs:element name="snapshotId" type="xs:string"/>
+        <xs:element name="encrypted" type="xs:boolean"/>
+        <xs:element name="createTime" type="xs:dateTime"/>
+        <xs:element name="size" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DeleteSnapshotResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="return" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DeleteVolumeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="return" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DescribeSnapshotsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="snapshotSet">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="status" type="xs:string"/>
+                    <xs:element name="snapshotId" type="xs:string"/>
+                    <xs:element name="volumeSize" type="xs:int"/>
+                    <xs:element name="volumeId" type="xs:string"/>
+        			<xs:element name="encrypted" type="xs:boolean"/>
+                    <xs:element name="startTime" type="xs:dateTime"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DescribeVolumesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestId" type="xs:string"/>
+        <xs:element name="volumeSet">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="status" type="xs:string"/>
+                    <xs:element name="volumeId" type="xs:string"/>
+        			<xs:element name="volumeType" type="xs:string"/>
+                    <xs:element name="attachmentSet" type="xs:string"/>
+                    <xs:element name="snapshotId" type="xs:string"/>
+        			<xs:element name="encrypted" type="xs:boolean"/>
+                    <xs:element name="createTime" type="xs:dateTime"/>
+                    <xs:element name="size" type="xs:int"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
