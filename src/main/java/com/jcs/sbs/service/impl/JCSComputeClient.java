@@ -241,6 +241,10 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute{
 		if(describeVolumesRequest.getNextToken() != null){
 			params.put("NextToken", describeVolumesRequest.getNextToken());
 		}
+
+		if(describeVolumesRequest.getDetail() != null){
+			params.put("Detail", String.valueOf(describeVolumesRequest.getDetail()));
+		}
 		if(describeVolumesRequest.getVolumeIds() != null){
 			int i=1;
 			for(String volumeId: describeVolumesRequest.getVolumeIds()){
@@ -420,6 +424,9 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute{
 				params.put("SnapshotId."+i, snapshotId);
 				i++;
 			}
+		}
+		if(describeSnapshotsRequest.getDetail() != null){
+			params.put("Detail", String.valueOf(describeSnapshotsRequest.getDetail()));
 		}
 		CloseableHttpResponse response = this.makeRequest(this.jcsCredentialsProvider.getCredentials(), 
 															params, describeSnapshotsRequest.getCustomRequestHeaders());

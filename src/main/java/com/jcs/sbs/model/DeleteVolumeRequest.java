@@ -12,28 +12,32 @@ public class DeleteVolumeRequest extends JCSRequest implements
     }
 
     /**
-     * @param volumeId
+     * @param volumeId ID of the volume that is to be deleted
      */
     public DeleteVolumeRequest(String volumeId) {
         setVolumeId(volumeId);
     }
 
     /**
-     * @param volumeId
+     * This method sets the given volumeId in DeleteVolumeRequest.
+     * 
+     * @param volumeId ID of the volume that is to be deleted.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
 
     /**
-     * @return
+     * Fetches the ID of the volume to be deleted (if set)
+     * @return ID of the volume that is to be deleted.
      */
     public String getVolumeId() {
         return this.volumeId;
     }
 
     /**
-     * @param volumeId
+     * This method sets the ID of the volume to be deleted and returns the modified object of DeleteVolumeRequest
+     * @param volumeId ID of the volume that is to be deleted.
      * @return
      */
     public DeleteVolumeRequest withVolumeId(String volumeId) {

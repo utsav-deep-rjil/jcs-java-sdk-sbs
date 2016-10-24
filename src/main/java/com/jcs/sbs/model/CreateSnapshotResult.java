@@ -17,7 +17,9 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     
 
     /**
-     * @param snapshot
+     * This method is used internally in JCSComputeClient class to set the snapshot object
+     * 
+     * @param snapshot - The object of the snapshot that is created
      */
     public void setSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
@@ -26,7 +28,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     
 
     /**
-     * @return
+     * @return The object of the snapshot that is created
      */
     public Snapshot getSnapshot() {
         return this.snapshot;
@@ -35,8 +37,10 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     
 
     /**
-     * @param snapshot
-     * @return
+     * This method adds the snapshot object, passed as the argument, in the object of CreateSnapshotResult object returns the modified object
+     * 
+     * @param snapshot The snapshot object that is to be added in CreateSnapshotResult object
+     * @return Modified object of CreateSnapshotResult
      */
     public CreateSnapshotResult withSnapshot(Snapshot snapshot) {
         setSnapshot(snapshot);

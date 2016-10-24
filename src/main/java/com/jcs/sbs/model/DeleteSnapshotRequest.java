@@ -15,14 +15,15 @@ public class DeleteSnapshotRequest extends JCSRequest implements
 
     
     /**
-     * @param snapshotId
+     * @param snapshotId ID of the snapshot that is to be deleted
      */
     public DeleteSnapshotRequest(String snapshotId) {
         setSnapshotId(snapshotId);
     }
 
     /**
-     * @param snapshotId
+     * This method sets the snapshot ID in DeleteSnapshotRequest object
+     * @param snapshotId ID of the snapshot that is to be deleted
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -30,7 +31,8 @@ public class DeleteSnapshotRequest extends JCSRequest implements
 
 
     /**
-     * @return
+     * Fetches the snapshot ID that is set
+     * @return ID of snapshot that is to be deleted
      */
     public String getSnapshotId() {
         return this.snapshotId;
@@ -39,8 +41,9 @@ public class DeleteSnapshotRequest extends JCSRequest implements
     
 
     /**
-     * @param snapshotId
-     * @return
+     * This method sets the snapshotId in DeleteSnapshotRequest object and returns the modified DeleteSnapshotRequest object
+     * @param snapshotId ID of the snapshot that is to be deleted
+     * @return Modified DeleteSnapshotRequest object
      */
     public DeleteSnapshotRequest withSnapshotId(String snapshotId) {
         setSnapshotId(snapshotId);

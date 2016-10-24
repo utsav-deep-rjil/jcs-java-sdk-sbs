@@ -22,29 +22,34 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 	}
 
 	/**
-	 * @param snapshotId
+	 * This constructor can be used to create an object of CreateVolumeRequest if the volume is to be created from a snapshot
+	 * 
+	 * @param snapshotId The ID of the snapshot from which the volume is to be created
 	 */
 	public CreateVolumeRequest(String snapshotId) {
 		setSnapshotId(snapshotId);
 	}
 
 	/**
-	 * @param size
+	 * This method sets the size of the volume that is to be created. Volume size is a required field for creating a volume
+	 * 
+	 * @param size The size of the volume that is to be created
 	 */
 	public void setSize(Integer size) {
 		this.size = size;
 	}
 
 	/**
-	 * @return
+	 * @return The integer size of volume that is to be created
 	 */
 	public Integer getSize() {
 		return this.size;
 	}
 
 	/**
-	 * @param size
-	 * @return
+	 * This method sets the volume size to the CreateVolumeRequest object and returns the modified object.
+	 * @param size Size of the volume that is to be created
+	 * @return Modified object of CreateVolumeRequest
 	 */
 	public CreateVolumeRequest withSize(Integer size) {
 		setSize(size);
@@ -52,22 +57,26 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 	}
 
 	/**
-	 * @param snapshotId
+	 * This method can be used to set the snapshotId in CreateVolumeRequest if the volume is to be created from snapshot
+	 * 
+	 * @param snapshotId The ID of the snapshot from which volume is to be created
 	 */
 	public void setSnapshotId(String snapshotId) {
 		this.snapshotId = snapshotId;
 	}
 
 	/**
-	 * @return
+	 * @return The snapshotId if it is set
 	 */
 	public String getSnapshotId() {
 		return this.snapshotId;
 	}
 
 	/**
-	 * @param snapshotId
-	 * @return
+	 * This method can be used to set the snapshotId in CreateVolumeRequest if the volume is to be created from snapshot
+	 * 
+	 * @param snapshotId The ID of the snapshot from which volume is to be created
+	 * @return Modified object of CreateVolumeRequest
 	 */
 	public CreateVolumeRequest withSnapshotId(String snapshotId) {
 		setSnapshotId(snapshotId);
@@ -75,21 +84,24 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 	}
 
 	/**
-	 * @return
+	 * This method tells if the volume after creation will be encrypted or not
+	 * @return Boolean value; true if volume will be encrypted after encryption 
 	 */
 	public Boolean getEncrypted() {
 		return encrypted;
 	}
 
 	/**
-	 * @param encrypted
+	 * This method can be used to create encrypted volume. If 'encrypted' is set to true, the created volume will be encrypted otherwise plain-text
+	 * @param encrypted Boolean value to be set to 'encrypted' variable of the CreateVolumeRequest object
 	 */
 	public void setEncrypted(Boolean encrypted) {
 		this.encrypted = encrypted;
 	}
 
 	/**
-	 * @return
+	 * This method can be used to create encrypted volume
+	 * @return Modified object of CreateVolumeRequest with 'encrypted' set to true
 	 */
 	public CreateVolumeRequest withEncryption() {
 		setEncrypted(true);
@@ -97,22 +109,29 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 	}
 
 	/**
-	 * @return
+	 * Returns the type of the volume that will be created 
+	 * @return an enum value of type VolumeType
 	 */
 	public VolumeType getVolumeType() {
 		return volumeType;
 	}
 
 	/**
-	 * @param volumeType
+	 * This method can be used to set the type of volume, standard(HDD) or SSD, that is to be created.
+	 * If volumeType is not specified, the created volume will be of type standard.
+	 * 
+	 * @param volumeType Enum value of type VolumeType. Possible values in the enum are standard(HDD) or SSD(SSD)
 	 */
 	public void setVolumeType(VolumeType volumeType) {
 		this.volumeType = volumeType;
 	}
 
 	/**
-	 * @param volumeType
-	 * @return
+	 * This method can also be used for setting the volume type before creating the volume.
+	 * It sets the value of volumeType field in the object of CreateVolumeRequest and returns the modified object.
+	 * 
+	 * @param volumeType Enum value of type VolumeType. Possible values in the enum are standard(HDD) or SSD(SSD)
+	 * @return Modified CreateVolumeRequest object
 	 */
 	public CreateVolumeRequest withVolumeType(VolumeType volumeType) {
 		setVolumeType(volumeType);

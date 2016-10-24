@@ -5,6 +5,8 @@ import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 import com.jcs.sbs.model.DescribeSnapshotsRequest;
 import com.jcs.sbs.model.DescribeSnapshotsResult;
+import com.jcs.sbs.model.DescribeVolumesRequest;
+import com.jcs.sbs.model.DescribeVolumesResult;
 import com.jcs.sbs.service.JCSCompute;
 import com.jcs.sbs.service.impl.JCSComputeClient;
 
@@ -64,10 +66,15 @@ public class JCStry {
 //        	DeleteSnapshotResult deleteSnapshotResult = jcs.deleteSnapshot(deleteSnapshotRequest);
 //        	System.out.println(deleteSnapshotResult.toString());
 //      	
-        	DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
+        	DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest().withMaxResults(1);
         	DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
         	System.out.println(describeSnapshotsResult.toString());
         	System.out.println(describeSnapshotsResult.getSnapshots());
+        	
+        	DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest().withMaxResults(1);
+        	DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
+        	System.out.println(describeVolumesResult.toString());
+        	System.out.println(describeVolumesResult.getVolumes());
         	
 //        	CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest()
 //        						.withSize(10)

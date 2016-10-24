@@ -15,13 +15,14 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
     private String nextToken;
  
     private Integer maxResults;
-
+    
+    private Boolean detail;
     
     public DescribeSnapshotsRequest() {
     }
 
     /**
-     * @param snapshotsIds
+     * @param snapshotsIds Optional field. These are the IDs of the snapshots that is to be described.
      */
     public DescribeSnapshotsRequest(List<String> snapshotsIds) {
         setSnapshotIds(snapshotIds);
@@ -29,7 +30,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
 
 
     /**
-     * @return
+     * This method returns the IDs of the snapshots that is to be described.
+     * @return List of snapshotIds
      */
     public List<String> getSnapshotIds() {
         if (snapshotIds == null) {
@@ -39,7 +41,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
     }
 
     /**
-     * @param snapshotIds
+     * It sets the list of snapshot IDs that are to be described. To describe all the snapshots, there is no need to set snapshotIds
+     * @param snapshotIds The IDs of the snapshot that are to be described.
      */
     public void setSnapshotIds(Collection<String> snapshotIds) {
         if (snapshotIds == null) {
@@ -52,8 +55,11 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
     }
 
     /**
-     * @param snapshotIds
-     * @return
+     * This method sets the list of snapshot IDs, in DescribeSnapshotsRequest object, that are to be described
+     * and returns the modified DescribeSnapshotsRequest object.
+     * 
+     * @param snapshotIds List of comma separated snapshot IDs that are to be described. It accepts variable number of arguments (each of type string) 
+     * @return Modified DescribeSnapshotsRequest object.
      */
     public DescribeSnapshotsRequest withSnapshotIds(String... snapshotIds) {
         if (this.snapshotIds == null) {
@@ -67,31 +73,54 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
     }
 
     /**
-     * @param snapshotIds
-     * @return
+     * This method sets the list of snapshot IDs, in DescribeSnapshotsRequest object, that are to be described
+     * and returns the modified DescribeSnapshotsRequest object.
+     * 
+     * @param snapshotIds Collection of snapshot IDs that are to be described.
+     * @return Modified DescribeSnapshotsRequest object.
      */
     public DescribeSnapshotsRequest withSnapshotIds(Collection<String> snapshotIds) {
         setSnapshotIds(snapshotIds);
         return this;
     }
 
-    /**
-     * @param nextToken
-     */
+	/**
+	 * If the describeSnapshot() method was called with a MaxResults option, all items would not have
+	 * been returned. To get next set of items, specify the Id of the last seen
+	 * item from the previous call. The describeSnapshot() will return the next set of items
+	 * after this Id.
+	 * 
+	 * This method sets the given ID of last snapshot in the list of snapshots in DescribeSnapshotResult object of previous call of describeSnapshot() method.
+	 * 
+	 * @param nextToken The ID of last snapshot that was returned by the describeSnapshot() method
+	 */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
 
     /**
-     * @return
+	 * If the describeSnapshot() method was called with a MaxResults option, all items would not have
+	 * been returned. To get next set of items, specify the Id of the last seen
+	 * item from the previous call. The describeSnapshot() will return the next set of items
+	 * after this Id.
+	 * 
+	 * 
+     * @return The value of the nextToken (i.e., the ID of last snapshot obtained from previous call of describeSnapshot() method) if it is set.
      */
     public String getNextToken() {
         return this.nextToken;
     }
 
     /**
-     * @param nextToken
-     * @return
+	 * If the describeSnapshot() method was called with a MaxResults option, all items would not have
+	 * been returned. To get next set of items, specify the Id of the last seen
+	 * item from the previous call. The describeSnapshot() will return the next set of items
+	 * after this Id.
+	 * 
+	 * This method sets the given ID of last snapshot obtained from previous call of describeSnapshot() method and then returns the modified DescribeSnapshotsRequest object.
+	 * 
+	 * @param nextToken The ID of last snapshot that was returned by the describeSnapshot() method
+     * @return The modified DescribeSnapshotsRequest object 
      */
     public DescribeSnapshotsRequest withNextToken(String nextToken) {
         setNextToken(nextToken);
@@ -99,29 +128,58 @@ public class DescribeSnapshotsRequest extends JCSRequest implements
     }
 
     /**
-     * @param maxResults
+     * It sets, in DescribeSnapshotsRequest object, the number of items to be fetched from describeSnapshots() method.
+     * @param maxResults The maximum number of items (snapshots) to be fetched.
      */
     public void setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
     }
 
     /**
-     * @return
+     * @return If maxResults value is set, this method returns maximum number of items (snapshots) to be fetched.
      */
     public Integer getMaxResults() {
         return this.maxResults;
     }
 
     /**
-     * @param maxResults
-     * @return
+     * It sets, in DescribeSnapshotsRequest object, the number of items to be fetched from describeSnapshots() method
+     * and then returns the modified DescribeSnapshotsRequest object.
+     * @param maxResults The maximum number of items (snapshots) to be fetched.
+     * @return The modified DescribeSnapshotsRequest object with 'maxResults' set to given value.
      */
     public DescribeSnapshotsRequest withMaxResults(Integer maxResults) {
         setMaxResults(maxResults);
         return this;
     }
+    
+    /**
+     * @return Value of 'detail' field of DescribeSnapshotsRequest object.
+     *  If true, the describeSnapshot() method will describe the snapshots in detail.
+     */
+    public Boolean getDetail() {
+		return detail;
+	}
 
-    @Override
+	/**
+	 * @param detail Sets the value of 'detail' field of DescribeSnapshotsRequest object.
+	 * If it is set true, then the describeSnapshot() method will describe the snapshots in detail.
+	 */
+	public void setDetail(Boolean detail) {
+		this.detail = detail;
+	}
+
+	/**
+	 * @param detail Sets the value of 'detail' field of DescribeSnapshotsRequest object.
+	 * If it is set true, then the describeSnapshot() method will describe the snapshots in detail.
+	 * @return Modified DescribeSnapshotsRequest object.
+	 */
+	public DescribeSnapshotsRequest withDetail(Boolean detail) {
+        setDetail(detail);
+        return this;
+    }
+	
+	@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");

@@ -5,181 +5,202 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class DescribeVolumesRequest extends JCSRequest implements
-        Serializable, Cloneable{
+public class DescribeVolumesRequest extends JCSRequest implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -710530726380217842L;
 
 	private List<String> volumeIds;
- 
-    private String nextToken;
- 
-    private Integer maxResults;
 
-    /**
-     * 
-     */
-    public DescribeVolumesRequest() {
-    }
+	private String nextToken;
 
-    /**
-     * @param volumeIds
-     */
-    public DescribeVolumesRequest(List<String> volumeIds) {
-        setVolumeIds(volumeIds);
-    }
+	private Integer maxResults;
 
-    /**
-     * @return
-     */
-    public List<String> getVolumeIds() {
-        if (volumeIds == null) {
-            volumeIds = new ArrayList<String>();
-        }
-        return volumeIds;
-    }
+	private Boolean detail;
 
-    /**
-     * @param volumeIds
-     */
-    public void setVolumeIds(Collection<String> volumeIds) {
-        if (volumeIds == null) {
-            this.volumeIds = null;
-            return;
-        }
+	public DescribeVolumesRequest() {
+	}
 
-        this.volumeIds = new ArrayList<String>(
-                volumeIds);
-    }
+	/**
+	 * @param volumeIds
+	 */
+	public DescribeVolumesRequest(List<String> volumeIds) {
+		setVolumeIds(volumeIds);
+	}
 
-  /**
- * @param volumeIds
- * @return
- */
-public DescribeVolumesRequest withVolumeIds(String... volumeIds) {
-        if (this.volumeIds == null) {
-            setVolumeIds(new ArrayList<String>(
-                    volumeIds.length));
-        }
-        for (String ele : volumeIds) {
-            this.volumeIds.add(ele);
-        }
-        return this;
-    }
+	/**
+	 * @return
+	 */
+	public List<String> getVolumeIds() {
+		if (volumeIds == null) {
+			volumeIds = new ArrayList<String>();
+		}
+		return volumeIds;
+	}
 
-    /**
-     * @param volumeIds
-     * @return
-     */
-    public DescribeVolumesRequest withVolumeIds(Collection<String> volumeIds) {
-        setVolumeIds(volumeIds);
-        return this;
-    }
+	/**
+	 * @param volumeIds
+	 */
+	public void setVolumeIds(Collection<String> volumeIds) {
+		if (volumeIds == null) {
+			this.volumeIds = null;
+			return;
+		}
 
-    /**
-     * @param nextToken
-     */
-    public void setNextToken(String nextToken) {
-        this.nextToken = nextToken;
-    }
+		this.volumeIds = new ArrayList<String>(volumeIds);
+	}
 
-    /**
-     * @return
-     */
-    public String getNextToken() {
-        return this.nextToken;
-    }
+	/**
+	 * @param volumeIds
+	 * @return
+	 */
+	public DescribeVolumesRequest withVolumeIds(String... volumeIds) {
+		if (this.volumeIds == null) {
+			setVolumeIds(new ArrayList<String>(volumeIds.length));
+		}
+		for (String ele : volumeIds) {
+			this.volumeIds.add(ele);
+		}
+		return this;
+	}
 
-    /**
-     * @param nextToken
-     * @return
-     */
-    public DescribeVolumesRequest withNextToken(String nextToken) {
-        setNextToken(nextToken);
-        return this;
-    }
-    
-    /**
-     * @param maxResults
-     */
-    public void setMaxResults(Integer maxResults) {
-        this.maxResults = maxResults;
-    }
+	/**
+	 * @param volumeIds
+	 * @return
+	 */
+	public DescribeVolumesRequest withVolumeIds(Collection<String> volumeIds) {
+		setVolumeIds(volumeIds);
+		return this;
+	}
 
-    /**
-     * @return
-     */
-    public Integer getMaxResults() {
-        return this.maxResults;
-    }
-    
-    /**
-     * @param maxResults
-     * @return
-     */
-    public DescribeVolumesRequest withMaxResults(Integer maxResults) {
-        setMaxResults(maxResults);
-        return this;
-    }
+	/**
+	 * @param nextToken
+	 */
+	public void setNextToken(String nextToken) {
+		this.nextToken = nextToken;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getVolumeIds() != null)
-            sb.append("VolumeIds: " + getVolumeIds() + ",");
-        if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
-        if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults());
-        sb.append("}");
-        return sb.toString();
-    }
+	/**
+	 * @return
+	 */
+	public String getNextToken() {
+		return this.nextToken;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
+	/**
+	 * @param nextToken
+	 * @return
+	 */
+	public DescribeVolumesRequest withNextToken(String nextToken) {
+		setNextToken(nextToken);
+		return this;
+	}
 
-        if (obj instanceof DescribeVolumesRequest == false)
-            return false;
-        DescribeVolumesRequest other = (DescribeVolumesRequest) obj;
-        if (other.getVolumeIds() == null ^ this.getVolumeIds() == null)
-            return false;
-        if (other.getVolumeIds() != null
-                && other.getVolumeIds().equals(this.getVolumeIds()) == false)
-            return false;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
-            return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
-            return false;
-        if (other.getMaxResults() == null ^ this.getMaxResults() == null)
-            return false;
-        if (other.getMaxResults() != null
-                && other.getMaxResults().equals(this.getMaxResults()) == false)
-            return false;
-        return true;
-    }
+	/**
+	 * @param maxResults
+	 */
+	public void setMaxResults(Integer maxResults) {
+		this.maxResults = maxResults;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
+	/**
+	 * @return
+	 */
+	public Integer getMaxResults() {
+		return this.maxResults;
+	}
 
-        hashCode = prime * hashCode
-                + ((getVolumeIds() == null) ? 0 : getVolumeIds().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode
-                + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
-        return hashCode;
-    }
+	/**
+	 * @param maxResults
+	 * @return
+	 */
+	public DescribeVolumesRequest withMaxResults(Integer maxResults) {
+		setMaxResults(maxResults);
+		return this;
+	}
 
-    @Override
-    public DescribeVolumesRequest clone() throws CloneNotSupportedException {
-        return (DescribeVolumesRequest) super.clone();
-    }
+	/**
+	 * @return Value of 'detail' field of DescribeVolumesRequest object. If
+	 *         true, the describeVolumes() method will describe the volumes in
+	 *         detail.
+	 */
+	public Boolean getDetail() {
+		return detail;
+	}
+
+	/**
+	 * @param detail
+	 *            Sets the value of 'detail' field of DescribeVolumesRequest
+	 *            object. If it is set true, then the describeVolumes() method
+	 *            will describe the volumes in detail.
+	 */
+	public void setDetail(Boolean detail) {
+		this.detail = detail;
+	}
+
+	/**
+	 * @param detail
+	 *            Sets the value of 'detail' field of DescribeVolumesRequest
+	 *            object. If it is set true, then the describeVolumes() method
+	 *            will describe the volumes in detail.
+	 * @return Modified DescribeVolumesRequest object.
+	 */
+	public DescribeVolumesRequest withDetail(Boolean detail) {
+		setDetail(detail);
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{");
+		if (getVolumeIds() != null)
+			sb.append("VolumeIds: " + getVolumeIds() + ",");
+		if (getNextToken() != null)
+			sb.append("NextToken: " + getNextToken() + ",");
+		if (getMaxResults() != null)
+			sb.append("MaxResults: " + getMaxResults());
+		sb.append("}");
+		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+
+		if (obj instanceof DescribeVolumesRequest == false)
+			return false;
+		DescribeVolumesRequest other = (DescribeVolumesRequest) obj;
+		if (other.getVolumeIds() == null ^ this.getVolumeIds() == null)
+			return false;
+		if (other.getVolumeIds() != null && other.getVolumeIds().equals(this.getVolumeIds()) == false)
+			return false;
+		if (other.getNextToken() == null ^ this.getNextToken() == null)
+			return false;
+		if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
+			return false;
+		if (other.getMaxResults() == null ^ this.getMaxResults() == null)
+			return false;
+		if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int hashCode = 1;
+
+		hashCode = prime * hashCode + ((getVolumeIds() == null) ? 0 : getVolumeIds().hashCode());
+		hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+		hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
+		return hashCode;
+	}
+
+	@Override
+	public DescribeVolumesRequest clone() throws CloneNotSupportedException {
+		return (DescribeVolumesRequest) super.clone();
+	}
 }
