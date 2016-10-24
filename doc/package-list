@@ -1,0 +1,7 @@
+com.jcs.sbs.auth
+com.jcs.sbs.common
+com.jcs.sbs.main
+com.jcs.sbs.model
+com.jcs.sbs.service
+com.jcs.sbs.service.impl
+xmlParser
