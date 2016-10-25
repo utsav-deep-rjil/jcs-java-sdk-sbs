@@ -1,20 +1,20 @@
 package com.jcs.sbs.model;
+
 import java.util.Date;
 
-
 public class Snapshot {
-	private String volumeId;
+    private String volumeId;
 
     private Integer size;
 
     private String snapshotId;
 
     private Date startTime;
-    
+
     private String status;
-    
+
     private Boolean encrypted;
-    
+
     /**
      * @param volumeId
      */
@@ -22,14 +22,12 @@ public class Snapshot {
         this.volumeId = volumeId;
     }
 
-
     /**
      * @return
      */
     public String getVolumeId() {
         return this.volumeId;
     }
-
 
     /**
      * @param volumeId
@@ -40,8 +38,6 @@ public class Snapshot {
         return this;
     }
 
-    
-
     /**
      * @param size
      */
@@ -49,16 +45,12 @@ public class Snapshot {
         this.size = size;
     }
 
-    
-
     /**
      * @return
      */
     public Integer getSize() {
         return this.size;
     }
-
-    
 
     /**
      * @param size
@@ -69,8 +61,6 @@ public class Snapshot {
         return this;
     }
 
-    
-
     /**
      * @param snapshotId
      */
@@ -78,16 +68,12 @@ public class Snapshot {
         this.snapshotId = snapshotId;
     }
 
-    
-
     /**
      * @return
      */
     public String getSnapshotId() {
         return this.snapshotId;
     }
-
-    
 
     /**
      * @param snapshotId
@@ -98,8 +84,6 @@ public class Snapshot {
         return this;
     }
 
-    
-
     /**
      * @param startTime
      */
@@ -107,15 +91,12 @@ public class Snapshot {
         this.startTime = startTime;
     }
 
-    
     /**
      * @return
      */
     public Date getStartTime() {
         return this.startTime;
     }
-
-    
 
     /**
      * @param startTime
@@ -125,66 +106,60 @@ public class Snapshot {
         setStartTime(startTime);
         return this;
     }
-    
+
     /**
      * @return
      */
     public String getStatus() {
-		return status;
-	}
+        return status;
+    }
 
+    /**
+     * @param status
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	/**
-	 * @param status
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	/**
-	 * @param status
-	 * @return
-	 */
-	public Snapshot withStatus(String status) {
+    /**
+     * @param status
+     * @return
+     */
+    public Snapshot withStatus(String status) {
         setStatus(status);
         return this;
     }
-    
-	
-	
+
     /**
      * @return
      */
     public Boolean getEncrypted() {
-		return encrypted;
-	}
+        return encrypted;
+    }
 
+    /**
+     * @param encrypted
+     */
+    public void setEncrypted(Boolean encrypted) {
+        this.encrypted = encrypted;
+    }
 
-	/**
-	 * @param encrypted
-	 */
-	public void setEncrypted(Boolean encrypted) {
-		this.encrypted = encrypted;
-	}
-	
-	
-	/**
-	 * @param encrypted
-	 * @return
-	 */
-	public Snapshot withEncryption(Boolean encrypted) {
+    /**
+     * @param encrypted
+     * @return
+     */
+    public Snapshot withEncryption(Boolean encrypted) {
         setEncrypted(encrypted);
         return this;
     }
-    
 
-	@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotId() != null)
             sb.append("SnapshotId: " + getSnapshotId() + ",");
-        
+
         if (getVolumeId() != null)
             sb.append("VolumeId: " + getVolumeId() + ",");
         if (getSize() != null)
@@ -207,24 +182,21 @@ public class Snapshot {
         Volume other = (Volume) obj;
         if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
             return false;
-        if (other.getSnapshotId() != null
-                && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
             return false;
         if (other.getVolumeId() == null ^ this.getVolumeId() == null)
             return false;
-        if (other.getVolumeId() != null
-                && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
             return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
-        if (other.getSize() != null
-                && other.getSize().equals(this.getSize()) == false)
+        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
             return false;
         if (other.getEncrypted() == null ^ this.getEncrypted() == null)
             return false;
         if (other.getEncrypted() ^ this.getEncrypted())
             return false;
-               
+
         return true;
     }
 
@@ -233,15 +205,11 @@ public class Snapshot {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode
-                + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-        
+        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
+        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
+        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
+        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
+
         return hashCode;
     }
 
@@ -251,8 +219,7 @@ public class Snapshot {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 

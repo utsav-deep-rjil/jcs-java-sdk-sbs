@@ -3,13 +3,14 @@ package com.jcs.sbs.auth;
 public interface JCSCredentialsProvider {
 
     /**
-     * Returns JCSCredentials which the caller can use to authorize an JCS request.
-     * Each implementation of JCSCredentialsProvider can chose its own strategy for
-     * loading credentials.  For example, an implementation might load credentials
-     * from an existing key management system, or load new credentials when
-     * credentials are rotated.
+     * Returns JCSCredentials which the caller can use to authorize an JCS
+     * request. Each implementation of JCSCredentialsProvider can chose its own
+     * strategy for loading credentials. For example, an implementation might
+     * load credentials from an existing key management system, or load new
+     * credentials when credentials are rotated.
      *
-     * @return JCSCredentials which the caller can use to authorize an JCS request.
+     * @return JCSCredentials which the caller can use to authorize an JCS
+     *         request.
      */
     public JCSCredentials getCredentials();
 

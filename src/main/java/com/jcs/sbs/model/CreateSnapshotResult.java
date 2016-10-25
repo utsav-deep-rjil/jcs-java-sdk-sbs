@@ -1,31 +1,31 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 
 /**
- *Result class for create snapshot operation 
+ * Result class for create snapshot operation
  *
  */
 public class CreateSnapshotResult extends JCSResult implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = -2051402111070113334L;
-	
-	private Snapshot snapshot;
+    private static final long serialVersionUID = -2051402111070113334L;
 
-    public CreateSnapshotResult(){
-    	
+    private Snapshot snapshot;
+
+    public CreateSnapshotResult() {
+
     }
-    
 
     /**
-     * This method is used internally in JCSComputeClient class to set the snapshot object
+     * This method is used internally in JCSComputeClient class to set the
+     * snapshot object
      * 
-     * @param snapshot - The object of the snapshot that is created
+     * @param snapshot
+     *            The object of the snapshot that is created
      */
     public void setSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
     }
-
-    
 
     /**
      * @return The object of the snapshot that is created
@@ -34,12 +34,13 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
         return this.snapshot;
     }
 
-    
-
     /**
-     * This method adds the snapshot object, passed as the argument, in the object of CreateSnapshotResult object returns the modified object
+     * This method adds the snapshot object, passed as the argument, in the
+     * object of CreateSnapshotResult object returns the modified object
      * 
-     * @param snapshot The snapshot object that is to be added in CreateSnapshotResult object
+     * @param snapshot
+     *            The snapshot object that is to be added in
+     *            CreateSnapshotResult object
      * @return Modified object of CreateSnapshotResult
      */
     public CreateSnapshotResult withSnapshot(Snapshot snapshot) {
@@ -47,10 +48,9 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
         return this;
     }
 
-    
     @Override
     public String toString() {
-    	return this.getXml();
+        return this.getXml();
     }
 
     @Override
@@ -65,8 +65,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
         CreateSnapshotResult other = (CreateSnapshotResult) obj;
         if (other.getSnapshot() == null ^ this.getSnapshot() == null)
             return false;
-        if (other.getSnapshot() != null
-                && other.getSnapshot().equals(this.getSnapshot()) == false)
+        if (other.getSnapshot() != null && other.getSnapshot().equals(this.getSnapshot()) == false)
             return false;
         return true;
     }
@@ -76,8 +75,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSnapshot() == null) ? 0 : getSnapshot().hashCode());
+        hashCode = prime * hashCode + ((getSnapshot() == null) ? 0 : getSnapshot().hashCode());
         return hashCode;
     }
 
@@ -87,8 +85,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
             return (CreateSnapshotResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

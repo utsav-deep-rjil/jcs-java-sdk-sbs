@@ -6,10 +6,10 @@ package com.jcs.sbs.auth;
  */
 public interface JCSCredentials {
 
-	/**
-	 * 
-	 * @return JCS Access Key
-	 */
+    /**
+     * 
+     * @return JCS Access Key
+     */
     public String getJCSAccessKey();
 
     /**

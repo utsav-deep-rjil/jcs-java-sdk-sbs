@@ -1,4 +1,5 @@
 package com.jcs.sbs.model;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,17 +7,16 @@ import org.apache.http.annotation.NotThreadSafe;
 
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 
-
 @NotThreadSafe
 public abstract class JCSRequest {
-	
-	private JCSCredentialsProvider credentialsProvider;
-	private Map<String, String> customRequestHeaders;
-	
-	/**
-	 * @param credentialsProvider
-	 */
-	public void setRequestCredentialsProvider(JCSCredentialsProvider credentialsProvider) {
+
+    private JCSCredentialsProvider credentialsProvider;
+    private Map<String, String> customRequestHeaders;
+
+    /**
+     * @param credentialsProvider
+     */
+    public void setRequestCredentialsProvider(JCSCredentialsProvider credentialsProvider) {
         this.credentialsProvider = credentialsProvider;
     }
 
@@ -26,7 +26,7 @@ public abstract class JCSRequest {
     public JCSCredentialsProvider getRequestCredentialsProvider() {
         return credentialsProvider;
     }
-    
+
     /**
      * @return
      */
@@ -36,7 +36,7 @@ public abstract class JCSRequest {
         }
         return customRequestHeaders;
     }
-    
+
     /**
      * @param name
      * @param value

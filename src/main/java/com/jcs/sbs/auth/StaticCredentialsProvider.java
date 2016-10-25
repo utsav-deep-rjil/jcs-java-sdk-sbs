@@ -12,6 +12,7 @@ public class StaticCredentialsProvider implements JCSCredentialsProvider {
         return credentials;
     }
 
-    public void refresh() {}
+    public void refresh() {
+    }
 
 }

@@ -1,26 +1,26 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Volume implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = -2799552718629746851L;
-	
+    private static final long serialVersionUID = -2799552718629746851L;
 
-	private String volumeId;
+    private String volumeId;
 
     private Integer size;
 
     private VolumeType volumeType = VolumeType.standard;
-    
+
     private String snapshotId;
-    
+
     private Boolean encrypted = true;
 
     private Date createTime;
-    
+
     private String status;
-    
+
     /**
      * @param volumeId
      */
@@ -28,14 +28,12 @@ public class Volume implements Serializable, Cloneable {
         this.volumeId = volumeId;
     }
 
-
     /**
      * @return
      */
     public String getVolumeId() {
         return this.volumeId;
     }
-
 
     /**
      * @param volumeId
@@ -98,7 +96,7 @@ public class Volume implements Serializable, Cloneable {
     public void setCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
     }
-    
+
     /**
      * @return
      */
@@ -114,79 +112,77 @@ public class Volume implements Serializable, Cloneable {
         setCreateTime(createTime);
         return this;
     }
-    
+
     /**
      * @return
      */
     public Boolean getEncrypted() {
-		return encrypted;
-	}
+        return encrypted;
+    }
 
-	/**
-	 * @param encrypted
-	 */
-	public void setEncrypted(Boolean encrypted) {
-		this.encrypted = encrypted;
-	}
+    /**
+     * @param encrypted
+     */
+    public void setEncrypted(Boolean encrypted) {
+        this.encrypted = encrypted;
+    }
 
-	/**
-	 * @param encrypted
-	 * @return
-	 */
-	public Volume withEncryption(Boolean encrypted) {
-		setEncrypted(encrypted);
-		return this;
-	}
+    /**
+     * @param encrypted
+     * @return
+     */
+    public Volume withEncryption(Boolean encrypted) {
+        setEncrypted(encrypted);
+        return this;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getStatus() {
-		return status;
-	}
+    /**
+     * @return
+     */
+    public String getStatus() {
+        return status;
+    }
 
-	/**
-	 * @param status
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	/**
-	 * @param status
-	 * @return
-	 */
-	public Volume withStatus(String status) {
+    /**
+     * @param status
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * @param status
+     * @return
+     */
+    public Volume withStatus(String status) {
         setStatus(status);
         return this;
     }
-	
-	
-    
+
     /**
      * @return
      */
     public VolumeType getVolumeType() {
-		return volumeType;
-	}
+        return volumeType;
+    }
 
+    /**
+     * @param volumeType
+     */
+    public void setVolumeType(VolumeType volumeType) {
+        this.volumeType = volumeType;
+    }
 
-	/**
-	 * @param volumeType
-	 */
-	public void setVolumeType(VolumeType volumeType) {
-		this.volumeType = volumeType;
-	}
-	/**
-	 * @param volumeType
-	 * @return
-	 */
-	public Volume withVolumeType(VolumeType volumeType) {
+    /**
+     * @param volumeType
+     * @return
+     */
+    public Volume withVolumeType(VolumeType volumeType) {
         setVolumeType(volumeType);
         return this;
     }
 
-	@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
@@ -216,18 +212,15 @@ public class Volume implements Serializable, Cloneable {
         Volume other = (Volume) obj;
         if (other.getVolumeId() == null ^ this.getVolumeId() == null)
             return false;
-        if (other.getVolumeId() != null
-                && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
             return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
-        if (other.getSize() != null
-                && other.getSize().equals(this.getSize()) == false)
+        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
             return false;
         if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
             return false;
-        if (other.getSnapshotId() != null
-                && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
             return false;
         if (other.getEncrypted() == null ^ this.getEncrypted() == null)
             return false;
@@ -247,17 +240,12 @@ public class Volume implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode
-                + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-        hashCode = prime * hashCode
-                + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
-        
+        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
+        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
+        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
+        hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
+
         return hashCode;
     }
 
@@ -267,8 +255,7 @@ public class Volume implements Serializable, Cloneable {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 

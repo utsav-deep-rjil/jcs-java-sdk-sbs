@@ -1,15 +1,14 @@
 package com.jcs.sbs.model;
 
-
 import java.io.Serializable;
 
 public class DeleteSnapshotResult extends JCSResult implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = -5670232468998211566L;
+    private static final long serialVersionUID = -5670232468998211566L;
 
-	@Override
+    @Override
     public String toString() {
-    	return this.getXml();
+        return this.getXml();
     }
 
     @Override
@@ -18,8 +17,7 @@ public class DeleteSnapshotResult extends JCSResult implements Serializable, Clo
             return (DeleteSnapshotResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

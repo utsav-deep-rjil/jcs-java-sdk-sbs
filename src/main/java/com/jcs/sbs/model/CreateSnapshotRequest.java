@@ -1,28 +1,31 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 
 /**
  * Request class for create snapshot operation.
  * 
  */
-public class CreateSnapshotRequest extends JCSRequest implements Serializable, Cloneable{
+public class CreateSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = 6961306238384964459L;
-	
-	private String volumeId;
-	
+    private static final long serialVersionUID = 6961306238384964459L;
+
+    private String volumeId;
+
     public CreateSnapshotRequest() {
     }
 
     /**
-     * @param volumeId Id of the volume from which snapshot is to be created
+     * @param volumeId
+     *            Id of the volume from which snapshot is to be created
      */
     public CreateSnapshotRequest(String volumeId) {
         setVolumeId(volumeId);
     }
-  
+
     /**
-     * @param VolumeId Sets the id of the volume from which snapshot is to be created
+     * @param VolumeId
+     *            Sets the id of the volume from which snapshot is to be created
      */
     public void setVolumeId(String VolumeId) {
         this.volumeId = VolumeId;
@@ -36,17 +39,17 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Assigns given volumeId to the create snapshot request object and returns the object.
+     * Assigns given volumeId to the create snapshot request object and returns CreateSnapshotRequest object
+     * the object.
      * 
-     * @param volumeId
-     * @return
+     * @param volumeId ID of the volume from which snapshot is to be created
+     * @return Modified CreateSnapshotRequest object
      */
     public CreateSnapshotRequest withVolumeId(String volumeId) {
         setVolumeId(volumeId);
         return this;
     }
 
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -69,10 +72,9 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
         CreateSnapshotRequest other = (CreateSnapshotRequest) obj;
         if (other.getVolumeId() == null ^ this.getVolumeId() == null)
             return false;
-        if (other.getVolumeId() != null
-                && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
             return false;
         return true;
     }
 
-}   
+}

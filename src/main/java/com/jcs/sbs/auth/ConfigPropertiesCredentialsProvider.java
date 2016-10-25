@@ -4,11 +4,13 @@ import com.jcs.sbs.common.PropertiesReader;
 import com.jcs.sbs.common.Utils;
 
 public class ConfigPropertiesCredentialsProvider implements JCSCredentialsProvider {
-	/**
-	 * Implements getCredentials() method that reads ACCESS_KEY and SECRET_KEY from config.properties(if properties are set) and returns BasicJCSCredentials object.
-	 */
-	@Override
-	public JCSCredentials getCredentials() {
+    /**
+     * Implements getCredentials() method that reads ACCESS_KEY and SECRET_KEY
+     * from config.properties(if properties are set) and returns
+     * BasicJCSCredentials object.
+     */
+    @Override
+    public JCSCredentials getCredentials() {
 
         String accessKey = PropertiesReader.getProperty("ACCESS_KEY").trim();
 
@@ -16,20 +18,20 @@ public class ConfigPropertiesCredentialsProvider implements JCSCredentialsProvid
 
         if (Utils.isNullOrEmpty(accessKey) || Utils.isNullOrEmpty(secretKey)) {
 
-            throw new RuntimeException(
-                    "Unable to load JCS credentials from config.properties file ("
-            + accessKey + " and "+ secretKey + ")");
+            throw new RuntimeException("Unable to load JCS credentials from config.properties file (" + accessKey
+                    + " and " + secretKey + ")");
         }
 
         return new BasicJCSCredentials(accessKey, secretKey);
-	}
+    }
 
-	@Override
-	public void refresh() {}
+    @Override
+    public void refresh() {
+    }
 
-	@Override
+    @Override
     public String toString() {
         return getClass().getSimpleName();
     }
-	
+
 }

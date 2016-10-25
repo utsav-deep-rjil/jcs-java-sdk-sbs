@@ -1,6 +1,5 @@
 package com.jcs.sbs.model;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,10 +7,10 @@ import java.util.List;
 
 public class DescribeVolumesResult extends JCSResult implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = -3376670842859374348L;
+    private static final long serialVersionUID = -3376670842859374348L;
 
-	private List<Volume> volumes;
-    
+    private List<Volume> volumes;
+
     private String nextToken;
 
     /**
@@ -33,8 +32,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
             return;
         }
 
-        this.volumes = new ArrayList<Volume>(
-                volumes);
+        this.volumes = new ArrayList<Volume>(volumes);
     }
 
     /**
@@ -43,8 +41,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
      */
     public DescribeVolumesResult withVolumes(Volume... volumes) {
         if (this.volumes == null) {
-            setVolumes(new ArrayList<Volume>(
-                    volumes.length));
+            setVolumes(new ArrayList<Volume>(volumes.length));
         }
         for (Volume ele : volumes) {
             this.volumes.add(ele);
@@ -56,8 +53,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
      * @param volumes
      * @return
      */
-    public DescribeVolumesResult withVolumes(
-            Collection<Volume> volumes) {
+    public DescribeVolumesResult withVolumes(Collection<Volume> volumes) {
         setVolumes(volumes);
         return this;
     }
@@ -87,7 +83,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
 
     @Override
     public String toString() {
-    	return this.getXml();
+        return this.getXml();
     }
 
     @Override
@@ -102,13 +98,11 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
         DescribeVolumesResult other = (DescribeVolumesResult) obj;
         if (other.getVolumes() == null ^ this.getVolumes() == null)
             return false;
-        if (other.getVolumes() != null
-                && other.getVolumes().equals(this.getVolumes()) == false)
+        if (other.getVolumes() != null && other.getVolumes().equals(this.getVolumes()) == false)
             return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
-        if (other.getNextToken() != null
-                && other.getNextToken().equals(this.getNextToken()) == false)
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -118,10 +112,8 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVolumes() == null) ? 0 : getVolumes().hashCode());
-        hashCode = prime * hashCode
-                + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
+        hashCode = prime * hashCode + ((getVolumes() == null) ? 0 : getVolumes().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 
@@ -131,8 +123,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
             return (DescribeVolumesResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }
