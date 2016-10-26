@@ -1,21 +1,22 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 
+/**
+ * Request class for delete snapshot operation.
+ */
+public class DeleteSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
-public class DeleteSnapshotRequest extends JCSRequest implements
-        Serializable, Cloneable{
+    private static final long serialVersionUID = 5656441961856031597L;
 
-	private static final long serialVersionUID = 5656441961856031597L;
-	
-	private String snapshotId;
+    private String snapshotId;
 
-    
     public DeleteSnapshotRequest() {
     }
 
-    
     /**
-     * @param snapshotId ID of the snapshot that is to be deleted
+     * @param snapshotId
+     *            ID of the snapshot that is to be deleted
      */
     public DeleteSnapshotRequest(String snapshotId) {
         setSnapshotId(snapshotId);
@@ -23,26 +24,29 @@ public class DeleteSnapshotRequest extends JCSRequest implements
 
     /**
      * This method sets the snapshot ID in DeleteSnapshotRequest object
-     * @param snapshotId ID of the snapshot that is to be deleted
+     * 
+     * @param snapshotId
+     *            ID of the snapshot that is to be deleted
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
 
-
     /**
      * Fetches the snapshot ID that is set
+     * 
      * @return ID of snapshot that is to be deleted
      */
     public String getSnapshotId() {
         return this.snapshotId;
     }
 
-    
-
     /**
-     * This method sets the snapshotId in DeleteSnapshotRequest object and returns the modified DeleteSnapshotRequest object
-     * @param snapshotId ID of the snapshot that is to be deleted
+     * This method sets the snapshotId in DeleteSnapshotRequest object and
+     * returns the modified DeleteSnapshotRequest object
+     * 
+     * @param snapshotId
+     *            ID of the snapshot that is to be deleted
      * @return Modified DeleteSnapshotRequest object
      */
     public DeleteSnapshotRequest withSnapshotId(String snapshotId) {
@@ -50,9 +54,6 @@ public class DeleteSnapshotRequest extends JCSRequest implements
         return this;
     }
 
-    
-
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -75,8 +76,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements
         DeleteSnapshotRequest other = (DeleteSnapshotRequest) obj;
         if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
             return false;
-        if (other.getSnapshotId() != null
-                && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
             return false;
         return true;
     }
@@ -86,8 +86,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
+        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
         return hashCode;
     }
 }

@@ -1,32 +1,43 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 
+/**
+ * Result class for create volume operation.
+ */
 public class CreateVolumeResult extends JCSResult implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = 8077929441491924782L;
-	
-	private Volume volume;
+    private static final long serialVersionUID = 8077929441491924782L;
+
+    private Volume volume;
 
     /**
-     * This method is used internally in JCSComputeClient class. It sets the Volume object in the object of CreateVolumeResult
-     * @param volume Object of Volume that is created from response of create volume API
+     * This method is used internally in JCSComputeClient class. It sets the
+     * Volume object in the object of CreateVolumeResult
+     * 
+     * @param volume
+     *            Object of Volume that is created from response of create
+     *            volume API
      */
     public void setVolume(Volume volume) {
         this.volume = volume;
     }
 
-    
     /**
-     * @return Volume object that is created from the response of create volume API
+     * @return Volume object that is created from the response of create volume
+     *         API
      */
     public Volume getVolume() {
         return this.volume;
     }
 
-    
     /**
-     * This method sets the volume object in CreateVolumeResult object and returns the modified CreateVolumeResult object
-     * @param volume Object of Volume that is created from response of create volume API
+     * This method sets the volume object in CreateVolumeResult object and
+     * returns the modified CreateVolumeResult object
+     * 
+     * @param volume
+     *            Object of Volume that is created from response of create
+     *            volume API
      * @return Modified CreateVolumeResult object
      */
     public CreateVolumeResult withVolume(Volume volume) {
@@ -34,10 +45,9 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
         return this;
     }
 
-    
     @Override
     public String toString() {
-    	return this.getXml();
+        return this.getXml();
     }
 
     @Override
@@ -52,8 +62,7 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
         CreateVolumeResult other = (CreateVolumeResult) obj;
         if (other.getVolume() == null ^ this.getVolume() == null)
             return false;
-        if (other.getVolume() != null
-                && other.getVolume().equals(this.getVolume()) == false)
+        if (other.getVolume() != null && other.getVolume().equals(this.getVolume()) == false)
             return false;
         return true;
     }
@@ -63,8 +72,7 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVolume() == null) ? 0 : getVolume().hashCode());
+        hashCode = prime * hashCode + ((getVolume() == null) ? 0 : getVolume().hashCode());
         return hashCode;
     }
 
@@ -74,8 +82,7 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
             return (CreateVolumeResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 }

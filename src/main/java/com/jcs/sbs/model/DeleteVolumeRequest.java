@@ -1,18 +1,22 @@
 package com.jcs.sbs.model;
+
 import java.io.Serializable;
 
-public class DeleteVolumeRequest extends JCSRequest implements
-        Serializable, Cloneable{
+/**
+ * Request class for delete volume operation.
+ */
+public class DeleteVolumeRequest extends JCSRequest implements Serializable, Cloneable {
 
-	private static final long serialVersionUID = 8724912824318843928L;
-	
-	private String volumeId;
+    private static final long serialVersionUID = 8724912824318843928L;
+
+    private String volumeId;
 
     public DeleteVolumeRequest() {
     }
 
     /**
-     * @param volumeId ID of the volume that is to be deleted
+     * @param volumeId
+     *            ID of the volume that is to be deleted
      */
     public DeleteVolumeRequest(String volumeId) {
         setVolumeId(volumeId);
@@ -21,7 +25,8 @@ public class DeleteVolumeRequest extends JCSRequest implements
     /**
      * This method sets the given volumeId in DeleteVolumeRequest.
      * 
-     * @param volumeId ID of the volume that is to be deleted.
+     * @param volumeId
+     *            ID of the volume that is to be deleted.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
@@ -29,6 +34,7 @@ public class DeleteVolumeRequest extends JCSRequest implements
 
     /**
      * Fetches the ID of the volume to be deleted (if set)
+     * 
      * @return ID of the volume that is to be deleted.
      */
     public String getVolumeId() {
@@ -36,15 +42,18 @@ public class DeleteVolumeRequest extends JCSRequest implements
     }
 
     /**
-     * This method sets the ID of the volume to be deleted and returns the modified object of DeleteVolumeRequest
-     * @param volumeId ID of the volume that is to be deleted.
-     * @return
+     * This method sets the ID of the volume to be deleted and returns the
+     * modified object of DeleteVolumeRequest
+     * 
+     * @param volumeId
+     *            ID of the volume that is to be deleted.
+     * @return Modified object of DeleteVolumeRequest
      */
     public DeleteVolumeRequest withVolumeId(String volumeId) {
         setVolumeId(volumeId);
         return this;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -67,8 +76,7 @@ public class DeleteVolumeRequest extends JCSRequest implements
         DeleteVolumeRequest other = (DeleteVolumeRequest) obj;
         if (other.getVolumeId() == null ^ this.getVolumeId() == null)
             return false;
-        if (other.getVolumeId() != null
-                && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
             return false;
         return true;
     }
@@ -78,8 +86,7 @@ public class DeleteVolumeRequest extends JCSRequest implements
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
+        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
         return hashCode;
     }
 }

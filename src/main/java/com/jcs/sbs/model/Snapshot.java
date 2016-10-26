@@ -1,190 +1,233 @@
 package com.jcs.sbs.model;
+
 import java.util.Date;
 
-
 public class Snapshot {
-	private String volumeId;
+    private String volumeId;
 
     private Integer size;
 
     private String snapshotId;
 
     private Date startTime;
-    
+
     private String status;
-    
+
     private Boolean encrypted;
-    
+
     /**
+     * This method sets the volumeId in Snapshot object.
+     * 
      * @param volumeId
+     *            ID of the volume from which the snapshot is created
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
 
-
     /**
-     * @return
+     * @return ID of the volume from which the snapshot is created
      */
     public String getVolumeId() {
         return this.volumeId;
     }
 
-
     /**
+     * This method sets the volumeId in Snapshot object and returns the modified
+     * Snapshot object.
+     * 
      * @param volumeId
-     * @return
+     *            ID of the volume from which the snapshot is created
+     * @return Modified Snapshot object.
      */
     public Snapshot withVolumeId(String volumeId) {
         setVolumeId(volumeId);
         return this;
     }
 
-    
-
     /**
+     * This method sets the size of volume from which snapshot was created.
+     * 
      * @param size
+     *            Size of the volume from which snapshot was created.
      */
     public void setSize(Integer size) {
         this.size = size;
     }
 
-    
-
     /**
-     * @return
+     * @return Size of the volume from which snapshot was created.
      */
     public Integer getSize() {
         return this.size;
     }
 
-    
-
     /**
+     * This method sets the size of volume from which snapshot was created and
+     * returns the modified Snapshot object.
+     * 
      * @param size
-     * @return
+     *            Size of the volume from which snapshot was created.
+     * @return Modified Snapshot object.
      */
     public Snapshot withSize(Integer size) {
         setSize(size);
         return this;
     }
 
-    
-
     /**
+     * This method sets the snapshotId, which is unique identifier for any
+     * snapshot, in the Snapshot object.
+     * 
      * @param snapshotId
+     *            The snapshotId returned by create snapshot or describe
+     *            snapshot API.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
 
-    
-
     /**
-     * @return
+     * @return The snapshotId returned by create snapshot or describe snapshot
+     *         API.
      */
     public String getSnapshotId() {
         return this.snapshotId;
     }
 
-    
-
     /**
+     * This method sets the snapshotId, which is unique identifier for any
+     * snapshot, in the Snapshot object and returns the modified Snapshot
+     * object.
+     * 
      * @param snapshotId
-     * @return
+     *            The snapshotId returned by create snapshot or describe
+     *            snapshot API.
+     * @return Modified Snapshot object.
      */
     public Snapshot withSnapshotId(String snapshotId) {
         setSnapshotId(snapshotId);
         return this;
     }
 
-    
-
     /**
+     * This method sets the date and time at which snapshot was created in
+     * <tt>startTime</tt> field of Snapshot object.
+     * 
      * @param startTime
+     *            Date and time at which snapshot was created.
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    
     /**
-     * @return
+     * @return Date and time at which snapshot was created.
      */
     public Date getStartTime() {
         return this.startTime;
     }
 
-    
-
     /**
+     * This method sets the date and time at which snapshot was created in
+     * <tt>startTime</tt> field of Snapshot object and returns the modified
+     * Snapshot object.
+     * 
      * @param startTime
-     * @return
+     *            Date and time at which snapshot was created.
+     * @return Modified Snapshot object
      */
     public Snapshot withStartTime(Date startTime) {
         setStartTime(startTime);
         return this;
     }
-    
+
     /**
-     * @return
+     * @return Current status of snapshot as returned by describe snapshot or
+     *         create snapshot API. Possible values are: pending, completed,
+     *         error.
      */
     public String getStatus() {
-		return status;
-	}
+        return status;
+    }
 
+    /**
+     * This method sets the current status of snapshot in Snapshot object.
+     * 
+     * @param status
+     *            Current status of snapshot as returned by describe snapshot or
+     *            create snapshot API. Possible values are: pending, completed,
+     *            error.
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	/**
-	 * @param status
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	/**
-	 * @param status
-	 * @return
-	 */
-	public Snapshot withStatus(String status) {
+    /**
+     * This method sets the current status of snapshot in Snapshot object and
+     * returns the modified Snapshot object.
+     * 
+     * @param status
+     *            Current status of snapshot as returned by describe snapshot or
+     *            create snapshot API. Possible values are: pending, completed,
+     *            error.
+     *
+     * @return Modified Snapshot object.
+     */
+    public Snapshot withStatus(String status) {
         setStatus(status);
         return this;
     }
-    
-	
-	
+
     /**
-     * @return
+     * Specifies whether the snapshot is encrypted or not encrypted. Returns the
+     * value true if the snapshot is encrypted. Returns the value false if the
+     * snapshot is not encrypted.
+     * 
+     * @return Boolean value. <br>
+     *         <tt>true</tt> if the snapshot is encrypted, <tt>false</tt>
+     *         otherwise.
      */
     public Boolean getEncrypted() {
-		return encrypted;
-	}
+        return encrypted;
+    }
 
+    /**
+     * This method is used to set <tt>encrypted</tt> field in Snapshot object as
+     * returned by the describe snapshot or create snapshot API.
+     * 
+     * @param encrypted
+     *            Boolean value. <br>
+     *            <tt>true</tt> if the snapshot is encrypted, <tt>false</tt>
+     *            otherwise.
+     */
+    public void setEncrypted(Boolean encrypted) {
+        this.encrypted = encrypted;
+    }
 
-	/**
-	 * @param encrypted
-	 */
-	public void setEncrypted(Boolean encrypted) {
-		this.encrypted = encrypted;
-	}
-	
-	
-	/**
-	 * @param encrypted
-	 * @return
-	 */
-	public Snapshot withEncryption(Boolean encrypted) {
+    /**
+     * This method is used to set <tt>encrypted</tt> field in Snapshot object as
+     * returned by the describe snapshot or create snapshot API and then returns
+     * the modified Snapshot object.
+     * 
+     * @param encrypted
+     *            Boolean value. <br>
+     *            <tt>true</tt> if the snapshot is encrypted, <tt>false</tt>
+     *            otherwise.
+     * @return Modified Snapshot object.
+     */
+    public Snapshot withEncryption(Boolean encrypted) {
         setEncrypted(encrypted);
         return this;
     }
-    
 
-	@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getSnapshotId() != null)
             sb.append("SnapshotId: " + getSnapshotId() + ",");
-        
+
         if (getVolumeId() != null)
             sb.append("VolumeId: " + getVolumeId() + ",");
         if (getSize() != null)
@@ -207,24 +250,21 @@ public class Snapshot {
         Volume other = (Volume) obj;
         if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
             return false;
-        if (other.getSnapshotId() != null
-                && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
             return false;
         if (other.getVolumeId() == null ^ this.getVolumeId() == null)
             return false;
-        if (other.getVolumeId() != null
-                && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
             return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
-        if (other.getSize() != null
-                && other.getSize().equals(this.getSize()) == false)
+        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
             return false;
         if (other.getEncrypted() == null ^ this.getEncrypted() == null)
             return false;
         if (other.getEncrypted() ^ this.getEncrypted())
             return false;
-               
+
         return true;
     }
 
@@ -233,15 +273,11 @@ public class Snapshot {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode
-                + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode
-                + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        hashCode = prime * hashCode
-                + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode
-                + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-        
+        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
+        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
+        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
+        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
+
         return hashCode;
     }
 
@@ -251,8 +287,7 @@ public class Snapshot {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() "
-                            + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
     }
 
