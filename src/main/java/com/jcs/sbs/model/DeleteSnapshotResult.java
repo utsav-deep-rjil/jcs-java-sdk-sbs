@@ -9,6 +9,14 @@ public class DeleteSnapshotResult extends JCSResult implements Serializable, Clo
 
     private static final long serialVersionUID = -5670232468998211566L;
 
+
+    /**
+     * Default constructor for DeleteSnapshotResult object.
+     */
+    public DeleteSnapshotResult() {
+        super();
+    }
+
     @Override
     public String toString() {
         return this.getXml();

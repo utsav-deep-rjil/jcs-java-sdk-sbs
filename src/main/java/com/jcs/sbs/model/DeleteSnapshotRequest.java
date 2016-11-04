@@ -11,10 +11,15 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
 
     private String snapshotId;
 
+    /**
+     * Default constructor for DeleteSnapshotRequest object.
+     */
     public DeleteSnapshotRequest() {
     }
 
     /**
+     * Creates DeleteSnapshotRequest object with given snapshotId.
+     * 
      * @param snapshotId
      *            ID of the snapshot that is to be deleted
      */
@@ -23,7 +28,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * This method sets the snapshot ID in DeleteSnapshotRequest object
+     * Sets the snapshot ID in DeleteSnapshotRequest object
      * 
      * @param snapshotId
      *            ID of the snapshot that is to be deleted
@@ -33,7 +38,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Fetches the snapshot ID that is set
+     * Fetches the snapshot ID that is set.
      * 
      * @return ID of snapshot that is to be deleted
      */
@@ -42,7 +47,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * This method sets the snapshotId in DeleteSnapshotRequest object and
+     * Sets the snapshotId in DeleteSnapshotRequest object and
      * returns the modified DeleteSnapshotRequest object
      * 
      * @param snapshotId

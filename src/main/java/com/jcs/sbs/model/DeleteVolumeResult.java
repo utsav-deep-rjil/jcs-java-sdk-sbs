@@ -9,6 +9,13 @@ public class DeleteVolumeResult extends JCSResult implements Serializable, Clone
 
     private static final long serialVersionUID = 5052351717850702143L;
 
+
+    /**
+     * Default constructor for DeleteVolumeResult object.
+     */
+    public DeleteVolumeResult() {
+    }
+
     @Override
     public String toString() {
         return this.getXml();

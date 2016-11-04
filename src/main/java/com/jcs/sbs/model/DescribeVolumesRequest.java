@@ -12,7 +12,7 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
 
     private static final long serialVersionUID = -710530726380217842L;
 
-    private List<String> volumeIds;
+    private List<String> volumeIds = new ArrayList<String>();
 
     private String nextToken;
 
@@ -20,6 +20,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
 
     private Boolean detail;
 
+    /**
+     * Default constructor for DescribeVolumesRequest object.
+     */
     public DescribeVolumesRequest() {
     }
 
@@ -38,12 +41,12 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
+     * Fetches list of volume IDs if set in DescribeVolumesRequest object,
+     * otherwise an empty list.
+     * 
      * @return List of volumeIds that are to be described.
      */
     public List<String> getVolumeIds() {
-        if (volumeIds == null) {
-            volumeIds = new ArrayList<String>();
-        }
         return volumeIds;
     }
 
@@ -59,7 +62,7 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      */
     public void setVolumeIds(Collection<String> volumeIds) {
         if (volumeIds == null) {
-            this.volumeIds = null;
+            this.volumeIds = new ArrayList<String>();
             return;
         }
 
@@ -80,9 +83,6 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withVolumeIds(String... volumeIds) {
-        if (this.volumeIds == null) {
-            setVolumeIds(new ArrayList<String>(volumeIds.length));
-        }
         for (String ele : volumeIds) {
             this.volumeIds.add(ele);
         }
@@ -177,6 +177,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
+     * Returns maximum number of items (snapshots) to be fetched.
+     * 
      * @return An Integer value representing the maximum number of items to be
      *         returned by describeVolumes() method (if maxResults value is set
      *         in DescribeVolumesRequest object).
@@ -201,6 +203,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
+     * Returns a boolean value that tells if details will be shown or not.
+     * 
      * @return Value of 'detail' field of DescribeVolumesRequest object. If
      *         true, the describeVolumes() method will describe the volumes in
      *         detail.
@@ -210,6 +214,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
+     * Set true/false to get result with/without details respectively. It also
+     * returns the modified DescribeVolumesRequest object.
+     * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeVolumesRequest
      *            object. If it is set true, then the describeVolumes() method
@@ -220,6 +227,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
+     * Set true/false to get result with/without details respectively. It also
+     * returns the modified DescribeVolumesRequest object.
+     * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeVolumesRequest
      *            object. If it is set true, then the describeVolumes() method

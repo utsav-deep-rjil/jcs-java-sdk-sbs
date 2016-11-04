@@ -11,8 +11,15 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
 
     private Volume volume;
 
+
     /**
-     * This method is used internally in JCSComputeClient class. It sets the
+     * Default constructor for CreateVolumeResult object.
+     */
+    public CreateVolumeResult() {
+    }
+
+    /**
+     * Used internally in JCSComputeClient class. It sets the
      * Volume object in the object of CreateVolumeResult
      * 
      * @param volume
@@ -32,7 +39,7 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
     }
 
     /**
-     * This method sets the volume object in CreateVolumeResult object and
+     * Sets the volume object in CreateVolumeResult object and
      * returns the modified CreateVolumeResult object
      * 
      * @param volume

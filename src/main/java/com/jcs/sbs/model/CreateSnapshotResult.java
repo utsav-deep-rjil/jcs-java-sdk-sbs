@@ -11,12 +11,16 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
 
     private Snapshot snapshot;
 
+
+    /**
+     * Default constructor for CreateSnapshotResult object.
+     */
     public CreateSnapshotResult() {
 
     }
 
     /**
-     * This method is used internally in JCSComputeClient class to set the
+     * Used internally in JCSComputeClient class to set the
      * snapshot object
      * 
      * @param snapshot
@@ -34,7 +38,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     }
 
     /**
-     * This method adds the snapshot object, passed as the argument, in the
+     * Adds the snapshot object, passed as the argument, in the
      * object of CreateSnapshotResult object returns the modified object
      * 
      * @param snapshot

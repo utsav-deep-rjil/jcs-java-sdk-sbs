@@ -11,10 +11,15 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
 
     private String volumeId;
 
+    /**
+     * Default constructor for DeleteVolumeRequest object.
+     */
     public DeleteVolumeRequest() {
     }
 
     /**
+     * Creates an object of DeleteVolumeRequest with given volumeId.
+     * 
      * @param volumeId
      *            ID of the volume that is to be deleted
      */
@@ -23,7 +28,7 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method sets the given volumeId in DeleteVolumeRequest.
+     * Sets the given volumeId in DeleteVolumeRequest.
      * 
      * @param volumeId
      *            ID of the volume that is to be deleted.
@@ -42,7 +47,7 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method sets the ID of the volume to be deleted and returns the
+     * Sets the ID of the volume to be deleted and returns the
      * modified object of DeleteVolumeRequest
      * 
      * @param volumeId

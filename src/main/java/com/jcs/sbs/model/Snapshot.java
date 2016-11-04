@@ -16,6 +16,12 @@ public class Snapshot {
     private Boolean encrypted;
 
     /**
+     * Default constructor for Snapshot object.
+     */
+    public Snapshot() {
+    }
+
+    /**
      * This method sets the volumeId in Snapshot object.
      * 
      * @param volumeId
@@ -26,6 +32,8 @@ public class Snapshot {
     }
 
     /**
+     * Returns volume ID from which snapshot is to be created.
+     * 
      * @return ID of the volume from which the snapshot is created
      */
     public String getVolumeId() {
@@ -46,28 +54,28 @@ public class Snapshot {
     }
 
     /**
-     * This method sets the size of volume from which snapshot was created.
+     * This method sets the size of volume from which snapshot is created.
      * 
      * @param size
-     *            Size of the volume from which snapshot was created.
+     *            Size of the volume from which snapshot is created.
      */
     public void setSize(Integer size) {
         this.size = size;
     }
 
     /**
-     * @return Size of the volume from which snapshot was created.
+     * @return Size of the volume from which snapshot is created.
      */
     public Integer getSize() {
         return this.size;
     }
 
     /**
-     * This method sets the size of volume from which snapshot was created and
+     * This method sets the size of volume from which snapshot is created and
      * returns the modified Snapshot object.
      * 
      * @param size
-     *            Size of the volume from which snapshot was created.
+     *            Size of the volume from which snapshot is created.
      * @return Modified Snapshot object.
      */
     public Snapshot withSize(Integer size) {
@@ -88,6 +96,8 @@ public class Snapshot {
     }
 
     /**
+     * Returns ID of the snapshot.
+     * 
      * @return The snapshotId returned by create snapshot or describe snapshot
      *         API.
      */
@@ -122,6 +132,8 @@ public class Snapshot {
     }
 
     /**
+     * Returns Date object containing date and time at which snapshot was created.
+     * 
      * @return Date and time at which snapshot was created.
      */
     public Date getStartTime() {
@@ -143,6 +155,8 @@ public class Snapshot {
     }
 
     /**
+     * Returns current status of the snapshot.
+     * 
      * @return Current status of snapshot as returned by describe snapshot or
      *         create snapshot API. Possible values are: pending, completed,
      *         error.

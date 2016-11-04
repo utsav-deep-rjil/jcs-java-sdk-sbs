@@ -11,6 +11,8 @@ public enum VolumeType implements Serializable {
     }
 
     /**
+     * Returns an element of VolumeType enum value corresponding to the
+     *         'volumeTypeString' passed to it.
      * @param volumeTypeString
      *            Its the string from which enum value is to be created.
      * @return an element of VolumeType enum value corresponding to the

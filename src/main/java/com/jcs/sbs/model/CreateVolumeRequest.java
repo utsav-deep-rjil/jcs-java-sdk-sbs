@@ -14,10 +14,15 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     private Boolean encrypted;
     private VolumeType volumeType;
 
+    /**
+     * Default constructor for CreateVolumeRequest object.
+     */
     public CreateVolumeRequest() {
     }
 
     /**
+     * Creates CreateVolumeRequest object with given volume size.
+     * 
      * @param size
      *            The size of the volume that is to be created
      */
@@ -26,8 +31,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This constructor can be used to create an object of CreateVolumeRequest
-     * if the volume is to be created from a snapshot
+     * Creates an object of CreateVolumeRequest if the volume is to be created
+     * from a snapshot
      * 
      * @param snapshotId
      *            The ID of the snapshot from which the volume is to be created
@@ -37,8 +42,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method sets the size of the volume that is to be created. Volume
-     * size is a required field for creating a volume
+     * Sets the size of the volume that is to be created. Volume size is a
+     * required field for creating a volume if snapshotId is not present.
      * 
      * @param size
      *            The size of the volume that is to be created
@@ -55,8 +60,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method sets the volume size to the CreateVolumeRequest object and
-     * returns the modified object.
+     * Sets the volume size to the CreateVolumeRequest object and returns the
+     * modified object.
      * 
      * @param size
      *            Size of the volume that is to be created
@@ -68,8 +73,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can be used to set the snapshotId in CreateVolumeRequest if
-     * the volume is to be created from snapshot
+     * Can be used to set the snapshotId in CreateVolumeRequest if the volume is
+     * to be created from snapshot
      * 
      * @param snapshotId
      *            The ID of the snapshot from which volume is to be created
@@ -86,8 +91,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can be used to set the snapshotId in CreateVolumeRequest if
-     * the volume is to be created from snapshot
+     * Can be used to set the snapshotId in CreateVolumeRequest if the volume is
+     * to be created from snapshot
      * 
      * @param snapshotId
      *            The ID of the snapshot from which volume is to be created
@@ -99,7 +104,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method tells if the volume after creation will be encrypted or not
+     * Tells if the volume after creation will be encrypted or not
      * 
      * @return Boolean value; true if volume will be encrypted after encryption
      */
@@ -108,8 +113,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can be used to create encrypted volume. If 'encrypted' is set
-     * to true, the created volume will be encrypted otherwise plain-text
+     * Can be used to create encrypted volume. If 'encrypted' is set to true,
+     * the created volume will be encrypted otherwise plain-text
      * 
      * @param encrypted
      *            Boolean value to be set to 'encrypted' variable of the
@@ -120,7 +125,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can be used to create encrypted volume
+     * Can be used to create encrypted volume
      * 
      * @return Modified object of CreateVolumeRequest with 'encrypted' set to
      *         true
@@ -140,9 +145,9 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can be used to set the type of volume, standard(HDD) or SSD,
-     * that is to be created. If volumeType is not specified, the created volume
-     * will be of type standard.
+     * Can be used to set the type of volume, standard(HDD) or SSD, that is to
+     * be created. If volumeType is not specified, the created volume will be of
+     * type standard.
      * 
      * @param volumeType
      *            Enum value of type VolumeType. Possible values in the enum are
@@ -153,8 +158,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * This method can also be used for setting the volume type before creating
-     * the volume. It sets the value of volumeType field in the object of
+     * Can also be used for setting the volume type before creating the volume.
+     * It sets the value of volumeType field in the object of
      * CreateVolumeRequest and returns the modified object.
      * 
      * @param volumeType

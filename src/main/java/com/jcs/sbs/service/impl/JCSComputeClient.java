@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
@@ -27,8 +28,10 @@ import com.jcs.sbs.auth.DefaultJCSCredentialsProviderChain;
 import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 import com.jcs.sbs.auth.StaticCredentialsProvider;
+import com.jcs.sbs.common.Constants;
 import com.jcs.sbs.common.JCSHttpClient;
 import com.jcs.sbs.common.PropertiesReader;
+import com.jcs.sbs.exceptions.PropertyNotFoundException;
 import com.jcs.sbs.model.CreateSnapshotRequest;
 import com.jcs.sbs.model.CreateSnapshotResult;
 import com.jcs.sbs.model.CreateVolumeRequest;
@@ -71,9 +74,11 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * Properties File (config.properties) - ACCESS_KEY and SECRET_KEY <br>
      * All service calls made using this new client object are blocking, and
      * will not return until the service call completes.
+     * 
+     * @throws PropertyNotFoundException
      */
 
-    public JCSComputeClient() {
+    public JCSComputeClient() throws PropertyNotFoundException {
         this(new DefaultJCSCredentialsProviderChain());
     }
 
@@ -81,11 +86,15 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * Constructs a new client to invoke service methods on JCS Client using the
      * specified JCS account credentials. All service calls made using this new
      * client object are blocking, and will not return until the service call
-     * completes. Parameters: jcsCredentials - The JCS credentials (access key
-     * ID and secret key) to use when authenticating with JCS services.
+     * completes.
+     * 
+     * @param jcsCredentials
+     *            The JCS credentials (access key ID and secret key) to use when
+     *            authenticating with JCS services.
+     * @throws PropertyNotFoundException
      */
 
-    public JCSComputeClient(JCSCredentials jcsCredentials) {
+    public JCSComputeClient(JCSCredentials jcsCredentials) throws PropertyNotFoundException {
         this.jcsCredentialsProvider = new StaticCredentialsProvider(jcsCredentials);
         init();
     }
@@ -97,9 +106,11 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * service call completes. Parameters: jcsCredentialsProvider- The JCS
      * credentials provider which will provide credentials to authenticate
      * requests with JCS services.
+     * 
+     * @throws PropertyNotFoundException
      */
 
-    public JCSComputeClient(JCSCredentialsProvider jcsCredentialsProvider) {
+    public JCSComputeClient(JCSCredentialsProvider jcsCredentialsProvider) throws PropertyNotFoundException {
         this.jcsCredentialsProvider = jcsCredentialsProvider;
         init();
     }
@@ -108,8 +119,27 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * Initializes the end-points of the APIs with the BASE_URL as in
      * config.properties file
      */
-    private void init() {
-        this.setEndpoint(PropertiesReader.getProperty("BASE_URL"));
+    private void init() throws PropertyNotFoundException {
+        if (StringUtils.isNotBlank(PropertiesReader.getProperty("BASE_URL"))) {
+            this.setEndpoint(PropertiesReader.getProperty("BASE_URL"));
+            return;
+        } else {
+            log.warn("Unable to read BASE_URL property from " + Constants.PROPERTIES_FILE_NAME);
+        }
+        if (StringUtils.isNotBlank(System.getenv("BASE_URL"))) {
+            this.setEndpoint(System.getenv("BASE_URL"));
+            return;
+        } else {
+            log.warn("Unable to read BASE_URL property from environment variables");
+        }
+        if (StringUtils.isNotBlank(System.getProperty("BASE_URL"))) {
+            this.setEndpoint(System.getProperty("BASE_URL"));
+            return;
+        } else {
+            log.warn("Unable to read BASE_URL property from Java system properties");
+        }
+        throw new PropertyNotFoundException("BASE_URL property must be set in " + Constants.PROPERTIES_FILE_NAME
+                + ", environment variables or java system properties");
     }
 
     /**
@@ -122,12 +152,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * @param createVolumeRequest
      *            Contains the parameters for CreateVolume.
      * @return Result of the CreateVolume operation returned by the service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public CreateVolumeResult createVolume(CreateVolumeRequest createVolumeRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "CreateVolume");
         if (createVolumeRequest.getSize() != null) {
@@ -173,7 +204,6 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
             } else {
                 HttpEntity entity = response.getEntity();
                 String content = EntityUtils.toString(entity);
-                System.out.println(content);
                 throw new HttpException(content);
             }
         } finally {
@@ -192,12 +222,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * @param deleteVolumeRequest
      *            Contains the parameters for DeleteVolume.
      * @return Result of the DeleteVolume operation returned by the service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public DeleteVolumeResult deleteVolume(DeleteVolumeRequest deleteVolumeRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "DeleteVolume");
         if (deleteVolumeRequest.getVolumeId() != null) {
@@ -244,12 +275,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * @param describeVolumesRequest
      *            Contains the parameters for DescribeVolumes.
      * @return Result of the DescribeVolumes operation returned by the service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public DescribeVolumesResult describeVolumes(DescribeVolumesRequest describeVolumesRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "DescribeVolumes");
         if (describeVolumesRequest.getMaxResults() != null) {
@@ -326,12 +358,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * @param createSnapshotRequest
      *            Contains the parameters for CreateSnapshot.
      * @return Result of the CreateSnapshot operation returned by the service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "CreateSnapshot");
 
@@ -386,12 +419,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * @param deleteSnapshotRequest
      *            - Contains the parameters for DeleteSnapshot.
      * @return Result of the DeleteSnapshot operation returned by the service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public DeleteSnapshotResult deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "DeleteSnapshot");
         if (deleteSnapshotRequest.getSnapshotId() != null) {
@@ -446,12 +480,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      *            - Contains the parameters for DescribeSnapshots.
      * @return Result of the DescribeSnapshots operation returned by the
      *         service.
+     * @throws PropertyNotFoundException
      */
 
     @Override
     public DescribeSnapshotsResult describeSnapshots(DescribeSnapshotsRequest describeSnapshotsRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "DescribeSnapshots");
         if (describeSnapshotsRequest.getMaxResults() != null) {

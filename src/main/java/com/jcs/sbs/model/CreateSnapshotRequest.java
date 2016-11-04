@@ -11,10 +11,15 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
 
     private String volumeId;
 
+    /**
+     * Default constructor for CreateSnapshotRequest object.
+     */
     public CreateSnapshotRequest() {
     }
 
     /**
+     * Creates CreateSnapshotRequest object from volume Id
+     * 
      * @param volumeId
      *            Id of the volume from which snapshot is to be created
      */

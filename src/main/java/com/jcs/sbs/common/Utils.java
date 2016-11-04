@@ -1,5 +1,6 @@
 package com.jcs.sbs.common;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.jcs.sbs.model.ProtocolAndHost;
 
@@ -17,7 +18,7 @@ public class Utils {
 	 */
 	public static ProtocolAndHost getProtocolAndHost(String url){
 		ProtocolAndHost protocolAndHost = new ProtocolAndHost();
-		Pattern r = Pattern.compile("(http[s]?)://((?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)");
+		Pattern r = Pattern.compile(Constants.PROTOCOL_AND_HOST_REGEX);
 		Matcher url_parts = r.matcher(url);
 		if(!url_parts.find()){
 			protocolAndHost.setProtocol("");
@@ -30,16 +31,5 @@ public class Utils {
 		return protocolAndHost;
 	}
 	
-	/**
-	 * This method checks if the given string value is null or empty.
-	 * 
-	 * @param value The string value that is to be tested
-	 * @return Boolean value. True if string is null or empty, false otherwise.
-	 */
-	public static boolean isNullOrEmpty(String value) {
-        if (value == null) {
-            return true;
-        }
-        return value.isEmpty();
-    }
+	
 }

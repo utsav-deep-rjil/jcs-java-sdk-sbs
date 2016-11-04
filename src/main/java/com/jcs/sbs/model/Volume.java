@@ -22,6 +22,12 @@ public class Volume implements Serializable, Cloneable {
     private String status;
 
     /**
+     * Default constructor for Volume object.
+     */
+    public Volume() {
+    }
+
+    /**
      * This method sets the volumeId in Volume object, which is returned by
      * describe volumes or create volume API.
      * 
@@ -34,6 +40,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * Returns ID of the volume.
+     * 
      * @return Unique ID for volumes, which is returned by describe volumes or
      *         create volume API.
      */
@@ -67,6 +75,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * Returns size of the volume.
+     * 
      * @return The size of the volume (in GB) as returned by describe volume
      *         API.
      */
@@ -100,6 +110,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * If volume was created from a snapshot, it returns the Id of that snapshot.
+     * 
      * @return The ID of snapshot from which the volume is created (if volume is
      *         created from snapshot).
      */
@@ -133,9 +145,11 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * Returns Date object containing date and time at which the volume was created.
+     * 
      * @return Date and time at which the volume was created.
      */
-    public java.util.Date getCreateTime() {
+    public Date getCreateTime() {
         return this.createTime;
     }
 
@@ -195,6 +209,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * Returns the current status of the volume.
+     * 
      * @return Current status of volume as returned by describe volume or create
      *         volume API. Possible values are: creating and available.
      */

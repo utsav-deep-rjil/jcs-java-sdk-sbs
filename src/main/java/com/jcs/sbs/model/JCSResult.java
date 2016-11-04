@@ -11,6 +11,12 @@ public class JCSResult {
     private String xml;
 
     /**
+     * Default constructor for JCSResult object.
+     */
+    public JCSResult() {
+    }
+
+    /**
      * @return The request ID that is returned by the internal API.
      */
     public String getRequestId() {
@@ -18,8 +24,8 @@ public class JCSResult {
     }
 
     /**
-     * This method is used internally. It sets the requestId that was returned
-     * by the internal API call.
+     * Used internally. It sets the requestId that was returned by the internal
+     * API call.
      * 
      * @param requestId
      *            Value of <tt>requestId</tt> that was returned by the internal
@@ -53,4 +59,14 @@ public class JCSResult {
     public void setXml(String xml) {
         this.xml = xml;
     }
+
+    /**
+     * Returns a string representation of this object; useful for testing and
+     * debugging.
+     */
+    @Override
+    public String toString() {
+        return "JCSResult [requestId=" + requestId + ", xml=" + xml + "]";
+    }
+
 }

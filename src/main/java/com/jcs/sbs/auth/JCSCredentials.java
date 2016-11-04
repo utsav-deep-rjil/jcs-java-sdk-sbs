@@ -1,18 +1,28 @@
 package com.jcs.sbs.auth;
 
 /**
- * Interface that provides access to Access and Secret keys
- *
+ * Interface that provides access to the JCS credentials (Access key and Secret
+ * key) used for accessing JCS services.
  */
 public interface JCSCredentials {
 
-	/**
-	 * 
-	 * @return JCS Access Key
-	 */
+    /**
+     * It returns JCS Access Key, which is set by any of the
+     * JCSCredentialsProviders:
+     * <li>ConfigPropertiesCredentialsProvider,</li>
+     * <li>EnvironmentVariableCredentialsProvider and</li>
+     * <li>SystemPropertiesCredentialsProvider</li>
+     * 
+     * @return JCS Access Key
+     */
     public String getJCSAccessKey();
 
     /**
+     * It returns JCS Secret Key, which is set by any of the
+     * JCSCredentialsProviders:
+     * <li>ConfigPropertiesCredentialsProvider,</li>
+     * <li>EnvironmentVariableCredentialsProvider and</li>
+     * <li>SystemPropertiesCredentialsProvider</li>
      * 
      * @return JCS Secret Key
      */

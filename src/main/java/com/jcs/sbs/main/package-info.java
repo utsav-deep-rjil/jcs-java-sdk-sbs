@@ -1,4 +1,4 @@
 /**
- * This package contains class having main() method.
+ * Contains the class having the main() method.
  */
 package com.jcs.sbs.main;

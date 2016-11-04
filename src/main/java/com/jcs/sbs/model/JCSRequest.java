@@ -18,18 +18,28 @@ public abstract class JCSRequest {
     private Map<String, String> customRequestHeaders;
 
     /**
-     * It sets the provider class for the credentials.
+     * Default constructor for JCSRequest object.
+     */
+    public JCSRequest() {
+    }
+
+    /**
+     * Sets the provider class for the credentials.
      * 
-     * @param credentialsProvider An object of class that implements the interface JCSCredentialsProvider.
+     * @param credentialsProvider
+     *            An object of class that implements the interface
+     *            JCSCredentialsProvider.
      */
     public void setRequestCredentialsProvider(JCSCredentialsProvider credentialsProvider) {
         this.credentialsProvider = credentialsProvider;
     }
 
     /**
-     * This method can be used to know the request credentials provider that is currently set.
+     * Can be used to know the request credentials provider that is currently
+     * set.
      * 
-     * @return An object of class that implements the interface JCSCredentialsProvider.
+     * @return An object of class that implements the interface
+     *         JCSCredentialsProvider.
      */
     public JCSCredentialsProvider getRequestCredentialsProvider() {
         return credentialsProvider;
@@ -46,20 +56,32 @@ public abstract class JCSRequest {
     }
 
     /**
-     * This method adds a new custom header in 'customRequestHeaders' map.
+     * Adds a new custom header in 'customRequestHeaders' map.
      * 
-     * @param name The header name that is to be set.
-     * @param value The value of the corresponding header.
+     * @param name
+     *            The header name that is to be set.
+     * @param value
+     *            The value of the corresponding header.
      * @return the previous value associated with the <tt>header</tt>, or
-     *         <tt>null</tt> if there was no mapping for <tt>header</tt>.
-     *         (A <tt>null</tt> return can also indicate that the map
-     *         previously associated <tt>null</tt> with <tt>header</tt>.)
+     *         <tt>null</tt> if there was no mapping for <tt>header</tt>. (A
+     *         <tt>null</tt> return can also indicate that the map previously
+     *         associated <tt>null</tt> with <tt>header</tt>.)
      */
     public String putCustomRequestHeader(String name, String value) {
         if (customRequestHeaders == null) {
             customRequestHeaders = new HashMap<String, String>();
         }
         return customRequestHeaders.put(name, value);
+    }
+
+    /**
+     * Returns a string representation of this object; useful for testing and
+     * debugging.
+     */
+    @Override
+    public String toString() {
+        return "JCSRequest [credentialsProvider=" + credentialsProvider + ", customRequestHeaders="
+                + customRequestHeaders + "]";
     }
 
 }
