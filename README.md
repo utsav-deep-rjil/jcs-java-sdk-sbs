@@ -1,20 +1,16 @@
 **JCSsdk**
 =====================
 
-Read the documentation on all major classes in the package under the documentation folder.
+Download or clone this project. One can generate and refer to complete javadocs for this project.
+In eclipse javadocs can be generated through *Project->Generate Javadoc..*. After generating javadocs,
+click on *index.html* inside *doc* folder of the project.
+You can also read the documentation on all major classes in the package under the documentation folder.
 The examples folder contains examples on how to use each api.
+Some basic examples for using the SDK is given in this README itself.
 
 
 Before using the SDK:
 =====================
-
-After cloning the project, put config.properties file inside src/main/resources of **the project that will use the SDK** 
-(if you just want to run the sdk itself, place the config.properties file inside src/main/resources of this project itself).
- The properties file should contain : 
- 
-- BASE_URL
-- ACCESS_KEY
-- SECRET_KEY
 
 CA-CERTIFICATE INSTALLATION:
 ----------------------------
@@ -36,6 +32,23 @@ CA-CERTIFICATE INSTALLATION:
 > sudo keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt -alias "CACERT_NAME" -file /usr/local/share/ca-certificates/"CACERT_Name"
 - For Mac:
 - For Windows:
+
+
+Setting up the Project:
+-----------------------
+
+The following properties must be set for proper working of this SDK:
+
+- BASE_URL
+- ACCESS_KEY
+- SECRET_KEY
+
+You can set these properties in any of the following locations:
+
+- Environment Variables
+- Java System Properties
+- In 
+*config.properties* file under *src/main/resources* folder of the project in which this SDK will be used.
 
 
 Maven Configuration:

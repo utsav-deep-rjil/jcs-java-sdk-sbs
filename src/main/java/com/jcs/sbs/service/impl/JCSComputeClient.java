@@ -122,18 +122,21 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
     private void init() throws PropertyNotFoundException {
         if (StringUtils.isNotBlank(PropertiesReader.getProperty("BASE_URL"))) {
             this.setEndpoint(PropertiesReader.getProperty("BASE_URL"));
+            log.info("Using BASE_URL from " + Constants.PROPERTIES_FILE_NAME);
             return;
         } else {
             log.warn("Unable to read BASE_URL property from " + Constants.PROPERTIES_FILE_NAME);
         }
         if (StringUtils.isNotBlank(System.getenv("BASE_URL"))) {
             this.setEndpoint(System.getenv("BASE_URL"));
+            log.info("Using BASE_URL from environment variables");
             return;
         } else {
             log.warn("Unable to read BASE_URL property from environment variables");
         }
         if (StringUtils.isNotBlank(System.getProperty("BASE_URL"))) {
             this.setEndpoint(System.getProperty("BASE_URL"));
+            log.info("Using BASE_URL from java system properties");
             return;
         } else {
             log.warn("Unable to read BASE_URL property from Java system properties");
