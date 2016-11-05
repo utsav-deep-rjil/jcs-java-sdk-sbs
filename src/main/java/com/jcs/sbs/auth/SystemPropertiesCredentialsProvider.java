@@ -1,11 +1,20 @@
 package com.jcs.sbs.auth;
 
-import com.jcs.sbs.common.Utils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * Class to read credentials from system properties.
+ * JCSCredentialsProvider implementation that loads JCS credentials from
+ * Java system properties.
  */
 public class SystemPropertiesCredentialsProvider implements JCSCredentialsProvider {
+    
+    
+    /**
+     * Default constructor for SystemPropertiesCredentialsProvider object.
+     */
+    public SystemPropertiesCredentialsProvider() {
+    }
+
     /**
      * Implements getCredentials() method that reads ACCESS_KEY and SECRET_KEY
      * from system properties(if present) and returns BasicJCSCredentials
@@ -13,14 +22,14 @@ public class SystemPropertiesCredentialsProvider implements JCSCredentialsProvid
      */
     @Override
     public JCSCredentials getCredentials() {
-        String accessKey = System.getProperty("ACCESS_KEY").trim();
+        String accessKey = System.getProperty("ACCESS_KEY");
 
-        String secretKey = System.getProperty("SECRET_KEY").trim();
+        String secretKey = System.getProperty("SECRET_KEY");
 
-        if (Utils.isNullOrEmpty(accessKey) || Utils.isNullOrEmpty(secretKey)) {
+        if (StringUtils.isBlank(accessKey) || StringUtils.isBlank(secretKey)) {
+            throw new RuntimeException(String.format(
+                    "Unable to load JCS credentials from Java system properties (%s and %s)", accessKey, secretKey));
 
-            throw new RuntimeException("Unable to load JCS credentials from Java system properties (" + accessKey
-                    + " and " + secretKey + ")");
         }
 
         return new BasicJCSCredentials(accessKey, secretKey);
@@ -30,6 +39,9 @@ public class SystemPropertiesCredentialsProvider implements JCSCredentialsProvid
     public void refresh() {
     }
 
+    /**
+     * Returns a string representation of this object; useful for testing and debugging.
+     */
     @Override
     public String toString() {
         return getClass().getSimpleName();

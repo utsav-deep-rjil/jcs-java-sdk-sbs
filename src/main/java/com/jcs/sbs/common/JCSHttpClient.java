@@ -5,6 +5,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.annotation.ThreadSafe;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -25,6 +27,14 @@ import com.jcs.sbs.auth.JCSCredentials;
 public abstract class JCSHttpClient {
 
     protected volatile String endpoint;
+    private static final Log log = LogFactory.getLog(JCSHttpClient.class);
+
+    /**
+     * Default constructor for JCSHttpClient object.
+     */
+    public JCSHttpClient() {
+        super();
+    }
 
     /**
      * Sets the base URL of the APIs to be called.
@@ -48,6 +58,8 @@ public abstract class JCSHttpClient {
     }
 
     /**
+     * It generates final API URL, calls it and returns the HTTP response object
+     * containing the response returned by backend API.
      * 
      * @param credentials
      *            Object of type JCSCredentials, contains ACCESS_KEY and
@@ -75,18 +87,16 @@ public abstract class JCSHttpClient {
                 credentials.getJCSSecretKey(), headers);
         authorization.addAuthorization(params);
         String url = getUrl(params);
-        System.out.println(url);
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpRequestBase httpGet = new HttpGet(url);
 
         for (String header : headers.keySet()) {
             httpGet.addHeader(header, headers.get(header));
-            ;
         }
 
+        log.info("Getting response from URL: " + url);
         CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpGet);
 
-        System.out.println("Response Code: " + closeableHttpResponse.getStatusLine().getStatusCode());
         return closeableHttpResponse;
     }
 
@@ -99,13 +109,13 @@ public abstract class JCSHttpClient {
      * @return Query parameters in the form of string in URL format.
      */
     private String getUrl(Map<String, String> params) {
-        String url = this.endpoint;
-        url += "/?";
+        StringBuilder url = new StringBuilder(this.endpoint);
+        url.append("/?");
         for (String key : params.keySet()) {
-            url += key + "=" + params.get(key) + "&";
+            url.append(key).append("=").append(params.get(key)).append("&");
         }
-        url = url.substring(0, url.length() - 1);
-        return url;
+        url.deleteCharAt(url.length() - 1);
+        return url.toString();
     }
 
 }

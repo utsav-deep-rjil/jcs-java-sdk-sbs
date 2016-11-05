@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class PropertiesReader {
+
+    private static final Log log = LogFactory.getLog(PropertiesReader.class);
 
     final private static Properties properties = new Properties();
     final private static InputStream input = PropertiesReader.class.getClassLoader()
-            .getResourceAsStream("config.properties");
+            .getResourceAsStream(Constants.PROPERTIES_FILE_NAME);
 
     /**
      * This method reads properties from config.properties file placed under
@@ -22,8 +27,8 @@ public class PropertiesReader {
         try {
             properties.load(input);
             return properties.getProperty(key);
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        } catch (IOException e) {
+            log.warn(String.format("Unable to read value of %s from %s file", key, Constants.PROPERTIES_FILE_NAME), e);
             return null;
         }
     }

@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Request class for describe snapshot operation.
+ */
 public class DescribeSnapshotsRequest extends JCSRequest implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -8253751214720562856L;
 
-    private List<String> snapshotIds;
+    private List<String> snapshotIds = new ArrayList<String>();
 
     private String nextToken;
 
@@ -17,10 +20,16 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
 
     private Boolean detail;
 
+    /**
+     * Default constructor for DescribeSnapshotsRequest object.
+     */
     public DescribeSnapshotsRequest() {
     }
 
     /**
+     * Creates an object of DescribeSnapshotsRequest with given list of snapshot
+     * IDs.
+     * 
      * @param snapshotsIds
      *            Optional field. These are the IDs of the snapshots that is to
      *            be described.
@@ -30,27 +39,24 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * This method returns the IDs of the snapshots that is to be described.
+     * Returns the IDs of the snapshots that is to be described.
      * 
      * @return List of snapshotIds
      */
     public List<String> getSnapshotIds() {
-        if (snapshotIds == null) {
-            snapshotIds = new ArrayList<String>();
-        }
         return snapshotIds;
     }
 
     /**
-     * It sets the list of snapshot IDs that are to be described. To describe
-     * all the snapshots, there is no need to set snapshotIds
+     * Sets the list of snapshot IDs that are to be described. To describe all
+     * the snapshots, there is no need to set snapshotIds
      * 
      * @param snapshotIds
      *            The IDs of the snapshot that are to be described.
      */
     public void setSnapshotIds(Collection<String> snapshotIds) {
         if (snapshotIds == null) {
-            this.snapshotIds = null;
+            this.snapshotIds = new ArrayList<String>();
             return;
         }
 
@@ -58,9 +64,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * This method sets the list of snapshot IDs, in DescribeSnapshotsRequest
-     * object, that are to be described and returns the modified
-     * DescribeSnapshotsRequest object.
+     * Sets the list of snapshot IDs, in DescribeSnapshotsRequest object, that
+     * are to be described and returns the modified DescribeSnapshotsRequest
+     * object.
      * 
      * @param snapshotIds
      *            List of comma separated snapshot IDs that are to be described.
@@ -68,9 +74,6 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * @return Modified DescribeSnapshotsRequest object.
      */
     public DescribeSnapshotsRequest withSnapshotIds(String... snapshotIds) {
-        if (this.snapshotIds == null) {
-            setSnapshotIds(new ArrayList<String>(snapshotIds.length));
-        }
         for (String ele : snapshotIds) {
             this.snapshotIds.add(ele);
         }
@@ -78,9 +81,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * This method sets the list of snapshot IDs, in DescribeSnapshotsRequest
-     * object, that are to be described and returns the modified
-     * DescribeSnapshotsRequest object.
+     * Sets the list of snapshot IDs, in DescribeSnapshotsRequest object, that
+     * are to be described and returns the modified DescribeSnapshotsRequest
+     * object.
      * 
      * @param snapshotIds
      *            Collection of snapshot IDs that are to be described.
@@ -92,13 +95,15 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * If the describeSnapshot() method was called with a MaxResults option, all
-     * items would not have been returned. To get next set of items, specify the
-     * Id of the last seen item from the previous call. The describeSnapshot()
-     * will return the next set of items after this Id.
+     * If the describeSnapshots() method was called with a MaxResults option,
+     * all items would not have been returned. So, the previous call of
+     * describeSnapshots() method returns 'nextToken' to get next set of items.
+     * This is basically the Id of the last seen item from the previous call.
+     * The describeSnapshots() will return the next set of items after this Id
+     * and the new value of 'nextToken'
      * 
      * This method sets the given ID of last snapshot in the list of snapshots
-     * in DescribeSnapshotResult object of previous call of describeSnapshot()
+     * in DescribeSnapshotResult object of previous call of describeSnapshots()
      * method.
      * 
      * @param nextToken
@@ -110,14 +115,16 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * If the describeSnapshot() method was called with a MaxResults option, all
-     * items would not have been returned. To get next set of items, specify the
-     * Id of the last seen item from the previous call. The describeSnapshot()
-     * will return the next set of items after this Id.
+     * If the describeSnapshots() method was called with a MaxResults option,
+     * all items would not have been returned. So, the previous call of
+     * describeSnapshots() method returns 'nextToken' to get next set of items.
+     * This is basically the Id of the last seen item from the previous call.
+     * The describeSnapshots() will return the next set of items after this Id
+     * and the new value of 'nextToken'
      * 
      * 
      * @return The value of the nextToken (i.e., the ID of last snapshot
-     *         obtained from previous call of describeSnapshot() method) if it
+     *         obtained from previous call of describeSnapshots() method) if it
      *         is set.
      */
     public String getNextToken() {
@@ -125,18 +132,20 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * If the describeSnapshot() method was called with a MaxResults option, all
-     * items would not have been returned. To get next set of items, specify the
-     * Id of the last seen item from the previous call. The describeSnapshot()
-     * will return the next set of items after this Id.
+     * If the describeSnapshots() method was called with a MaxResults option,
+     * all items would not have been returned. So, the previous call of
+     * describeSnapshots() method returns 'nextToken' to get next set of items.
+     * This is basically the Id of the last seen item from the previous call.
+     * The describeSnapshots() will return the next set of items after this Id
+     * and the new value of 'nextToken'
      * 
      * This method sets the given ID of last snapshot obtained from previous
-     * call of describeSnapshot() method and then returns the modified
+     * call of describeSnapshots() method and then returns the modified
      * DescribeSnapshotsRequest object.
      * 
      * @param nextToken
      *            The ID of last snapshot that was returned by the
-     *            describeSnapshot() method
+     *            describeSnapshots() method
      * @return The modified DescribeSnapshotsRequest object
      */
     public DescribeSnapshotsRequest withNextToken(String nextToken) {
@@ -156,8 +165,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * @return If maxResults value is set, this method returns maximum number of
-     *         items (snapshots) to be fetched.
+     * Returns maximum number of items (snapshots) to be fetched.
+     * 
+     * @return maxResults value if it is set.
      */
     public Integer getMaxResults() {
         return this.maxResults;
@@ -179,6 +189,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
+     * Returns a boolean value that tells if details will be shown or not.
+     * 
      * @return Value of 'detail' field of DescribeSnapshotsRequest object. If
      *         true, the describeSnapshot() method will describe the snapshots
      *         in detail.
@@ -188,6 +200,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
+     * Set true/false to get result with/without details respectively.
+     * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeSnapshotsRequest
      *            object. If it is set true, then the describeSnapshot() method
@@ -198,6 +212,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
+     * Set true/false to get result with/without details respectively. It also
+     * returns the modified DescribeSnapshotsRequest object.
+     * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeSnapshotsRequest
      *            object. If it is set true, then the describeSnapshot() method

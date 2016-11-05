@@ -22,8 +22,8 @@ import com.jcs.sbs.common.Utils;
 import com.jcs.sbs.model.ProtocolAndHost;
 
 /**
- * This class contains methods for adding required authorization parameters
- * before sending the actual request.
+ * Contains methods for adding required authorization parameters before sending
+ * the actual request.
  */
 public class Authorization {
 
@@ -40,15 +40,15 @@ public class Authorization {
      * Constructor for initializing data members of this class.
      * 
      * @param url
-     *            Request URL on which authorization parameters are to be added
+     *            Request URL to which authorization parameters are to be added
      * @param verb
-     *            Request method of the API being called
+     *            Request method of the API
      * @param accessKey
-     *            Unique Access Key of the JCS account
+     *            Access Key of the JCS account
      * @param secretKey
      *            Secret Key of the JCS account
      * @param headers
-     *            Common headers that is to be added to any API request.
+     *            Common headers that are to be added to any API request.
      */
     public Authorization(String url, String verb, String accessKey, String secretKey, Map<String, String> headers) {
         this.verb = verb;
@@ -67,17 +67,18 @@ public class Authorization {
             String[] parts = host.split(":");
             this.host = parts[0];
             this.port = parts[1];
+
         }
 
     }
 
     /**
-     * method to set some required common parameters like: JCSAccessKeyId,
-     * SignatureVersion, SignatureMethod etc. in 'params' map that will be used
-     * to create request url.
+     * Sets required common parameters, such as JCSAccessKeyId,
+     * SignatureVersion, SignatureMethod and so on, in 'params' map that is used
+     * to create request URL.
      * 
      * @param params
-     *            Query parameters that is to be added to API request
+     *            Query parameters that are to be added to API request
      */
     public void addParams(Map<String, String> params) {
         params.put("JCSAccessKeyId", this.accessKey);
@@ -90,47 +91,48 @@ public class Authorization {
     }
 
     /**
-     * Method to convert query params as java map to sorted query params as in
-     * format of request URLs
+     * Converts query parameters as java map to sorted query parameters as in
+     * format of request URLs. In other words, it serializes the query
+     * parameters
      * 
      * @param params
      *            Query parameters as map
-     * @return Query parameters converted to UTF-8 string in format used in
-     *         request URLs
+     * @return Query parameters converted to UTF-8 string format used in request
+     *         URLs
      * @throws UnsupportedEncodingException
      */
-    public String sortParams(Map<String, String> params) throws UnsupportedEncodingException {
+    public String serializeParams(Map<String, String> params) throws UnsupportedEncodingException {
         List<String> sortedKeys = new ArrayList<String>(params.keySet());
         Collections.sort(sortedKeys);
         String value;
-        String qs = "";
+        StringBuilder qs = new StringBuilder();
         for (String key : sortedKeys) {
             value = params.get(key);
             value = URLEncoder.encode(value, "UTF-8");
-            qs = qs + key + "=" + value + "&";
+            qs.append(key).append("=").append(value).append("&");
         }
-        qs = qs.substring(0, qs.length() - 1);
-        return qs;
+        qs.deleteCharAt(qs.length()-1);
+        return qs.toString();
     }
 
     /**
-     * This method generates the request string that is to be signed
+     * Generates the request string that needs to be signed
      * 
      * @param params
      *            Request query parameters as a map
-     * @return Request String that is to be signed
+     * @return Request String that needs to be signed
      * @throws UnsupportedEncodingException
      */
     public String stringToSign(Map<String, String> params) throws UnsupportedEncodingException {
-        String ss = this.verb + "\n" + this.host;
+        StringBuilder ss = new StringBuilder(this.verb).append("\n").append(this.host);
         if (this.port != "") {
-            ss += "\n" + this.port;
+            ss.append("\n").append(this.port);
         }
-        ss += "\n" + this.path + "\n";
+        ss.append("\n").append(this.path).append("\n");
         this.addParams(params);
-        String qs = this.sortParams(params);
-        ss += qs;
-        return ss;
+        String qs = this.serializeParams(params);
+        ss.append(qs);
+        return ss.toString();
     }
 
     /**

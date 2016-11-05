@@ -2,16 +2,24 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+/**
+ * Request class for delete snapshot operation.
+ */
 public class DeleteSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 5656441961856031597L;
 
     private String snapshotId;
 
+    /**
+     * Default constructor for DeleteSnapshotRequest object.
+     */
     public DeleteSnapshotRequest() {
     }
 
     /**
+     * Creates DeleteSnapshotRequest object with given snapshotId.
+     * 
      * @param snapshotId
      *            ID of the snapshot that is to be deleted
      */
@@ -20,7 +28,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * This method sets the snapshot ID in DeleteSnapshotRequest object
+     * Sets the snapshot ID in DeleteSnapshotRequest object
      * 
      * @param snapshotId
      *            ID of the snapshot that is to be deleted
@@ -30,7 +38,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Fetches the snapshot ID that is set
+     * Fetches the snapshot ID that is set.
      * 
      * @return ID of snapshot that is to be deleted
      */
@@ -39,7 +47,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * This method sets the snapshotId in DeleteSnapshotRequest object and
+     * Sets the snapshotId in DeleteSnapshotRequest object and
      * returns the modified DeleteSnapshotRequest object
      * 
      * @param snapshotId

@@ -1,32 +1,54 @@
 package com.jcs.sbs.model;
 
+/**
+ * This class is used internally for splitting protocol and host of a URL used
+ * by the backend API.
+ */
 public class ProtocolAndHost {
     private String protocol;
     private String host;
 
     /**
-     * @return
+     * Default constructor for ProtocolAndHost object.
+     */
+    public ProtocolAndHost() {
+    }
+
+    /**
+     * Returns the protocol of the URL that is set.
+     * 
+     * @return The request protocol of the API to be called.
      */
     public String getProtocol() {
         return protocol;
     }
 
     /**
+     * Sets protocol of the URL, if URL is valid, otherwise empty string, in the
+     * <b>protocol<b> field in the object of this class.
+     * 
      * @param protocol
+     *            The request protocol of the API to be called.
      */
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
 
     /**
-     * @return
+     * Returns the host of the URL if it is set.
+     * 
+     * @return Host or base URL of the API to be called.
      */
     public String getHost() {
         return host;
     }
 
     /**
+     * Sets host of the URL, if URL is valid, otherwise empty string, in the
+     * <b>host<b> field in the object of this class.
+     * 
      * @param host
+     *            Host or base URL of the API to be called.
      */
     public void setHost(String host) {
         this.host = host;

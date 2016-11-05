@@ -2,9 +2,20 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+/**
+ * Result class for delete snapshot operation.
+ */
 public class DeleteSnapshotResult extends JCSResult implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -5670232468998211566L;
+
+
+    /**
+     * Default constructor for DeleteSnapshotResult object.
+     */
+    public DeleteSnapshotResult() {
+        super();
+    }
 
     @Override
     public String toString() {

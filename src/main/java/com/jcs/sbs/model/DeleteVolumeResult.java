@@ -2,9 +2,19 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+/**
+ * Result class for delete volume operation.
+ */
 public class DeleteVolumeResult extends JCSResult implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 5052351717850702143L;
+
+
+    /**
+     * Default constructor for DeleteVolumeResult object.
+     */
+    public DeleteVolumeResult() {
+    }
 
     @Override
     public String toString() {

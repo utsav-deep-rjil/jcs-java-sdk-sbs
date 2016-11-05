@@ -3,6 +3,7 @@ package com.jcs.sbs.main;
 import com.jcs.sbs.auth.DefaultJCSCredentialsProviderChain;
 import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
+import com.jcs.sbs.exceptions.PropertyNotFoundException;
 import com.jcs.sbs.model.DescribeSnapshotsRequest;
 import com.jcs.sbs.model.DescribeSnapshotsResult;
 import com.jcs.sbs.model.DescribeVolumesRequest;
@@ -20,8 +21,10 @@ public class JCStry {
 
     /**
      * Method to initialize JCSCompute object with its implementation class.
+     * 
+     * @throws PropertyNotFoundException
      */
-    private static void init() {
+    private static void init() throws PropertyNotFoundException {
 
         JCSCredentialsProvider credentialsProviders = new DefaultJCSCredentialsProviderChain();
         JCSCredentials credentials = credentialsProviders.getCredentials();
@@ -37,10 +40,9 @@ public class JCStry {
      */
     public static void main(String[] args) {
 
-        init();
-
         try {
 
+            init();
             // CreateVolumeRequest createVolumeRequest = new
             // CreateVolumeRequest();
             // //createVolumeRequest.setSnapshotId("1613998c-d78a-4504-b474-e175819ca1f9");
@@ -78,12 +80,12 @@ public class JCStry {
             // jcs.deleteSnapshot(deleteSnapshotRequest);
             // System.out.println(deleteSnapshotResult.toString());
             //
-            DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest().withMaxResults(1);
+            DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
             DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
             System.out.println(describeSnapshotsResult.toString());
             System.out.println(describeSnapshotsResult.getSnapshots());
 
-            DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest().withMaxResults(1);
+            DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest();
             DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
             System.out.println(describeVolumesResult.toString());
             System.out.println(describeVolumesResult.getVolumes());

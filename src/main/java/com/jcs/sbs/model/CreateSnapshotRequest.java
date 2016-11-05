@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * Request class for create snapshot operation.
- * 
  */
 public class CreateSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -12,10 +11,15 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
 
     private String volumeId;
 
+    /**
+     * Default constructor for CreateSnapshotRequest object.
+     */
     public CreateSnapshotRequest() {
     }
 
     /**
+     * Creates CreateSnapshotRequest object from volume Id
+     * 
      * @param volumeId
      *            Id of the volume from which snapshot is to be created
      */
@@ -39,11 +43,12 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Assigns given volumeId to the create snapshot request object and returns CreateSnapshotRequest object
-     * the object.
+     * Assigns given volumeId to the create snapshot request object and returns
+     * the modified object of CreateSnapshotRequest.
      * 
-     * @param volumeId ID of the volume from which snapshot is to be created
-     * @return Modified CreateSnapshotRequest object
+     * @param volumeId
+     *            ID of the volume from which snapshot is to be created
+     * @return Modified CreateSnapshotRequest object.
      */
     public CreateSnapshotRequest withVolumeId(String volumeId) {
         setVolumeId(volumeId);

@@ -1,5 +1,4 @@
 /**
- * This package contains several classes responsible for setting credentials and
- * adding authorization parameters.
+ * Contains Java classes to set up JCS credentials and add authorization parameters.
  */
 package com.jcs.sbs.auth;
