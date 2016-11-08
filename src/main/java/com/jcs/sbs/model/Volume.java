@@ -3,6 +3,10 @@ package com.jcs.sbs.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Model class for a <b>volume</b>. It contains all the fields that will be present in
+ * each volume item of XML response of describe volumes API.
+ */
 public class Volume implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -2799552718629746851L;

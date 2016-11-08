@@ -9,9 +9,11 @@ public interface JCSCredentials {
     /**
      * It returns JCS Access Key, which is set by any of the
      * JCSCredentialsProviders:
+     * <ul>
      * <li>ConfigPropertiesCredentialsProvider,</li>
      * <li>EnvironmentVariableCredentialsProvider and</li>
      * <li>SystemPropertiesCredentialsProvider</li>
+     * </ul>
      * 
      * @return JCS Access Key
      */
@@ -20,9 +22,11 @@ public interface JCSCredentials {
     /**
      * It returns JCS Secret Key, which is set by any of the
      * JCSCredentialsProviders:
+     * <ul>
      * <li>ConfigPropertiesCredentialsProvider,</li>
      * <li>EnvironmentVariableCredentialsProvider and</li>
      * <li>SystemPropertiesCredentialsProvider</li>
+     * </ul>
      * 
      * @return JCS Secret Key
      */

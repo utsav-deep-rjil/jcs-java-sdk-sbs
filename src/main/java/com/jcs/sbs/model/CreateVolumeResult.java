@@ -31,6 +31,8 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
     }
 
     /**
+     * Returns the object of volume that is created.
+     * 
      * @return Volume object that is created from the response of create volume
      *         API
      */

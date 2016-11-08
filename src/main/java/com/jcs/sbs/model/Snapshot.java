@@ -2,6 +2,10 @@ package com.jcs.sbs.model;
 
 import java.util.Date;
 
+/**
+ * Model class for a <b>snapshot</b>. It contains all the fields that will be present in
+ * each snapshot item of XML response of describe snapshots API.
+ */
 public class Snapshot {
     private String volumeId;
 
@@ -132,7 +136,8 @@ public class Snapshot {
     }
 
     /**
-     * Returns Date object containing date and time at which snapshot was created.
+     * Returns Date object containing date and time at which snapshot was
+     * created.
      * 
      * @return Date and time at which snapshot was created.
      */

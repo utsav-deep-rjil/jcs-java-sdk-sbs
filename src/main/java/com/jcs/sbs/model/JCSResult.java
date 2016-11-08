@@ -17,6 +17,8 @@ public class JCSResult {
     }
 
     /**
+     * Returns the ID of the request sent to the internal API.
+     * 
      * @return The request ID that is returned by the internal API.
      */
     public String getRequestId() {
@@ -63,10 +65,51 @@ public class JCSResult {
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
+     * 
+     * @return String representation of the object.
      */
     @Override
     public String toString() {
         return "JCSResult [requestId=" + requestId + ", xml=" + xml + "]";
     }
+
+    /**
+     * Returns hashCode value for object of this class.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((requestId == null) ? 0 : requestId.hashCode());
+        result = prime * result + ((xml == null) ? 0 : xml.hashCode());
+        return result;
+    }
+
+    /**
+     * Returns true if another object is same as object of this class, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        JCSResult other = (JCSResult) obj;
+        if (requestId == null) {
+            if (other.requestId != null)
+                return false;
+        } else if (!requestId.equals(other.requestId))
+            return false;
+        if (xml == null) {
+            if (other.xml != null)
+                return false;
+        } else if (!xml.equals(other.xml))
+            return false;
+        return true;
+    }
+    
+    
 
 }

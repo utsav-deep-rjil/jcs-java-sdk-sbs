@@ -107,6 +107,10 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * credentials provider which will provide credentials to authenticate
      * requests with JCS services.
      * 
+     * @param jcsCredentialsProvider
+     *            Object of class that implements JCSCredentialsProvider
+     *            interface.
+     * 
      * @throws PropertyNotFoundException
      */
 
