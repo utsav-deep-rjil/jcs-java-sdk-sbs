@@ -31,6 +31,8 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     }
 
     /**
+     * Returns the object of snapshot that is created
+     * 
      * @return The object of the snapshot that is created
      */
     public Snapshot getSnapshot() {

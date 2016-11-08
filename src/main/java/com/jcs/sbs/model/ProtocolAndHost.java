@@ -25,7 +25,7 @@ public class ProtocolAndHost {
 
     /**
      * Sets protocol of the URL, if URL is valid, otherwise empty string, in the
-     * <b>protocol<b> field in the object of this class.
+     * <b>protocol</b> field in the object of this class.
      * 
      * @param protocol
      *            The request protocol of the API to be called.
@@ -45,7 +45,7 @@ public class ProtocolAndHost {
 
     /**
      * Sets host of the URL, if URL is valid, otherwise empty string, in the
-     * <b>host<b> field in the object of this class.
+     * <b>host</b> field in the object of this class.
      * 
      * @param host
      *            Host or base URL of the API to be called.

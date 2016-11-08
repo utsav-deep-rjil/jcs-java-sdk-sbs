@@ -28,14 +28,18 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
+     * Sets the id of the volume from which snapshot is to be created
+     * 
      * @param VolumeId
-     *            Sets the id of the volume from which snapshot is to be created
+     *            ID of the volume from which snapshot is to be created
      */
     public void setVolumeId(String VolumeId) {
         this.volumeId = VolumeId;
     }
 
     /**
+     * Returns the id of the volume from which snapshot is to be created
+     * 
      * @return The volume Id from which snapshot is to be created
      */
     public String getVolumeId() {

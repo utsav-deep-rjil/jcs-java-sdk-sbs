@@ -19,7 +19,7 @@ import com.jcs.sbs.auth.Authorization;
 import com.jcs.sbs.auth.JCSCredentials;
 
 /**
- * Class containing method used for making API calls and related utility
+ * Contains method used for making API calls and related utility
  * methods.
  *
  */
@@ -101,7 +101,7 @@ public abstract class JCSHttpClient {
     }
 
     /**
-     * returns the URL after adding query parameters.
+     * Returns the URL after adding query parameters.
      * 
      * @param params
      *            Query parameters in the form of map that are to be present in

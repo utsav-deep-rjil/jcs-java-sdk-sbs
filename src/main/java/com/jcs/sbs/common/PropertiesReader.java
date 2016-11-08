@@ -7,6 +7,10 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Contains static method for reading properties from properties files present
+ * in classpath resource folder.
+ */
 public class PropertiesReader {
 
     private static final Log log = LogFactory.getLog(PropertiesReader.class);

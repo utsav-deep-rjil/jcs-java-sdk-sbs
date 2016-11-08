@@ -19,6 +19,13 @@ public class JCStry {
 
     static JCSCompute jcs;
 
+    
+    /**
+     * Default constructor for this class.
+     */
+    public JCStry() {
+    }
+
     /**
      * Method to initialize JCSCompute object with its implementation class.
      * 

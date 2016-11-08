@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Result class for describe volumes operation.
+ */
 public class DescribeVolumesResult extends JCSResult implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -3376670842859374348L;

@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Request class for describe snapshot operation.
+ * Request class for describe volumes operation.
  */
 public class DescribeVolumesRequest extends JCSRequest implements Serializable, Cloneable {
 

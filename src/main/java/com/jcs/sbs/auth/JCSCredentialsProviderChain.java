@@ -12,9 +12,11 @@ import com.jcs.sbs.exceptions.PropertyNotFoundException;
 /**
  * JCSCredentialsProvider implementation that read credentials from available
  * credentials providers. The credential provider classes are:
+ * <ul>
  * <li>ConfigPropertiesCredentialsProvider,</li>
  * <li>EnvironmentVariableCredentialsProvider and</li>
  * <li>SystemPropertiesCredentialsProvider</li>
+ * </ul>
  * 
  */
 public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
@@ -40,9 +42,11 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
      * @param credentialsProviders
      *            List of classes that extends JCSCredentialsProvider
      *            interface.The credential provider classes are:
+     *            <ul>
      *            <li>ConfigPropertiesCredentialsProvider,</li>
      *            <li>EnvironmentVariableCredentialsProvider and</li>
      *            <li>SystemPropertiesCredentialsProvider</li>
+     *            </ul>
      */
     public JCSCredentialsProviderChain(List<? extends JCSCredentialsProvider> credentialsProviders) {
         if (credentialsProviders == null || credentialsProviders.size() == 0) {
@@ -56,9 +60,11 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
      * @param credentialsProviders
      *            Comma separated list of available credentials providers as
      *            arguments. The credential provider classes are:
+     *            <ul>
      *            <li>ConfigPropertiesCredentialsProvider,</li>
      *            <li>EnvironmentVariableCredentialsProvider and</li>
      *            <li>SystemPropertiesCredentialsProvider</li>
+     *            </ul>
      */
     public JCSCredentialsProviderChain(JCSCredentialsProvider... credentialsProviders) {
         if (credentialsProviders == null || credentialsProviders.length == 0) {
@@ -82,7 +88,7 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
     }
 
     /**
-     * Sets the given boolean value <b>reuseLastProvider<b>, that tells if the
+     * Sets the given boolean value <b>reuseLastProvider</b>, that tells if the
      * last provider is to be used or not.
      * 
      * @param reuseLastProvider

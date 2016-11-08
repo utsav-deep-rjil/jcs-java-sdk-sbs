@@ -13,6 +13,11 @@ import com.jcs.sbs.model.DescribeSnapshotsResult;
 import com.jcs.sbs.model.DescribeVolumesRequest;
 import com.jcs.sbs.model.DescribeVolumesResult;
 
+/**
+ * Interface containing methods that provides access to the operations supported
+ * by JCS SBS. The supported operations are create, describe and delete on
+ * volume and snapshot.
+ */
 public interface JCSCompute {
 
     /**

@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import com.jcs.sbs.model.ProtocolAndHost;
 
 /**
- * Class containing some utility methods that are used internally.
+ * Contains some utility methods that are used internally.
  *
  */
 public class Utils {

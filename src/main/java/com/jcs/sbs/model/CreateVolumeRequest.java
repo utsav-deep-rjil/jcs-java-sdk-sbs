@@ -53,6 +53,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
+     * Returns the size of volume that is to be created.
+     * 
      * @return The integer size of volume that is to be created
      */
     public Integer getSize() {
@@ -74,7 +76,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 
     /**
      * Can be used to set the snapshotId in CreateVolumeRequest if the volume is
-     * to be created from snapshot
+     * to be created from snapshot.
      * 
      * @param snapshotId
      *            The ID of the snapshot from which volume is to be created
@@ -84,6 +86,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
+     * Returns the Id of snapshot from which volume is to be created.
+     * 
      * @return The snapshotId if it is set
      */
     public String getSnapshotId() {

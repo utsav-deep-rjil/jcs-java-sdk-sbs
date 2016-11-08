@@ -46,6 +46,8 @@ public abstract class JCSRequest {
     }
 
     /**
+     * Returns a map of custom headers (if any) that are set for the request.
+     * 
      * @return The map of custom headers (if any) that are set for the request
      */
     public Map<String, String> getCustomRequestHeaders() {
@@ -77,11 +79,46 @@ public abstract class JCSRequest {
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
+     * 
+     * @return String representation of the object.
      */
     @Override
     public String toString() {
         return "JCSRequest [credentialsProvider=" + credentialsProvider + ", customRequestHeaders="
                 + customRequestHeaders + "]";
     }
+
+    /**
+     * Returns hashCode value for object of this class.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((customRequestHeaders == null) ? 0 : customRequestHeaders.hashCode());
+        return result;
+    }
+
+    /**
+     * Returns true if another object is same as object of this class, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        JCSRequest other = (JCSRequest) obj;
+        if (customRequestHeaders == null) {
+            if (other.customRequestHeaders != null)
+                return false;
+        } else if (!customRequestHeaders.equals(other.customRequestHeaders))
+            return false;
+        return true;
+    }
+    
+    
 
 }

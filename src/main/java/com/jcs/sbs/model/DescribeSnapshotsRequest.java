@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Request class for describe snapshot operation.
+ * Request class for describe snapshots operation.
  */
 public class DescribeSnapshotsRequest extends JCSRequest implements Serializable, Cloneable {
 

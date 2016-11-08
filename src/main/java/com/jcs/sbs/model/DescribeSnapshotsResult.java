@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Result class for describe snapshot operation.
+ * Result class for describe snapshots operation.
  */
 public class DescribeSnapshotsResult extends JCSResult implements Serializable, Cloneable {
 
