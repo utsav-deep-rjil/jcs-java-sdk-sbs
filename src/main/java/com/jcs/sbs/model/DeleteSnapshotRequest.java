@@ -2,6 +2,8 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+
 /**
  * Request class for delete snapshot operation.
  */
@@ -61,37 +63,48 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId());
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((snapshotId == null) ? 0 : snapshotId.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DeleteSnapshotRequest == false)
+        if (getClass() != obj.getClass())
             return false;
         DeleteSnapshotRequest other = (DeleteSnapshotRequest) obj;
-        if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
-            return false;
-        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (snapshotId == null) {
+            if (other.snapshotId != null)
+                return false;
+        } else if (!snapshotId.equals(other.snapshotId))
             return false;
         return true;
     }
 
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        return hashCode;
+    public DeleteSnapshotRequest clone() {
+        try {
+            return (DeleteSnapshotRequest) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
+        }
     }
+    
 }

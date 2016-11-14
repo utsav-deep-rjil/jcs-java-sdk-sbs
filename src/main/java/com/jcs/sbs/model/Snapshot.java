@@ -1,12 +1,18 @@
 package com.jcs.sbs.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import com.google.gson.Gson;
 
 /**
  * Model class for a <b>snapshot</b>. It contains all the fields that will be present in
  * each snapshot item of XML response of describe snapshots API.
  */
-public class Snapshot {
+public class Snapshot implements Serializable, Cloneable{
+    
+    private static final long serialVersionUID = 8659058244550662667L;
+
     private String volumeId;
 
     private Integer size;
@@ -242,19 +248,20 @@ public class Snapshot {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
+        return new Gson().toJson(this);
+    }
 
-        if (getVolumeId() != null)
-            sb.append("VolumeId: " + getVolumeId() + ",");
-        if (getSize() != null)
-            sb.append("Size: " + getSize() + ",");
-        if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
-        sb.append("}");
-        return sb.toString();
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((encrypted == null) ? 0 : encrypted.hashCode());
+        result = prime * result + ((size == null) ? 0 : size.hashCode());
+        result = prime * result + ((snapshotId == null) ? 0 : snapshotId.hashCode());
+        result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+        result = prime * result + ((status == null) ? 0 : status.hashCode());
+        result = prime * result + ((volumeId == null) ? 0 : volumeId.hashCode());
+        return result;
     }
 
     @Override
@@ -263,50 +270,54 @@ public class Snapshot {
             return true;
         if (obj == null)
             return false;
-
-        if (obj instanceof Volume == false)
+        if (getClass() != obj.getClass())
             return false;
-        Volume other = (Volume) obj;
-        if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
+        Snapshot other = (Snapshot) obj;
+        if (encrypted == null) {
+            if (other.encrypted != null)
+                return false;
+        } else if (!encrypted.equals(other.encrypted))
             return false;
-        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (size == null) {
+            if (other.size != null)
+                return false;
+        } else if (!size.equals(other.size))
             return false;
-        if (other.getVolumeId() == null ^ this.getVolumeId() == null)
+        if (snapshotId == null) {
+            if (other.snapshotId != null)
+                return false;
+        } else if (!snapshotId.equals(other.snapshotId))
             return false;
-        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (startTime == null) {
+            if (other.startTime != null)
+                return false;
+        } else if (!startTime.equals(other.startTime))
             return false;
-        if (other.getSize() == null ^ this.getSize() == null)
+        if (status == null) {
+            if (other.status != null)
+                return false;
+        } else if (!status.equals(other.status))
             return false;
-        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
+        if (volumeId == null) {
+            if (other.volumeId != null)
+                return false;
+        } else if (!volumeId.equals(other.volumeId))
             return false;
-        if (other.getEncrypted() == null ^ this.getEncrypted() == null)
-            return false;
-        if (other.getEncrypted() ^ this.getEncrypted())
-            return false;
-
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public Volume clone() {
         try {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 

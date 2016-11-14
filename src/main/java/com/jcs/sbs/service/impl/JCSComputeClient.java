@@ -32,6 +32,7 @@ import com.jcs.sbs.common.Constants;
 import com.jcs.sbs.common.JCSHttpClient;
 import com.jcs.sbs.common.PropertiesReader;
 import com.jcs.sbs.exceptions.PropertyNotFoundException;
+import com.jcs.sbs.model.Attachment;
 import com.jcs.sbs.model.CreateSnapshotRequest;
 import com.jcs.sbs.model.CreateSnapshotResult;
 import com.jcs.sbs.model.CreateVolumeRequest;
@@ -49,6 +50,7 @@ import com.jcs.sbs.model.Volume;
 import com.jcs.sbs.model.VolumeType;
 import com.jcs.sbs.service.JCSCompute;
 
+import xmlParser.AttachmentSet.AttachmentEO;
 import xmlParser.CreateSnapshotResponse;
 import xmlParser.CreateVolumeResponse;
 import xmlParser.DeleteSnapshotResponse;
@@ -149,6 +151,15 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                 + ", environment variables or java system properties");
     }
 
+    private List<Attachment> attachmentSetEOtoBO(List<AttachmentEO> attachmentSetEO) {
+        List<Attachment> attachmentSetBO = new ArrayList<>();
+        for (AttachmentEO attachmentEO : attachmentSetEO) {
+            Attachment attachment = new Attachment(attachmentEO.getInstanceId(), attachmentEO.getDevice());
+            attachmentSetBO.add(attachment);
+        }
+        return attachmentSetBO;
+    }
+
     /**
      * Creates an SBS volume that can be attached to an instance in the same
      * Availability Zone. The volume is created in the regional endpoint that
@@ -165,17 +176,22 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
     @Override
     public CreateVolumeResult createVolume(CreateVolumeRequest createVolumeRequest)
             throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, ClientProtocolException,
-            IOException, JAXBException, HttpException, PropertyNotFoundException {
+            IOException, JAXBException, HttpException, PropertyNotFoundException, IllegalArgumentException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("Action", "CreateVolume");
         if (createVolumeRequest.getSize() != null) {
+            if (createVolumeRequest.getSize() < 1) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid volume size provided for create volume request: %d (size must be greater than zero).",
+                        createVolumeRequest.getSize()));
+            }
             params.put("Size", createVolumeRequest.getSize().toString());
         }
         if (createVolumeRequest.getSnapshotId() != null) {
             params.put("SnapshotId", createVolumeRequest.getSnapshotId());
         }
-        if (createVolumeRequest.getEncrypted() != null && !createVolumeRequest.getEncrypted()) {
-            params.put("Encrypted", "0");
+        if (createVolumeRequest.getEncrypted() != null && createVolumeRequest.getEncrypted()) {
+            params.put("Encrypted", "1");
         }
         if (createVolumeRequest.getVolumeType() != null && createVolumeRequest.getVolumeType() != VolumeType.standard) {
             params.put("VolumeType", createVolumeRequest.getVolumeType().toString());
@@ -200,7 +216,8 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                         .withSnapshotId(createVolumeResponse.getSnapshotId())
                         .withEncryption(createVolumeResponse.isEncrypted())
                         .withVolumeType(VolumeType.fromValue(createVolumeResponse.getVolumeType()))
-                        .withStatus(createVolumeResponse.getStatus());
+                        .withStatus(createVolumeResponse.getStatus())
+                        .withAttachmentSet(attachmentSetEOtoBO(createVolumeResponse.getAttachmentSet().getItem()));
 
                 EntityUtils.consume(entity);
                 CreateVolumeResult createVolumeResult = new CreateVolumeResult().withVolume(volume);
@@ -329,7 +346,8 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                     volumes.add(new Volume().withSize(item.getSize()).withVolumeId(item.getVolumeId())
                             .withCreateTime(item.getCreateTime()).withSnapshotId(item.getSnapshotId())
                             .withStatus(item.getStatus()).withEncryption(item.isEncrypted())
-                            .withVolumeType(VolumeType.fromValue(item.getVolumeType())));
+                            .withVolumeType(VolumeType.fromValue(item.getVolumeType()))
+                            .withAttachmentSet(attachmentSetEOtoBO(item.getAttachmentSet().getItem())));
                 }
                 EntityUtils.consume(entity);
                 DescribeVolumesResult describeVolumesResult = new DescribeVolumesResult().withVolumes(volumes);
@@ -516,7 +534,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                 describeSnapshotsRequest.getCustomRequestHeaders());
 
         try {
-            if (response.getStatusLine().getStatusCode() == 200) {
+            if (response.getStatusLine().getStatusCode() / 100 == 2) {
                 log.debug(response.getStatusLine());
                 HttpEntity entity = response.getEntity();
                 String content = EntityUtils.toString(entity);

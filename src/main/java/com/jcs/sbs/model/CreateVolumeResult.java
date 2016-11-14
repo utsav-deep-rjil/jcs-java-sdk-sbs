@@ -60,38 +60,42 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((volume == null) ? 0 : volume.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof CreateVolumeResult == false)
+        if (getClass() != obj.getClass())
             return false;
         CreateVolumeResult other = (CreateVolumeResult) obj;
-        if (other.getVolume() == null ^ this.getVolume() == null)
-            return false;
-        if (other.getVolume() != null && other.getVolume().equals(this.getVolume()) == false)
+        if (volume == null) {
+            if (other.volume != null)
+                return false;
+        } else if (!volume.equals(other.volume))
             return false;
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getVolume() == null) ? 0 : getVolume().hashCode());
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public CreateVolumeResult clone() {
         try {
             return (CreateVolumeResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 }

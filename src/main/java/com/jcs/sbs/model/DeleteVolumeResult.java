@@ -21,13 +21,18 @@ public class DeleteVolumeResult extends JCSResult implements Serializable, Clone
         return this.getXml();
     }
 
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public DeleteVolumeResult clone() {
         try {
             return (DeleteVolumeResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 /**
  * Request class for describe volumes operation.
  */
@@ -61,6 +63,12 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      *            List of volumeIds that are to be described.
      */
     public void setVolumeIds(Collection<String> volumeIds) {
+        /*
+         * If volumeIds is null then reset this.volumeIds to new ArrayList,
+         * otherwise this.volumeIds may contain older values.
+         * 
+         * Trying to set null value means trying to clear previously set volumeIds.
+         */
         if (volumeIds == null) {
             this.volumeIds = new ArrayList<String>();
             return;
@@ -83,8 +91,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withVolumeIds(String... volumeIds) {
-        for (String ele : volumeIds) {
-            this.volumeIds.add(ele);
+        for (String volumeId : volumeIds) {
+            this.volumeIds.add(volumeId);
         }
         return this;
     }
@@ -243,56 +251,64 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getVolumeIds() != null)
-            sb.append("VolumeIds: " + getVolumeIds() + ",");
-        if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
-        if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults());
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((detail == null) ? 0 : detail.hashCode());
+        result = prime * result + ((maxResults == null) ? 0 : maxResults.hashCode());
+        result = prime * result + ((nextToken == null) ? 0 : nextToken.hashCode());
+        result = prime * result + ((volumeIds == null) ? 0 : volumeIds.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DescribeVolumesRequest == false)
+        if (getClass() != obj.getClass())
             return false;
         DescribeVolumesRequest other = (DescribeVolumesRequest) obj;
-        if (other.getVolumeIds() == null ^ this.getVolumeIds() == null)
+        if (detail == null) {
+            if (other.detail != null)
+                return false;
+        } else if (!detail.equals(other.detail))
             return false;
-        if (other.getVolumeIds() != null && other.getVolumeIds().equals(this.getVolumeIds()) == false)
+        if (maxResults == null) {
+            if (other.maxResults != null)
+                return false;
+        } else if (!maxResults.equals(other.maxResults))
             return false;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
+        if (nextToken == null) {
+            if (other.nextToken != null)
+                return false;
+        } else if (!nextToken.equals(other.nextToken))
             return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
-            return false;
-        if (other.getMaxResults() == null ^ this.getMaxResults() == null)
-            return false;
-        if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
+        if (volumeIds == null) {
+            if (other.volumeIds != null)
+                return false;
+        } else if (!volumeIds.equals(other.volumeIds))
             return false;
         return true;
     }
 
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getVolumeIds() == null) ? 0 : getVolumeIds().hashCode());
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
-        return hashCode;
-    }
-
-    @Override
-    public DescribeVolumesRequest clone() throws CloneNotSupportedException {
-        return (DescribeVolumesRequest) super.clone();
+    public DescribeVolumesRequest clone() {
+        try {
+            return (DescribeVolumesRequest) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
+        }
     }
 }

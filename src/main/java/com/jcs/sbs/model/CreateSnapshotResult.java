@@ -58,39 +58,43 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
         return this.getXml();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-
-        if (obj instanceof CreateSnapshotResult == false)
-            return false;
-        CreateSnapshotResult other = (CreateSnapshotResult) obj;
-        if (other.getSnapshot() == null ^ this.getSnapshot() == null)
-            return false;
-        if (other.getSnapshot() != null && other.getSnapshot().equals(this.getSnapshot()) == false)
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getSnapshot() == null) ? 0 : getSnapshot().hashCode());
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public CreateSnapshotResult clone() {
         try {
             return (CreateSnapshotResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((snapshot == null) ? 0 : snapshot.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CreateSnapshotResult other = (CreateSnapshotResult) obj;
+        if (snapshot == null) {
+            if (other.snapshot != null)
+                return false;
+        } else if (!snapshot.equals(other.snapshot))
+            return false;
+        return true;
     }
 }

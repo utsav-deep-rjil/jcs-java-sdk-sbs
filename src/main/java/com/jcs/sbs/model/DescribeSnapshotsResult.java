@@ -134,43 +134,48 @@ public class DescribeSnapshotsResult extends JCSResult implements Serializable, 
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((nextToken == null) ? 0 : nextToken.hashCode());
+        result = prime * result + ((snapshots == null) ? 0 : snapshots.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DescribeSnapshotsResult == false)
+        if (getClass() != obj.getClass())
             return false;
         DescribeSnapshotsResult other = (DescribeSnapshotsResult) obj;
-        if (other.getSnapshots() == null ^ this.getSnapshots() == null)
+        if (nextToken == null) {
+            if (other.nextToken != null)
+                return false;
+        } else if (!nextToken.equals(other.nextToken))
             return false;
-        if (other.getSnapshots() != null && other.getSnapshots().equals(this.getSnapshots()) == false)
-            return false;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
-            return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
+        if (snapshots == null) {
+            if (other.snapshots != null)
+                return false;
+        } else if (!snapshots.equals(other.snapshots))
             return false;
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getSnapshots() == null) ? 0 : getSnapshots().hashCode());
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public DescribeSnapshotsResult clone() {
         try {
             return (DescribeSnapshotsResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 }

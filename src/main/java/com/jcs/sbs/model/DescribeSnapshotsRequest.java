@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import com.google.gson.Gson;
+
 /**
  * Request class for describe snapshots operation.
  */
@@ -55,6 +59,12 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      *            The IDs of the snapshot that are to be described.
      */
     public void setSnapshotIds(Collection<String> snapshotIds) {
+        /*
+         * If snapshotIds is null then reset this.snapshotIds to new ArrayList,
+         * otherwise this.snapshotIds may contain older values.
+         * 
+         * Trying to set null value means trying to clear previously set snapshotIds.
+         */
         if (snapshotIds == null) {
             this.snapshotIds = new ArrayList<String>();
             return;
@@ -74,9 +84,13 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * @return Modified DescribeSnapshotsRequest object.
      */
     public DescribeSnapshotsRequest withSnapshotIds(String... snapshotIds) {
-        for (String ele : snapshotIds) {
-            this.snapshotIds.add(ele);
+        List<String> newSnapshotIds = new ArrayList<String>();
+        for (String snapshotId : snapshotIds) {
+            if (null != snapshotId) {
+                newSnapshotIds.add(snapshotId);
+            }
         }
+        this.snapshotIds = newSnapshotIds;
         return this;
     }
 
@@ -228,56 +242,64 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getSnapshotIds() != null)
-            sb.append("SnapshotIds: " + getSnapshotIds() + ",");
-        if (getNextToken() != null)
-            sb.append("NextToken: " + getNextToken() + ",");
-        if (getMaxResults() != null)
-            sb.append("MaxResults: " + getMaxResults());
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((detail == null) ? 0 : detail.hashCode());
+        result = prime * result + ((maxResults == null) ? 0 : maxResults.hashCode());
+        result = prime * result + ((nextToken == null) ? 0 : nextToken.hashCode());
+        result = prime * result + ((snapshotIds == null) ? 0 : snapshotIds.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DescribeSnapshotsRequest == false)
+        if (getClass() != obj.getClass())
             return false;
         DescribeSnapshotsRequest other = (DescribeSnapshotsRequest) obj;
-        if (other.getSnapshotIds() == null ^ this.getSnapshotIds() == null)
+        if (detail == null) {
+            if (other.detail != null)
+                return false;
+        } else if (!detail.equals(other.detail))
             return false;
-        if (other.getSnapshotIds() != null && other.getSnapshotIds().equals(this.getSnapshotIds()) == false)
+        if (maxResults == null) {
+            if (other.maxResults != null)
+                return false;
+        } else if (!maxResults.equals(other.maxResults))
             return false;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
+        if (nextToken == null) {
+            if (other.nextToken != null)
+                return false;
+        } else if (!nextToken.equals(other.nextToken))
             return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
-            return false;
-        if (other.getMaxResults() == null ^ this.getMaxResults() == null)
-            return false;
-        if (other.getMaxResults() != null && other.getMaxResults().equals(this.getMaxResults()) == false)
+        if (snapshotIds == null) {
+            if (other.snapshotIds != null)
+                return false;
+        } else if (!snapshotIds.equals(other.snapshotIds))
             return false;
         return true;
     }
 
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getSnapshotIds() == null) ? 0 : getSnapshotIds().hashCode());
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        hashCode = prime * hashCode + ((getMaxResults() == null) ? 0 : getMaxResults().hashCode());
-        return hashCode;
-    }
-
-    @Override
-    public DescribeSnapshotsRequest clone() throws CloneNotSupportedException {
-        return (DescribeSnapshotsRequest) super.clone();
+    public DescribeSnapshotsRequest clone() {
+        try {
+            return (DescribeSnapshotsRequest) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.jcs.sbs.model;
 
+import com.google.gson.Gson;
+
 /**
  * This class is used internally for splitting protocol and host of a URL used
  * by the backend API.
@@ -87,7 +89,7 @@ public class ProtocolAndHost {
 
     @Override
     public String toString() {
-        return "ProtocolAndHost [protocol=" + protocol + ", host=" + host + "]";
+        return new Gson().toJson(this);
     }
 
 }

@@ -34,8 +34,8 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     /**
-     * Used internally. It sets the collection of volumes, passed
-     * as an argument in DescribeVolumesResult object.
+     * Used internally. It sets the collection of volumes, passed as an argument
+     * in DescribeVolumesResult object.
      * 
      * @param volumes
      *            Collection of volume objects which is to be set in
@@ -51,9 +51,8 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     /**
-     * Sets the Volume objects, passed as varargs, in the
-     * DescribeVolumesResult object and returns the modified
-     * DescribeVolumesResult object
+     * Sets the Volume objects, passed as varargs, in the DescribeVolumesResult
+     * object and returns the modified DescribeVolumesResult object
      * 
      * @param volumes
      *            List of Volume objects as varargs (variable number of
@@ -71,8 +70,8 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     /**
-     * Sets the Volume objects, passed as collection of Volume
-     * objects, in the DescribeVolumesResult object and returns the modified
+     * Sets the Volume objects, passed as collection of Volume objects, in the
+     * DescribeVolumesResult object and returns the modified
      * DescribeVolumesResult object
      * 
      * @param volumes
@@ -103,7 +102,8 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     /**
-     * Returns nextToken value which is used to get next set of items in subsequent calls of describeVolumes() method.
+     * Returns nextToken value which is used to get next set of items in
+     * subsequent calls of describeVolumes() method.
      * 
      * @return The ID of the last seen item (nextToken) in response of
      *         describeVolumes()
@@ -137,43 +137,48 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((nextToken == null) ? 0 : nextToken.hashCode());
+        result = prime * result + ((volumes == null) ? 0 : volumes.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DescribeVolumesResult == false)
+        if (getClass() != obj.getClass())
             return false;
         DescribeVolumesResult other = (DescribeVolumesResult) obj;
-        if (other.getVolumes() == null ^ this.getVolumes() == null)
+        if (nextToken == null) {
+            if (other.nextToken != null)
+                return false;
+        } else if (!nextToken.equals(other.nextToken))
             return false;
-        if (other.getVolumes() != null && other.getVolumes().equals(this.getVolumes()) == false)
-            return false;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
-            return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
+        if (volumes == null) {
+            if (other.volumes != null)
+                return false;
+        } else if (!volumes.equals(other.volumes))
             return false;
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getVolumes() == null) ? 0 : getVolumes().hashCode());
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public DescribeVolumesResult clone() {
         try {
             return (DescribeVolumesResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 }

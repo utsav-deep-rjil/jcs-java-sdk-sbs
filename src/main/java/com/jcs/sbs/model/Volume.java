@@ -2,10 +2,13 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 /**
- * Model class for a <b>volume</b>. It contains all the fields that will be present in
- * each volume item of XML response of describe volumes API.
+ * Model class for a <b>volume</b>. It contains all the fields that will be
+ * present in each volume item of XML response of describe volumes API.
  */
 public class Volume implements Serializable, Cloneable {
 
@@ -19,11 +22,13 @@ public class Volume implements Serializable, Cloneable {
 
     private String snapshotId;
 
-    private Boolean encrypted = true;
+    private Boolean encrypted;
 
     private Date createTime;
 
     private String status;
+
+    private List<Attachment> attachmentSet;
 
     /**
      * Default constructor for Volume object.
@@ -114,7 +119,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * If volume was created from a snapshot, it returns the Id of that snapshot.
+     * If volume was created from a snapshot, it returns the Id of that
+     * snapshot.
      * 
      * @return The ID of snapshot from which the volume is created (if volume is
      *         created from snapshot).
@@ -149,7 +155,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Returns Date object containing date and time at which the volume was created.
+     * Returns Date object containing date and time at which the volume was
+     * created.
      * 
      * @return Date and time at which the volume was created.
      */
@@ -281,22 +288,57 @@ public class Volume implements Serializable, Cloneable {
         return this;
     }
 
+    /**
+     * This method returns a list of Attachment objects, which indicates the
+     * list of devices attached to this volume.
+     * 
+     * @return List of Attachment objects.
+     */
+    public List<Attachment> getAttachmentSet() {
+        return attachmentSet;
+    }
+
+    /**
+     * This method sets the list of attachments in Volume object.
+     * 
+     * @param attachmentSet
+     *            List of Attachment objects.
+     */
+    public void setAttachmentSet(List<Attachment> attachmentSet) {
+        this.attachmentSet = attachmentSet;
+    }
+
+    /**
+     * This method sets the list of attachments in Volume object and returns the
+     * modified object.
+     * 
+     * @param attachmentSet
+     *            List of Attachment objects.
+     * @return Modified Volume object.
+     */
+    public Volume withAttachmentSet(List<Attachment> attachmentSet) {
+        setAttachmentSet(attachmentSet);
+        return this;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getVolumeId() != null)
-            sb.append("VolumeId: " + getVolumeId() + ",");
-        if (getSize() != null)
-            sb.append("Size: " + getSize() + ",");
-        if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
-        if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
-        if (getVolumeType() != null)
-            sb.append("VolumeType: " + getVolumeType() + ",");
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((attachmentSet == null) ? 0 : attachmentSet.hashCode());
+        result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
+        result = prime * result + ((encrypted == null) ? 0 : encrypted.hashCode());
+        result = prime * result + ((size == null) ? 0 : size.hashCode());
+        result = prime * result + ((snapshotId == null) ? 0 : snapshotId.hashCode());
+        result = prime * result + ((status == null) ? 0 : status.hashCode());
+        result = prime * result + ((volumeId == null) ? 0 : volumeId.hashCode());
+        result = prime * result + ((volumeType == null) ? 0 : volumeType.hashCode());
+        return result;
     }
 
     @Override
@@ -305,56 +347,61 @@ public class Volume implements Serializable, Cloneable {
             return true;
         if (obj == null)
             return false;
-
-        if (obj instanceof Volume == false)
+        if (getClass() != obj.getClass())
             return false;
         Volume other = (Volume) obj;
-        if (other.getVolumeId() == null ^ this.getVolumeId() == null)
+        if (attachmentSet == null) {
+            if (other.attachmentSet != null)
+                return false;
+        } else if (!attachmentSet.equals(other.attachmentSet))
             return false;
-        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (createTime == null) {
+            if (other.createTime != null)
+                return false;
+        } else if (!createTime.equals(other.createTime))
             return false;
-        if (other.getSize() == null ^ this.getSize() == null)
+        if (encrypted == null) {
+            if (other.encrypted != null)
+                return false;
+        } else if (!encrypted.equals(other.encrypted))
             return false;
-        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
+        if (size == null) {
+            if (other.size != null)
+                return false;
+        } else if (!size.equals(other.size))
             return false;
-        if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
+        if (snapshotId == null) {
+            if (other.snapshotId != null)
+                return false;
+        } else if (!snapshotId.equals(other.snapshotId))
             return false;
-        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (status == null) {
+            if (other.status != null)
+                return false;
+        } else if (!status.equals(other.status))
             return false;
-        if (other.getEncrypted() == null ^ this.getEncrypted() == null)
+        if (volumeId == null) {
+            if (other.volumeId != null)
+                return false;
+        } else if (!volumeId.equals(other.volumeId))
             return false;
-        if (other.getEncrypted() ^ this.getEncrypted())
-            return false;
-
-        if (other.getVolumeType() == null ^ this.getVolumeType() == null)
-            return false;
-
-        if (other.getVolumeType() != this.getVolumeType())
+        if (volumeType != other.volumeType)
             return false;
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
-        hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
-        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
-        hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
-
-        return hashCode;
-    }
-
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
     public Volume clone() {
         try {
             return (Volume) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
-                    "Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
 

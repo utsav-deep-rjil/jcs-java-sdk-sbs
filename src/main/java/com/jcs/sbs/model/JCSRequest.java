@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.http.annotation.NotThreadSafe;
 
+import com.google.gson.Gson;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 
 /**
@@ -84,8 +85,7 @@ public abstract class JCSRequest {
      */
     @Override
     public String toString() {
-        return "JCSRequest [credentialsProvider=" + credentialsProvider + ", customRequestHeaders="
-                + customRequestHeaders + "]";
+        return new Gson().toJson(this);
     }
 
     /**

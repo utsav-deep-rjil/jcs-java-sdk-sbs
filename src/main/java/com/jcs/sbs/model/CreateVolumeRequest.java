@@ -2,6 +2,8 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+
 /**
  * Request class for create volume operation.
  */
@@ -178,46 +180,61 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getSize() != null)
-            sb.append("Size: " + getSize() + ",");
-        if (getSnapshotId() != null)
-            sb.append("SnapshotId: " + getSnapshotId() + ",");
-        if (getEncrypted() != null)
-            sb.append("Encrypted: " + getEncrypted() + ",");
-        if (getVolumeType() != null)
-            sb.append("VolumeType: " + getVolumeType() + ",");
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
+    @Override
+    public CreateVolumeRequest clone() {
+        try {
+            return (CreateVolumeRequest) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((encrypted == null) ? 0 : encrypted.hashCode());
+        result = prime * result + ((size == null) ? 0 : size.hashCode());
+        result = prime * result + ((snapshotId == null) ? 0 : snapshotId.hashCode());
+        result = prime * result + ((volumeType == null) ? 0 : volumeType.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof CreateVolumeRequest == false)
+        if (getClass() != obj.getClass())
             return false;
         CreateVolumeRequest other = (CreateVolumeRequest) obj;
-        if (other.getSize() == null ^ this.getSize() == null)
+        if (encrypted == null) {
+            if (other.encrypted != null)
+                return false;
+        } else if (!encrypted.equals(other.encrypted))
             return false;
-        if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
+        if (size == null) {
+            if (other.size != null)
+                return false;
+        } else if (!size.equals(other.size))
             return false;
-        if (other.getSnapshotId() == null ^ this.getSnapshotId() == null)
+        if (snapshotId == null) {
+            if (other.snapshotId != null)
+                return false;
+        } else if (!snapshotId.equals(other.snapshotId))
             return false;
-        if (other.getSnapshotId() != null && other.getSnapshotId().equals(this.getSnapshotId()) == false)
+        if (volumeType != other.volumeType)
             return false;
-        if (other.getEncrypted() == null ^ this.getEncrypted() == null)
-            return false;
-        if (other.getEncrypted() ^ this.getEncrypted() == false)
-            return false;
-        if ((other.getVolumeType() == null ^ this.getVolumeType() == null)
-                || other.getVolumeType() != this.getVolumeType())
-            return false;
-
         return true;
     }
 

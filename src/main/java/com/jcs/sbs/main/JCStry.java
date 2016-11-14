@@ -4,6 +4,8 @@ import com.jcs.sbs.auth.DefaultJCSCredentialsProviderChain;
 import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 import com.jcs.sbs.exceptions.PropertyNotFoundException;
+import com.jcs.sbs.model.CreateVolumeRequest;
+import com.jcs.sbs.model.CreateVolumeResult;
 import com.jcs.sbs.model.DescribeSnapshotsRequest;
 import com.jcs.sbs.model.DescribeSnapshotsResult;
 import com.jcs.sbs.model.DescribeVolumesRequest;
@@ -50,12 +52,12 @@ public class JCStry {
         try {
 
             init();
-            // CreateVolumeRequest createVolumeRequest = new
-            // CreateVolumeRequest();
-            // //createVolumeRequest.setSnapshotId("1613998c-d78a-4504-b474-e175819ca1f9");
-            // CreateVolumeResult createVolumeResult =
-            // jcs.createVolume(createVolumeRequest);
-            // //System.out.println(createVolumeResult.toString());
+             CreateVolumeRequest createVolumeRequest = new
+             CreateVolumeRequest().withSize(-1);
+             //createVolumeRequest.setSnapshotId("1613998c-d78a-4504-b474-e175819ca1f9");
+             CreateVolumeResult createVolumeResult =
+             jcs.createVolume(createVolumeRequest);
+             System.out.println(createVolumeResult.toString());
             // System.out.println(createVolumeResult.getVolume().getVolumeId());
             // System.out.println(createVolumeResult.getVolume().getStatus());
             // System.out.println(createVolumeResult.getVolume().getCreateTime());

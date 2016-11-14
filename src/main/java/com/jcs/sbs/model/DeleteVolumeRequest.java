@@ -2,6 +2,8 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+
 /**
  * Request class for delete volume operation.
  */
@@ -61,37 +63,47 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        if (getVolumeId() != null)
-            sb.append("VolumeId: " + getVolumeId());
-        sb.append("}");
-        return sb.toString();
+        return new Gson().toJson(this);
+    }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((volumeId == null) ? 0 : volumeId.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
-
-        if (obj instanceof DeleteVolumeRequest == false)
+        if (getClass() != obj.getClass())
             return false;
         DeleteVolumeRequest other = (DeleteVolumeRequest) obj;
-        if (other.getVolumeId() == null ^ this.getVolumeId() == null)
-            return false;
-        if (other.getVolumeId() != null && other.getVolumeId().equals(this.getVolumeId()) == false)
+        if (volumeId == null) {
+            if (other.volumeId != null)
+                return false;
+        } else if (!volumeId.equals(other.volumeId))
             return false;
         return true;
     }
 
+    /**
+     * Creates and returns a copy of this object.
+     * 
+     * @see java.lang.Object#clone()
+     */
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int hashCode = 1;
-
-        hashCode = prime * hashCode + ((getVolumeId() == null) ? 0 : getVolumeId().hashCode());
-        return hashCode;
+    public DeleteVolumeRequest clone() {
+        try {
+            return (DeleteVolumeRequest) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(
+                    "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
+        }
     }
+    
 }
