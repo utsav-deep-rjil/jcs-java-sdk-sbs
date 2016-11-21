@@ -4,12 +4,19 @@ import com.jcs.sbs.auth.DefaultJCSCredentialsProviderChain;
 import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 import com.jcs.sbs.exceptions.PropertyNotFoundException;
+import com.jcs.sbs.model.CreateSnapshotRequest;
+import com.jcs.sbs.model.CreateSnapshotResult;
 import com.jcs.sbs.model.CreateVolumeRequest;
 import com.jcs.sbs.model.CreateVolumeResult;
+import com.jcs.sbs.model.DeleteSnapshotRequest;
+import com.jcs.sbs.model.DeleteSnapshotResult;
+import com.jcs.sbs.model.DeleteVolumeRequest;
+import com.jcs.sbs.model.DeleteVolumeResult;
 import com.jcs.sbs.model.DescribeSnapshotsRequest;
 import com.jcs.sbs.model.DescribeSnapshotsResult;
 import com.jcs.sbs.model.DescribeVolumesRequest;
 import com.jcs.sbs.model.DescribeVolumesResult;
+import com.jcs.sbs.model.Volume;
 import com.jcs.sbs.service.JCSCompute;
 import com.jcs.sbs.service.impl.JCSComputeClient;
 
@@ -90,14 +97,17 @@ public class JCStry {
             //
             DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
             DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
-            System.out.println(describeSnapshotsResult.toString());
-            System.out.println(describeSnapshotsResult.getSnapshots());
+            System.out.println(describeSnapshotsResult.getXml());
+            System.out.println("No. of snapshots : "+describeSnapshotsResult.getSnapshots().size());
 
             DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest();
             DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
+            System.out.println(describeVolumesResult.getXml());
             System.out.println(describeVolumesResult.toString());
-            System.out.println(describeVolumesResult.getVolumes());
+            System.out.println("No. of volumes : "+describeVolumesResult.getVolumes().size());
+            
 
+            
             // CreateVolumeRequest createVolumeRequest = new
             // CreateVolumeRequest()
             // .withSize(10)
@@ -110,8 +120,10 @@ public class JCStry {
             // DeleteVolumeRequest().withVolumeId("df28d289-0436-48e6-9b0f-07ced523ded2");
             // DeleteVolumeResult deleteVolumeResult =
             // jcs.deleteVolume(deleteVolumeRequest);
-
+            
+            
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
 
         }

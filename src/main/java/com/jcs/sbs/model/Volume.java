@@ -18,7 +18,7 @@ public class Volume implements Serializable, Cloneable {
 
     private Integer size;
 
-    private VolumeType volumeType = VolumeType.standard;
+    private String volumeType;
 
     private String snapshotId;
 
@@ -47,6 +47,7 @@ public class Volume implements Serializable, Cloneable {
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
+
 
     /**
      * Returns ID of the volume.
@@ -260,7 +261,7 @@ public class Volume implements Serializable, Cloneable {
      * @return An enum value representing the type of volume. Possible values
      *         are <tt>standard (or HDD)</tt> and <tt>SSD</tt>.
      */
-    public VolumeType getVolumeType() {
+    public String getVolumeType() {
         return volumeType;
     }
 
@@ -271,7 +272,7 @@ public class Volume implements Serializable, Cloneable {
      * @param volumeType
      *            An enum value representing the type of volume.
      */
-    public void setVolumeType(VolumeType volumeType) {
+    public void setVolumeType(String volumeType) {
         this.volumeType = volumeType;
     }
 
@@ -283,7 +284,7 @@ public class Volume implements Serializable, Cloneable {
      *            An enum value representing the type of volume.
      * @return Modified Volume object.
      */
-    public Volume withVolumeType(VolumeType volumeType) {
+    public Volume withVolumeType(String volumeType) {
         setVolumeType(volumeType);
         return this;
     }

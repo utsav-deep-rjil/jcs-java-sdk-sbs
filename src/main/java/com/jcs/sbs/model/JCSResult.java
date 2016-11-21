@@ -1,5 +1,7 @@
 package com.jcs.sbs.model;
 
+import com.google.gson.Gson;
+
 /**
  * This class is the parent class of all the Result model classes. It contains
  * the common properties present in the responses of all the operations of the
@@ -8,7 +10,8 @@ package com.jcs.sbs.model;
  */
 public class JCSResult {
     private String requestId;
-    private String xml;
+    
+    private transient String xml;
 
     /**
      * Default constructor for JCSResult object.
@@ -70,11 +73,11 @@ public class JCSResult {
      */
     @Override
     public String toString() {
-        return "JCSResult [requestId=" + requestId + ", xml=" + xml + "]";
+        return new Gson().toJson(this);
     }
 
     /**
-     * Returns hashCode value for object of this class.
+     * Returns hashCode value for the object of this class.
      */
     @Override
     public int hashCode() {

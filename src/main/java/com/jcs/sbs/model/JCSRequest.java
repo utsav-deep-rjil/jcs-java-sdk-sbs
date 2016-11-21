@@ -89,7 +89,7 @@ public abstract class JCSRequest {
     }
 
     /**
-     * Returns hashCode value for object of this class.
+     * Returns hashCode value for the object of this class.
      */
     @Override
     public int hashCode() {
@@ -100,7 +100,8 @@ public abstract class JCSRequest {
     }
 
     /**
-     * Returns true if another object is same as object of this class, false otherwise.
+     * Returns true if another object is same as object of this class, false
+     * otherwise.
      */
     @Override
     public boolean equals(Object obj) {
@@ -118,7 +119,5 @@ public abstract class JCSRequest {
             return false;
         return true;
     }
-    
-    
 
 }

@@ -14,7 +14,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     private Integer size;
     private String snapshotId;
     private Boolean encrypted;
-    private VolumeType volumeType;
+    private String volumeType;
 
     /**
      * Default constructor for CreateVolumeRequest object.
@@ -144,9 +144,9 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     /**
      * Returns the type of the volume that will be created
      * 
-     * @return an enum value of type VolumeType
+     * @return A string value representing the type of volume to be created.
      */
-    public VolumeType getVolumeType() {
+    public String getVolumeType() {
         return volumeType;
     }
 
@@ -156,10 +156,9 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
      * type standard.
      * 
      * @param volumeType
-     *            Enum value of type VolumeType. Possible values in the enum are
-     *            standard(HDD) or SSD(SSD)
+     *            String value representing the volume type
      */
-    public void setVolumeType(VolumeType volumeType) {
+    public void setVolumeType(String volumeType) {
         this.volumeType = volumeType;
     }
 
@@ -169,11 +168,10 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
      * CreateVolumeRequest and returns the modified object.
      * 
      * @param volumeType
-     *            Enum value of type VolumeType. Possible values in the enum are
-     *            standard(HDD) or SSD(SSD)
+     *            String value representing the volume type.
      * @return Modified CreateVolumeRequest object
      */
-    public CreateVolumeRequest withVolumeType(VolumeType volumeType) {
+    public CreateVolumeRequest withVolumeType(String volumeType) {
         setVolumeType(volumeType);
         return this;
     }

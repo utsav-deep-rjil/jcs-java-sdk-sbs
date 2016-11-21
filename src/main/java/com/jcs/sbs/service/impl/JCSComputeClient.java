@@ -47,7 +47,6 @@ import com.jcs.sbs.model.DescribeVolumesRequest;
 import com.jcs.sbs.model.DescribeVolumesResult;
 import com.jcs.sbs.model.Snapshot;
 import com.jcs.sbs.model.Volume;
-import com.jcs.sbs.model.VolumeType;
 import com.jcs.sbs.service.JCSCompute;
 
 import xmlParser.AttachmentSet.AttachmentEO;
@@ -152,6 +151,9 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
     }
 
     private List<Attachment> attachmentSetEOtoBO(List<AttachmentEO> attachmentSetEO) {
+        if(attachmentSetEO == null || !(attachmentSetEO instanceof List)){
+            return null;
+        }
         List<Attachment> attachmentSetBO = new ArrayList<>();
         for (AttachmentEO attachmentEO : attachmentSetEO) {
             Attachment attachment = new Attachment(attachmentEO.getInstanceId(), attachmentEO.getDevice());
@@ -193,7 +195,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
         if (createVolumeRequest.getEncrypted() != null && createVolumeRequest.getEncrypted()) {
             params.put("Encrypted", "1");
         }
-        if (createVolumeRequest.getVolumeType() != null && createVolumeRequest.getVolumeType() != VolumeType.standard) {
+        if (StringUtils.isNotBlank(createVolumeRequest.getVolumeType())) {
             params.put("VolumeType", createVolumeRequest.getVolumeType().toString());
         }
         CloseableHttpResponse response = this.makeRequest(this.jcsCredentialsProvider.getCredentials(), params,
@@ -215,7 +217,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                         .withCreateTime(createVolumeResponse.getCreateTime())
                         .withSnapshotId(createVolumeResponse.getSnapshotId())
                         .withEncryption(createVolumeResponse.isEncrypted())
-                        .withVolumeType(VolumeType.fromValue(createVolumeResponse.getVolumeType()))
+                        .withVolumeType(createVolumeResponse.getVolumeType())
                         .withStatus(createVolumeResponse.getStatus())
                         .withAttachmentSet(attachmentSetEOtoBO(createVolumeResponse.getAttachmentSet().getItem()));
 
@@ -276,6 +278,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
 
                 EntityUtils.consume(entity);
                 DeleteVolumeResult deleteVolumeResult = new DeleteVolumeResult();
+                deleteVolumeResult.setDeleted(deleteVolumeResponse.isReturn());
                 deleteVolumeResult.setRequestId(deleteVolumeResponse.getRequestId());
                 deleteVolumeResult.setXml(content);
                 return deleteVolumeResult;
@@ -343,11 +346,25 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                 List<Volume> volumes = new ArrayList<Volume>();
 
                 for (DescribeVolumesResponse.VolumeSet.Item item : describeVolumesResponse.getVolumeSet().getItem()) {
-                    volumes.add(new Volume().withSize(item.getSize()).withVolumeId(item.getVolumeId())
-                            .withCreateTime(item.getCreateTime()).withSnapshotId(item.getSnapshotId())
-                            .withStatus(item.getStatus()).withEncryption(item.isEncrypted())
-                            .withVolumeType(VolumeType.fromValue(item.getVolumeType()))
-                            .withAttachmentSet(attachmentSetEOtoBO(item.getAttachmentSet().getItem())));
+                    Volume volume = new Volume().withVolumeId(item.getVolumeId())
+                            .withStatus(item.getStatus())
+                            .withEncryption(item.isEncrypted())
+                            .withVolumeType(item.getVolumeType());
+                    
+                    if(null != item.getAttachmentSet()){
+                        volume.setAttachmentSet(attachmentSetEOtoBO(item.getAttachmentSet().getItem()));
+                    }
+                    if(null != item.getSize()){
+                        volume.setSize(item.getSize());
+                    }
+                    if(null != item.getCreateTime()){
+                        volume.setCreateTime(item.getCreateTime());
+                    }
+                    if(null != item.getSnapshotId()){
+                        volume.setSnapshotId(item.getSnapshotId());
+                    }
+                    volumes.add(volume);
+                    
                 }
                 EntityUtils.consume(entity);
                 DescribeVolumesResult describeVolumesResult = new DescribeVolumesResult().withVolumes(volumes);
@@ -474,6 +491,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
 
                 EntityUtils.consume(entity);
                 DeleteSnapshotResult deleteSnapshotResult = new DeleteSnapshotResult();
+                deleteSnapshotResult.setDeleted(deleteSnapshotResponse.isReturn());
                 deleteSnapshotResult.setRequestId(deleteSnapshotResponse.getRequestId());
                 deleteSnapshotResult.setXml(content);
                 return deleteSnapshotResult;

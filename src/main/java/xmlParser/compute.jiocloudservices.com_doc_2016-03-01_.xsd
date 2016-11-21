@@ -60,7 +60,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="requestId" type="xs:string" />
-				<xs:element name="return" type="xs:string" />
+				<xs:element name="return" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -69,7 +69,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="requestId" type="xs:string" />
-				<xs:element name="return" type="xs:string" />
+				<xs:element name="return" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

@@ -43,7 +43,7 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * Returns the IDs of the snapshots that is to be described.
+     * Returns the IDs of the snapshots that are to be described.
      * 
      * @return List of snapshotIds
      */
@@ -63,7 +63,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
          * If snapshotIds is null then reset this.snapshotIds to new ArrayList,
          * otherwise this.snapshotIds may contain older values.
          * 
-         * Trying to set null value means trying to clear previously set snapshotIds.
+         * Trying to set null value means trying to clear previously set
+         * snapshotIds.
          */
         if (snapshotIds == null) {
             this.snapshotIds = new ArrayList<String>();
@@ -168,8 +169,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * It sets, in DescribeSnapshotsRequest object, the number of items to be
-     * fetched from describeSnapshots() method.
+     * Sets the number of items to be fetched from describeSnapshots() method in
+     * the DescribeSnapshotsRequest object.
      * 
      * @param maxResults
      *            The maximum number of items (snapshots) to be fetched.
@@ -188,8 +189,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * It sets, in DescribeSnapshotsRequest object, the number of items to be
-     * fetched from describeSnapshots() method and then returns the modified
+     * Sets the number of items to be fetched from describeSnapshots() method in
+     * the DescribeSnapshotsRequest object and then returns the modified
      * DescribeSnapshotsRequest object.
      * 
      * @param maxResults

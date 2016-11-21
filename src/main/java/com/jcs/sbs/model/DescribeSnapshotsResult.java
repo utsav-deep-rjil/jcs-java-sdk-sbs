@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 /**
  * Result class for describe snapshots operation.
  */
@@ -13,8 +15,6 @@ public class DescribeSnapshotsResult extends JCSResult implements Serializable, 
     private static final long serialVersionUID = 1559504024117330599L;
 
     private List<Snapshot> snapshots = new ArrayList<Snapshot>();
-
-    private String nextToken;
 
     /**
      * Default constructor for DescribeSnapshotsResult object.
@@ -80,64 +80,17 @@ public class DescribeSnapshotsResult extends JCSResult implements Serializable, 
         return this;
     }
 
-    /**
-     * If the describeSnapshots() method was called with a MaxResults option,
-     * all items would not have been returned. To get next set of items in
-     * subsequent call, the ID of the last seen item is returned as 'nextToken'.
-     * Next time when the describeSnapshots() method is called, this 'nextToken'
-     * should be passed to get the next set of items.
-     * 
-     * This method sets the next token in DescribeSnapshotsResult object.
-     * 
-     * @param nextToken
-     *            The 'nextToken' value that is returned by the describe
-     *            snapshots API. This is basically the ID of the last seen item
-     *            in response of describeSnapshots()
-     */
-    public void setNextToken(String nextToken) {
-        this.nextToken = nextToken;
-    }
-
-    /**
-     * Returns nextToken value which is used to get next set of items in subsequent calls of describeSnapshots() method.
-     * 
-     * @return The ID of the last seen item (nextToken) in response of
-     *         describeSnapshots()
-     */
-    public String getNextToken() {
-        return this.nextToken;
-    }
-
-    /**
-     * If the describeSnapshots() method was called with a MaxResults option,
-     * all items would not have been returned. To get next set of items in
-     * subsequent call, the ID of the last seen item is returned as 'nextToken'.
-     * Next time when the describeSnapshots() method is called, this 'nextToken'
-     * should be passed to get the next set of items.
-     * 
-     * This method sets the next token in DescribeSnapshotsResult object and
-     * returns the modified DescribeSnapshotsResult object.
-     * 
-     * @param nextToken
-     *            The ID of the last seen item in response of
-     *            describeSnapshots()
-     * @return Modified DescribeSnapshotsResult object.
-     */
-    public DescribeSnapshotsResult withNextToken(String nextToken) {
-        setNextToken(nextToken);
-        return this;
-    }
 
     @Override
     public String toString() {
-        return this.getXml();
+        return new Gson().toJson(this);
     }
+
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((nextToken == null) ? 0 : nextToken.hashCode());
         result = prime * result + ((snapshots == null) ? 0 : snapshots.hashCode());
         return result;
     }
@@ -151,11 +104,6 @@ public class DescribeSnapshotsResult extends JCSResult implements Serializable, 
         if (getClass() != obj.getClass())
             return false;
         DescribeSnapshotsResult other = (DescribeSnapshotsResult) obj;
-        if (nextToken == null) {
-            if (other.nextToken != null)
-                return false;
-        } else if (!nextToken.equals(other.nextToken))
-            return false;
         if (snapshots == null) {
             if (other.snapshots != null)
                 return false;

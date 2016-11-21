@@ -2,6 +2,8 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+
 /**
  * Result class for create volume operation.
  */
@@ -56,7 +58,7 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
 
     @Override
     public String toString() {
-        return this.getXml();
+        return new Gson().toJson(this);
     }
 
     @Override

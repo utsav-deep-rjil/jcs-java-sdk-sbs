@@ -67,7 +67,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
          * If volumeIds is null then reset this.volumeIds to new ArrayList,
          * otherwise this.volumeIds may contain older values.
          * 
-         * Trying to set null value means trying to clear previously set volumeIds.
+         * Trying to set null value means trying to clear previously set
+         * volumeIds.
          */
         if (volumeIds == null) {
             this.volumeIds = new ArrayList<String>();
@@ -173,8 +174,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * This method sets, in DescribeVolumesRequest object, the maximum number of
-     * items to be returned by describeVolumes() method.
+     * Sets the maximum number of items to be returned by describeVolumes()
+     * method in the DescribeVolumesRequest object.
      * 
      * @param maxResults
      *            The maximum number of items to be returned by
@@ -196,9 +197,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * This method sets, in DescribeVolumesRequest object, the maximum number of
-     * items to be returned by describeVolumes() method and then returns the
-     * modified DescribeVolumesRequest object.
+     * Sets the maximum number of items to be returned by describeVolumes()
+     * method in the DescribeVolumesRequest object and returns the modified
+     * DescribeVolumesRequest object.
      * 
      * @param maxResults
      *            The maximum number of items to be returned by

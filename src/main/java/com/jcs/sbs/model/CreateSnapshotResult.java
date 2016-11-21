@@ -2,6 +2,8 @@ package com.jcs.sbs.model;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+
 /**
  * Result class for create snapshot operation
  */
@@ -31,7 +33,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     }
 
     /**
-     * Returns the object of snapshot that is created
+     * Returns the object of the snapshot that is created
      * 
      * @return The object of the snapshot that is created
      */
@@ -55,7 +57,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
 
     @Override
     public String toString() {
-        return this.getXml();
+        return new Gson().toJson(this);
     }
 
     /**
