@@ -121,7 +121,6 @@ public class JCStry {
             // DeleteVolumeResult deleteVolumeResult =
             // jcs.deleteVolume(deleteVolumeRequest);
             
-            
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
