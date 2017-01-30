@@ -6,11 +6,11 @@ import java.util.Date;
 import com.google.gson.Gson;
 
 /**
- * Model class for a <b>snapshot</b>. It contains all the fields that will be present in
- * each snapshot item of XML response of describe snapshots API.
+ * Model class for a <b>snapshot</b>. It contains all the fields that is present
+ * in each snapshot item of XML response of describe snapshots API.
  */
-public class Snapshot implements Serializable, Cloneable{
-    
+public class Snapshot implements Serializable, Cloneable {
+
     private static final long serialVersionUID = 8659058244550662667L;
 
     private String volumeId;
@@ -32,30 +32,30 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the volumeId in Snapshot object.
+     * Sets the volumeId in Snapshot object.
      * 
      * @param volumeId
-     *            ID of the volume from which the snapshot is created
+     *            ID of the volume from which the snapshot gets created
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
 
     /**
-     * Returns volume ID from which snapshot is to be created.
+     * Returns volume ID from which snapshot gets created.
      * 
-     * @return ID of the volume from which the snapshot is created
+     * @return ID of the volume from which the snapshot gets created
      */
     public String getVolumeId() {
         return this.volumeId;
     }
 
     /**
-     * This method sets the volumeId in Snapshot object and returns the modified
-     * Snapshot object.
+     * Sets the volumeId in Snapshot object and returns the modified Snapshot
+     * object.
      * 
      * @param volumeId
-     *            ID of the volume from which the snapshot is created
+     *            ID of the volume from which the snapshot gets created
      * @return Modified Snapshot object.
      */
     public Snapshot withVolumeId(String volumeId) {
@@ -64,28 +64,28 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the size of volume from which snapshot is created.
+     * Sets the size of volume from which snapshot gets created.
      * 
      * @param size
-     *            Size of the volume from which snapshot is created.
+     *            Size of the volume from which snapshot gets created.
      */
     public void setSize(Integer size) {
         this.size = size;
     }
 
     /**
-     * @return Size of the volume from which snapshot is created.
+     * @return Size of the volume from which snapshot gets created.
      */
     public Integer getSize() {
         return this.size;
     }
 
     /**
-     * This method sets the size of volume from which snapshot is created and
-     * returns the modified Snapshot object.
+     * Sets the size of volume from which snapshot gets created and returns the
+     * modified Snapshot object.
      * 
      * @param size
-     *            Size of the volume from which snapshot is created.
+     *            Size of the volume from which snapshot gets created.
      * @return Modified Snapshot object.
      */
     public Snapshot withSize(Integer size) {
@@ -94,8 +94,8 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the snapshotId, which is unique identifier for any
-     * snapshot, in the Snapshot object.
+     * Sets the snapshotId, which is unique identifier for any snapshot, in the
+     * Snapshot object.
      * 
      * @param snapshotId
      *            The snapshotId returned by create snapshot or describe
@@ -116,9 +116,8 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the snapshotId, which is unique identifier for any
-     * snapshot, in the Snapshot object and returns the modified Snapshot
-     * object.
+     * Sets the snapshotId, which is unique identifier for any snapshot, in the
+     * Snapshot object and returns the modified Snapshot object.
      * 
      * @param snapshotId
      *            The snapshotId returned by create snapshot or describe
@@ -131,33 +130,33 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the date and time at which snapshot was created in
+     * Sets the date and time at which snapshot was created in
      * <tt>startTime</tt> field of Snapshot object.
      * 
      * @param startTime
-     *            Date and time at which snapshot was created.
+     *            Date and time at which snapshot gets created.
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
     /**
-     * Returns Date object containing date and time at which snapshot was
+     * Returns Date object containing date and time at which snapshot gets
      * created.
      * 
-     * @return Date and time at which snapshot was created.
+     * @return Date and time at which snapshot gets created.
      */
     public Date getStartTime() {
         return this.startTime;
     }
 
     /**
-     * This method sets the date and time at which snapshot was created in
+     * Sets the date and time at which snapshot gets created in
      * <tt>startTime</tt> field of Snapshot object and returns the modified
      * Snapshot object.
      * 
      * @param startTime
-     *            Date and time at which snapshot was created.
+     *            Date and time at which snapshot gets created.
      * @return Modified Snapshot object
      */
     public Snapshot withStartTime(Date startTime) {
@@ -177,7 +176,7 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the current status of snapshot in Snapshot object.
+     * Sets the current status of snapshot in Snapshot object.
      * 
      * @param status
      *            Current status of snapshot as returned by describe snapshot or
@@ -189,8 +188,8 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method sets the current status of snapshot in Snapshot object and
-     * returns the modified Snapshot object.
+     * Sets the current status of snapshot in Snapshot object and returns the
+     * modified Snapshot object.
      * 
      * @param status
      *            Current status of snapshot as returned by describe snapshot or
@@ -231,9 +230,9 @@ public class Snapshot implements Serializable, Cloneable{
     }
 
     /**
-     * This method is used to set <tt>encrypted</tt> field in Snapshot object as
-     * returned by the describe snapshot or create snapshot API and then returns
-     * the modified Snapshot object.
+     * Sets <tt>encrypted</tt> field in Snapshot object as returned by the
+     * describe snapshot or create snapshot API and then returns the modified
+     * Snapshot object.
      * 
      * @param encrypted
      *            Boolean value. <br>

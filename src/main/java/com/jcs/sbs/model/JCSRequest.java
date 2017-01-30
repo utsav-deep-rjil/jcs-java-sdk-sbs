@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 
 /**
- * This class is the parent class of all the Request model classes and contains
+ * Parent class of all the Request model classes and contains
  * the common properties: credentialsProvider and customRequestHeaders.
  */
 @NotThreadSafe
@@ -36,7 +36,7 @@ public abstract class JCSRequest {
     }
 
     /**
-     * Can be used to know the request credentials provider that is currently
+     * Returns the request credentials provider that is currently
      * set.
      * 
      * @return An object of class that implements the interface
@@ -62,7 +62,7 @@ public abstract class JCSRequest {
      * Adds a new custom header in 'customRequestHeaders' map.
      * 
      * @param name
-     *            The header name that is to be set.
+     *            The name of the header to set.
      * @param value
      *            The value of the corresponding header.
      * @return the previous value associated with the <tt>header</tt>, or

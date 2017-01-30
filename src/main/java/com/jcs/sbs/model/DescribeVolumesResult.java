@@ -34,7 +34,7 @@ public class DescribeVolumesResult extends JCSResult implements Serializable, Cl
     }
 
     /**
-     * Used internally. It sets the collection of volumes, passed as an argument
+     * Used internally to set the collection of volumes, passed as an argument
      * in DescribeVolumesResult object.
      * 
      * @param volumes

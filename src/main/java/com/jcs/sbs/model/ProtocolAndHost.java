@@ -3,8 +3,8 @@ package com.jcs.sbs.model;
 import com.google.gson.Gson;
 
 /**
- * This class is used internally for splitting protocol and host of a URL used
- * by the backend API.
+ * Class used internally for splitting protocol and host of a URL used by the
+ * backend API.
  */
 public class ProtocolAndHost {
     private String protocol;

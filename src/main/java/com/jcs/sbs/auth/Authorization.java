@@ -40,7 +40,7 @@ public class Authorization {
      * Constructor for initializing data members of this class.
      * 
      * @param url
-     *            Request URL to which authorization parameters are to be added
+     *            Request URL to which authorization parameters are added
      * @param verb
      *            Request method of the API
      * @param accessKey
@@ -78,7 +78,7 @@ public class Authorization {
      * to create request URL.
      * 
      * @param params
-     *            Query parameters that are to be added to API request
+     *            Query parameters that are added to API request
      */
     public void addParams(Map<String, String> params) {
         params.put("JCSAccessKeyId", this.accessKey);
@@ -120,7 +120,7 @@ public class Authorization {
      * 
      * @param params
      *            Request query parameters as a map
-     * @return Request String that needs to be signed
+     * @return Request String that gets signed
      * @throws UnsupportedEncodingException
      */
     public String stringToSign(Map<String, String> params) throws UnsupportedEncodingException {
@@ -140,7 +140,7 @@ public class Authorization {
      * 
      * @param params
      *            Initial map of request query parameters in which additional
-     *            authorization parameters are to be added.
+     *            authorization parameters are added.
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeyException
      * @throws IllegalStateException

@@ -37,8 +37,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the volumeId in Volume object, which is returned by
-     * describe volumes or create volume API.
+     * Sets the volumeId in Volume object, which is returned by describe volumes
+     * or create volume API.
      * 
      * @param volumeId
      *            Unique ID for volumes, which is returned by describe volumes
@@ -47,7 +47,6 @@ public class Volume implements Serializable, Cloneable {
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
-
 
     /**
      * Returns ID of the volume.
@@ -60,9 +59,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the volumeId in Volume object, which is returned by
-     * describe volumes or create volume API, and then returns the modified
-     * Volume object.
+     * Sets the volumeId in Volume object, which is returned by describe volumes
+     * or create volume API, and then returns the modified Volume object.
      * 
      * @param volumeId
      *            Unique ID for volumes, which is returned by describe volumes
@@ -75,7 +73,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the size of the volume (in GB) in Volume object.
+     * Sets the size of the volume (in GB) in Volume object.
      * 
      * @param size
      *            The size of the volume (in GB)
@@ -95,8 +93,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the size of the volume (in GB) in Volume object and
-     * returns the modified Volume object.
+     * Sets the size of the volume (in GB) in Volume object and returns the
+     * modified Volume object.
      * 
      * @param size
      *            The size of the volume (in GB)
@@ -108,36 +106,36 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * If the Volume was created from snapshot, this method can be used to set
+     * If the Volume gets created from snapshot, this method can be used to set
      * the snapshotId of that snapshot.
      * 
      * @param snapshotId
-     *            The ID of snapshot from which the volume is created (if volume
-     *            is created from snapshot).
+     *            The ID of snapshot from which the volume gets created (if
+     *            volume gets created from snapshot).
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
 
     /**
-     * If volume was created from a snapshot, it returns the Id of that
+     * If volume gets created from a snapshot, it returns the Id of that
      * snapshot.
      * 
-     * @return The ID of snapshot from which the volume is created (if volume is
-     *         created from snapshot).
+     * @return The ID of snapshot from which the volume gets created (if volume
+     *         is created from snapshot).
      */
     public String getSnapshotId() {
         return this.snapshotId;
     }
 
     /**
-     * If the Volume was created from snapshot, this method can be also be used
+     * If the Volume gets created from snapshot, this method can be also be used
      * to set the snapshotId of that snapshot. It also returns the modified
      * Volume object.
      * 
      * @param snapshotId
-     *            The ID of snapshot from which the volume is created (if volume
-     *            is created from snapshot).
+     *            The ID of snapshot from which the volume gets created (if
+     *            volume gets created from snapshot).
      * @return Modified Volume object.
      */
     public Volume withSnapshotId(String snapshotId) {
@@ -146,10 +144,10 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Sets the date and time at which the volume was created.
+     * Sets the date and time at which the volume gets created.
      * 
      * @param createTime
-     *            Date and time at which the volume was created.
+     *            Date and time at which the volume gets created.
      */
     public void setCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
@@ -159,18 +157,18 @@ public class Volume implements Serializable, Cloneable {
      * Returns Date object containing date and time at which the volume was
      * created.
      * 
-     * @return Date and time at which the volume was created.
+     * @return Date and time at which the volume gets created.
      */
     public Date getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Sets the date and time at which the volume was created and returns the
+     * Sets the date and time at which the volume gets created and returns the
      * modified Volume object.
      * 
      * @param createTime
-     *            Date and time at which the volume was created.
+     *            Date and time at which the volume gets created.
      * @return Modified Volume object.
      */
     public Volume withCreateTime(java.util.Date createTime) {
@@ -192,8 +190,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method is used to set <tt>encrypted</tt> field in Volume object as
-     * returned by the describe volume or create volume API.
+     * Sets <tt>encrypted</tt> field in Volume object as returned by the
+     * describe volume or create volume API.
      * 
      * @param encrypted
      *            Boolean value. <br>
@@ -205,9 +203,9 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method is used to set <tt>encrypted</tt> field in Volume object as
-     * returned by the describe volume or create volume API and then returns the
-     * modified Volume object.
+     * Sets <tt>encrypted</tt> field in Volume object as returned by the
+     * describe volume or create volume API and then returns the modified Volume
+     * object.
      * 
      * @param encrypted
      *            Boolean value. <br>
@@ -231,7 +229,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the current status of volume in Volume object.
+     * Sets the current status of volume in Volume object.
      * 
      * @param status
      *            Current status of volume as returned by describe volume or
@@ -243,8 +241,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the current status of volume in Volume object and
-     * returns the modified Volume object.
+     * Sets the current status of volume in Volume object and returns the
+     * modified Volume object.
      * 
      * @param status
      *            Current status of volume as returned by describe volume or
@@ -259,15 +257,15 @@ public class Volume implements Serializable, Cloneable {
 
     /**
      * @return An enum value representing the type of volume. Possible values
-     *         are <tt>standard (or HDD)</tt> and <tt>SSD</tt>.
+     *         are <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      */
     public String getVolumeType() {
         return volumeType;
     }
 
     /**
-     * This method sets VolumeType in Volume object. Possible values are
-     * <tt>standard (or HDD)</tt> and <tt>SSD</tt>.
+     * Sets VolumeType in Volume object. Possible values are
+     * <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      * 
      * @param volumeType
      *            An enum value representing the type of volume.
@@ -277,8 +275,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets VolumeType in Volume object and returns the modified
-     * object. Possible values are <tt>standard (or HDD)</tt> and <tt>SSD</tt>.
+     * Sets VolumeType in Volume object and returns the modified object.
+     * Possible values are <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      * 
      * @param volumeType
      *            An enum value representing the type of volume.
@@ -290,8 +288,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method returns a list of Attachment objects, which indicates the
-     * list of devices attached to this volume.
+     * Returns a list of Attachment objects, which indicates the list of devices
+     * attached to this volume.
      * 
      * @return List of Attachment objects.
      */
@@ -300,7 +298,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the list of attachments in Volume object.
+     * Sets the list of attachments in Volume object.
      * 
      * @param attachmentSet
      *            List of Attachment objects.
@@ -310,8 +308,8 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * This method sets the list of attachments in Volume object and returns the
-     * modified object.
+     * Sets the list of attachments in Volume object and returns the modified
+     * object.
      * 
      * @param attachmentSet
      *            List of Attachment objects.

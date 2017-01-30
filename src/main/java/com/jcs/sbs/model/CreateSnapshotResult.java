@@ -46,7 +46,7 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
      * object of CreateSnapshotResult object returns the modified object
      * 
      * @param snapshot
-     *            The snapshot object that is to be added in
+     *            The snapshot object that gets added in
      *            CreateSnapshotResult object
      * @return Modified object of CreateSnapshotResult
      */

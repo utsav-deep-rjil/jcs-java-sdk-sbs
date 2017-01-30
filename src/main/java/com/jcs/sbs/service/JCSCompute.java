@@ -21,7 +21,7 @@ import com.jcs.sbs.model.DescribeVolumesResult;
 public interface JCSCompute {
 
     /**
-     * This method sets the base URL of API calls that will be made.
+     * Sets the base URL of API calls that will be made.
      * 
      * @param endpoint
      *            The base URL of the API
@@ -29,7 +29,7 @@ public interface JCSCompute {
     public void setEndpoint(String endpoint);
 
     /**
-     * This method creates a volume with specifications given in
+     * Creates a volume with specifications given in
      * CreateVolumeRequest object.
      * 
      * @param createVolumeRequest
@@ -42,8 +42,8 @@ public interface JCSCompute {
     public CreateVolumeResult createVolume(CreateVolumeRequest createVolumeRequest) throws Exception;
 
     /**
-     * Method to delete a particular volume. The state of volume must be
-     * 'available'
+     * Deletes a particular volume. The state of volume must be
+     * 'available' or 'error'
      * 
      * @param deleteVolumeRequest
      *            An object of DeleteVolumeRequest containing values required in
@@ -55,7 +55,7 @@ public interface JCSCompute {
     public DeleteVolumeResult deleteVolume(DeleteVolumeRequest deleteVolumeRequest) throws Exception;
 
     /**
-     * Method to return a list of Volumes.
+     * Describes the volumes according to filters present in DescribeVolumesRequest object.
      * 
      * @param describeVolumesRequest
      *            An object of DescribeVolumesRequest containing values required
@@ -67,7 +67,7 @@ public interface JCSCompute {
     public DescribeVolumesResult describeVolumes(DescribeVolumesRequest describeVolumesRequest) throws Exception;
 
     /**
-     * Method to create a snapshot from a given volume. The state of volume must
+     * Creates a snapshot from a given volume. The state of volume must
      * be 'available'.
      * 
      * @param createSnapshotRequest
@@ -80,8 +80,8 @@ public interface JCSCompute {
     public CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest) throws Exception;
 
     /**
-     * Method to delete a particular snapshot. The state of snapshot must be
-     * 'created'.
+     * Deletes a particular snapshot. The state of snapshot must be
+     * 'created' or 'error'
      * 
      * @param deleteSnapshotRequest
      *            An object of DeleteSnapshotRequest containing values required
@@ -93,7 +93,7 @@ public interface JCSCompute {
     public DeleteSnapshotResult deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest) throws Exception;
 
     /**
-     * Method to return a list of snapshots.
+     * Describes the snapshots according to filters present in DescribeSnapshotsRequest object.
      * 
      * @param describeSnapshotsRequest
      *            An object of DescribeSnapshotsRequest containing values

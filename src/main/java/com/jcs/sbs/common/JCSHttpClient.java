@@ -37,7 +37,7 @@ public abstract class JCSHttpClient {
     }
 
     /**
-     * Sets the base URL of the APIs to be called.
+     * Sets the base URL of the APIs that gets called.
      * 
      * @param endpoint
      *            Base URL of the APIs
@@ -49,7 +49,7 @@ public abstract class JCSHttpClient {
     /**
      * 
      * @param headers
-     *            Headers in the form of map, that are to be present in the URL
+     *            Headers in the form of map, that are required in the URL
      *            of the API calls
      */
     private void addCustomHeaders(Map<String, String> headers) {
@@ -104,8 +104,8 @@ public abstract class JCSHttpClient {
      * Returns the URL after adding query parameters.
      * 
      * @param params
-     *            Query parameters in the form of map that are to be present in
-     *            the API being called.
+     *            Query parameters in the form of map that are required in
+     *            the API that is called.
      * @return Query parameters in the form of string in URL format.
      */
     private String getUrl(Map<String, String> params) {

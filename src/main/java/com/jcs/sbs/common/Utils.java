@@ -11,9 +11,9 @@ import com.jcs.sbs.model.ProtocolAndHost;
 public class Utils {
 
 	/**
-	 * This method finds protocol and host for given url.
+	 * This method finds protocol and host for the given url.
 	 * 
-	 * @param url The url from which protocol and host are to be found
+	 * @param url The URL from which protocol and host are found
 	 * @return ProtocolAndHost object.
 	 */
 	public static ProtocolAndHost getProtocolAndHost(String url){

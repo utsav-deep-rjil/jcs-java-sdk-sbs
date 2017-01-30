@@ -29,38 +29,37 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * If the details of all the volumes is not required, one can provide the
-     * list of volume IDs that are to be described.
-     * 
      * This constructor creates an object of DescribeVolumesRequest and sets the
-     * list of volumeIds that are to be described.
+     * list of volumeIds to describe.
+     * 
+     * If the details of all the volumes is not required, one can provide the
+     * list of volume IDs to describe.
      * 
      * @param volumeIds
-     *            List of volumeIds that are to be described.
+     *            List of volumeIds to describe.
      */
     public DescribeVolumesRequest(List<String> volumeIds) {
         setVolumeIds(volumeIds);
     }
 
     /**
-     * Fetches list of volume IDs if set in DescribeVolumesRequest object,
+     * Returns a list of volume IDs if set in DescribeVolumesRequest object,
      * otherwise an empty list.
      * 
-     * @return List of volumeIds that are to be described.
+     * @return List of volumeIds to describe.
      */
     public List<String> getVolumeIds() {
         return volumeIds;
     }
 
     /**
-     * If the details of all the volumes is not required, one can provide the
-     * list of volume IDs that are to be described.
+     * Sets the list of volumeIds, to describe, in DescribeVolumeRequest object.
      * 
-     * This method sets the list of volumeIds, that are to be described, in
-     * DescribeVolumeRequest object.
+     * If the details of all the volumes are not required, one can provide the
+     * list of volume IDs to describe.
      * 
      * @param volumeIds
-     *            List of volumeIds that are to be described.
+     *            List of volumeIds to describe.
      */
     public void setVolumeIds(Collection<String> volumeIds) {
         /*
@@ -79,16 +78,16 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * If the details of all the volumes is not required, one can provide the
-     * list of volume IDs that are to be described.
+     * If the details of all the volumes are not required, one can provide the
+     * list of volume IDs to describe.
      * 
-     * This method sets the list of volumeIds (passed as varargs of type String)
-     * that are to be described in DescribeVolumesRequest object and returns the
-     * modified object.
+     * Sets the list of volumeIds (passed as varargs of type String) to describe
+     * in DescribeVolumesRequest object and returns the modified object.
      * 
      * @param volumeIds
-     *            List of volumeIds as comma separated arguments (varargs) that
-     *            are to be described.
+     *            List of volumeIds, as comma separated arguments (varargs), to
+     *            describe.
+     * 
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withVolumeIds(String... volumeIds) {
@@ -100,14 +99,14 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
 
     /**
      * If the details of all the volumes is not required, one can provide the
-     * list of volume IDs that are to be described.
+     * list of volume IDs to describe.
      * 
-     * This method sets the list of volumeIds (passed as collection of String)
-     * that are to be described in DescribeVolumesRequest object and returns the
+     * Sets the list of volumeIds (passed as collection of String) in
+     * DescribeVolumesRequest object to describe the volumes and returns the
      * modified object.
      * 
      * @param volumeIds
-     *            Collection of volumeIds that are to be described.
+     *            Collection of volumeIds to describe.
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withVolumeIds(Collection<String> volumeIds) {
@@ -116,15 +115,14 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * If the describeVolumes() method was called with a MaxResults option, all
-     * items would not have been returned. So, the previous call of
-     * describeVolumes() method returns 'nextToken' to get next set of items.
-     * This is basically the Id of the last seen item from the previous call.
-     * The describeVolumes() will return the next set of items after this Id and
-     * the new value of 'nextToken'
+     * Sets the value of 'nextToken' which is the ID of last volume in the list
+     * of volumes in DescribeVolumeResult object in previous call of
+     * describeVolumes() method.
      * 
-     * This method sets the given ID of last volume in the list of volumes in
-     * DescribeVolumeResult object of previous call of describeVolumes() method.
+     * If the describeVolumes() method was called with a MaxResults option, all
+     * items would not have been returned. So, to get the next set of items, one
+     * needs to pass the ID of the last seen item from the previous call. The
+     * describeVolumes() will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The 'nextToken' value returned in response of previous call of
@@ -136,12 +134,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * If the describeVolumes() method was called with a MaxResults option, all
-     * items would not have been returned. So, the previous call of
-     * describeVolumes() method returns 'nextToken' to get next set of items.
-     * This is basically the Id of the last seen item from the previous call.
-     * The describeVolumes() will return the next set of items after this Id and
-     * the new value of 'nextToken'
+     * Returns the value of 'nextToken' which is the ID of last volume in the
+     * list of volumes in DescribeVolumeResult object in previous call of
+     * describeVolumes() method.
      * 
      * @return The value of nextToken (if it is set earlier).
      */
@@ -150,16 +145,15 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * If the describeVolumes() method was called with a MaxResults option, all
-     * items would not have been returned. So, the previous call of
-     * describeVolumes() method returns 'nextToken' to get next set of items.
-     * This is basically the Id of the last seen item from the previous call.
-     * The describeVolumes() will return the next set of items after this Id and
-     * the new value of 'nextToken'
+     * Sets the value of 'nextToken' and returns the modified
+     * DescribeVolumesRequest object. 'nextToken is the ID of last volume in the
+     * list of volumes in DescribeVolumeResult object in previous call of
+     * describeVolumes() method.
      * 
-     * This method sets the given ID of last volume in the list of volumes in
-     * DescribeVolumeResult object of previous call of describeVolumes() method
-     * and then returns the modified DescribeVolumeResult object
+     * If the describeVolumes() method was called with a MaxResults option, all
+     * items would not have been returned. So, to get the next set of items, one
+     * needs to pass the ID of the last seen item from the previous call. The
+     * describeVolumes() will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The 'nextToken' value returned in response of previous call of
@@ -223,13 +217,11 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * Set true/false to get result with/without details respectively. It also
-     * returns the modified DescribeVolumesRequest object.
+     * Set true/false to get result with/without details respectively.
      * 
      * @param detail
-     *            Sets the value of 'detail' field of DescribeVolumesRequest
-     *            object. If it is set true, then the describeVolumes() method
-     *            will describe the volumes in detail.
+     *            Boolean value indicating if volume is described in details or
+     *            not.
      */
     public void setDetail(Boolean detail) {
         this.detail = detail;
@@ -240,9 +232,9 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      * returns the modified DescribeVolumesRequest object.
      * 
      * @param detail
-     *            Sets the value of 'detail' field of DescribeVolumesRequest
-     *            object. If it is set true, then the describeVolumes() method
-     *            will describe the volumes in detail.
+     *            Boolean value indicating if volume is described in details or
+     *            not.
+     * 
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withDetail(Boolean detail) {

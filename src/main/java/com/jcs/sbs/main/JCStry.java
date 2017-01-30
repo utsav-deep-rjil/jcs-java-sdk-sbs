@@ -1,21 +1,16 @@
 package com.jcs.sbs.main;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import com.jcs.sbs.auth.DefaultJCSCredentialsProviderChain;
 import com.jcs.sbs.auth.JCSCredentials;
 import com.jcs.sbs.auth.JCSCredentialsProvider;
 import com.jcs.sbs.exceptions.PropertyNotFoundException;
-import com.jcs.sbs.model.CreateSnapshotRequest;
-import com.jcs.sbs.model.CreateSnapshotResult;
-import com.jcs.sbs.model.CreateVolumeRequest;
-import com.jcs.sbs.model.CreateVolumeResult;
-import com.jcs.sbs.model.DeleteSnapshotRequest;
-import com.jcs.sbs.model.DeleteSnapshotResult;
-import com.jcs.sbs.model.DeleteVolumeRequest;
-import com.jcs.sbs.model.DeleteVolumeResult;
 import com.jcs.sbs.model.DescribeSnapshotsRequest;
 import com.jcs.sbs.model.DescribeSnapshotsResult;
 import com.jcs.sbs.model.DescribeVolumesRequest;
 import com.jcs.sbs.model.DescribeVolumesResult;
+import com.jcs.sbs.model.Snapshot;
 import com.jcs.sbs.model.Volume;
 import com.jcs.sbs.service.JCSCompute;
 import com.jcs.sbs.service.impl.JCSComputeClient;
@@ -47,6 +42,48 @@ public class JCStry {
 
     }
 
+    private static String preetyPrint(String json){
+        return new GsonBuilder().setPrettyPrinting().create().toJson(new JsonParser().parse(json));
+    }
+    
+    // Covers basic describe volume test
+    public static String getVolumeStatus(String volumeId) {
+        try {
+
+            DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest();
+            DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
+            for (Volume volume : describeVolumesResult.getVolumes()) {
+                if (volume.getVolumeId().equals(volumeId)) {
+                    return volume.getStatus();
+                }
+            }
+            return "doesn't exist";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error";
+        }
+    }
+
+    // Covers basic describe snapshot test
+    public static String getSnapshotStatus(String snapshotId) {
+        try {
+
+            DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
+            DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
+            for (Snapshot snapshot : describeSnapshotsResult.getSnapshots()) {
+                if (snapshot.getSnapshotId().equals(snapshotId)) {
+                    return snapshot.getStatus();
+                }
+            }
+            return "doesn't exist";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error";
+        }
+    }
+    
     /**
      * Main method from where SDK can run (to serve as a demo)
      * 
@@ -95,18 +132,25 @@ public class JCStry {
             // jcs.deleteSnapshot(deleteSnapshotRequest);
             // System.out.println(deleteSnapshotResult.toString());
             //
+            
+       /*     
             DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
             DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
             System.out.println(describeSnapshotsResult.getXml());
+            System.out.println(preetyPrint(describeSnapshotsResult.toString()));
             System.out.println("No. of snapshots : "+describeSnapshotsResult.getSnapshots().size());
 
+           */ 
+            
             DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest();
             DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
             System.out.println(describeVolumesResult.getXml());
-            System.out.println(describeVolumesResult.toString());
-            System.out.println("No. of volumes : "+describeVolumesResult.getVolumes().size());
+            System.out.println(preetyPrint(describeVolumesResult.toString()));
             
 
+                        
+
+            
             
             // CreateVolumeRequest createVolumeRequest = new
             // CreateVolumeRequest()

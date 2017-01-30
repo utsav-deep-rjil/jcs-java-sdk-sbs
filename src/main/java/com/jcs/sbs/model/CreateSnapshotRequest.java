@@ -23,26 +23,26 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
      * Creates CreateSnapshotRequest object from volume Id
      * 
      * @param volumeId
-     *            Id of the volume from which the snapshot is to be created
+     *            Id of the volume from which the snapshot gets created
      */
     public CreateSnapshotRequest(String volumeId) {
         setVolumeId(volumeId);
     }
 
     /**
-     * Sets the id of the volume from which the snapshot is to be created
+     * Sets the id of the volume from which the snapshot gets created
      * 
      * @param VolumeId
-     *            ID of the volume from which the snapshot is to be created
+     *            ID of the volume from which the snapshot gets created
      */
     public void setVolumeId(String VolumeId) {
         this.volumeId = VolumeId;
     }
 
     /**
-     * Returns the id of the volume from which the snapshot is to be created
+     * Returns the id of the volume from which the snapshot gets created
      * 
-     * @return The volume Id from which the snapshot is to be created
+     * @return The volume Id from which the snapshot gets created
      */
     public String getVolumeId() {
         return this.volumeId;
@@ -53,7 +53,7 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
      * the modified object of CreateSnapshotRequest.
      * 
      * @param volumeId
-     *            ID of the volume from which the snapshot is to be created
+     *            ID of the volume from which the snapshot gets created
      * @return Modified CreateSnapshotRequest object.
      */
     public CreateSnapshotRequest withVolumeId(String volumeId) {

@@ -104,13 +104,12 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * Constructs a new client to invoke service methods on JCS Client using the
      * specified JCS account credentials provider. All service calls made using
      * this new client object are blocking, and will not return until the
-     * service call completes. Parameters: jcsCredentialsProvider- The JCS
-     * credentials provider which will provide credentials to authenticate
-     * requests with JCS services.
+     * service call completes.
      * 
      * @param jcsCredentialsProvider
      *            Object of class that implements JCSCredentialsProvider
-     *            interface.
+     *            interface (The JCS credentials provider which will provide
+     *            credentials to authenticate requests with JCS services)
      * 
      * @throws PropertyNotFoundException
      */
@@ -151,7 +150,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
     }
 
     private List<Attachment> attachmentSetEOtoBO(List<AttachmentEO> attachmentSetEO) {
-        if(attachmentSetEO == null || !(attachmentSetEO instanceof List)){
+        if (attachmentSetEO == null || !(attachmentSetEO instanceof List)) {
             return null;
         }
         List<Attachment> attachmentSetBO = new ArrayList<>();
@@ -346,25 +345,23 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
                 List<Volume> volumes = new ArrayList<Volume>();
 
                 for (DescribeVolumesResponse.VolumeSet.Item item : describeVolumesResponse.getVolumeSet().getItem()) {
-                    Volume volume = new Volume().withVolumeId(item.getVolumeId())
-                            .withStatus(item.getStatus())
-                            .withEncryption(item.isEncrypted())
-                            .withVolumeType(item.getVolumeType());
-                    
-                    if(null != item.getAttachmentSet()){
+                    Volume volume = new Volume().withVolumeId(item.getVolumeId()).withStatus(item.getStatus())
+                            .withEncryption(item.isEncrypted()).withVolumeType(item.getVolumeType());
+
+                    if (null != item.getAttachmentSet()) {
                         volume.setAttachmentSet(attachmentSetEOtoBO(item.getAttachmentSet().getItem()));
                     }
-                    if(null != item.getSize()){
+                    if (null != item.getSize()) {
                         volume.setSize(item.getSize());
                     }
-                    if(null != item.getCreateTime()){
+                    if (null != item.getCreateTime()) {
                         volume.setCreateTime(item.getCreateTime());
                     }
-                    if(null != item.getSnapshotId()){
+                    if (null != item.getSnapshotId()) {
                         volume.setSnapshotId(item.getSnapshotId());
                     }
                     volumes.add(volume);
-                    
+
                 }
                 EntityUtils.consume(entity);
                 DescribeVolumesResult describeVolumesResult = new DescribeVolumesResult().withVolumes(volumes);
@@ -459,7 +456,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * JCSCompute
      * 
      * @param deleteSnapshotRequest
-     *            - Contains the parameters for DeleteSnapshot.
+     *            Contains the parameters for DeleteSnapshot.
      * @return Result of the DeleteSnapshot operation returned by the service.
      * @throws PropertyNotFoundException
      */
@@ -520,7 +517,7 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * JCSCompute
      * 
      * @param describeSnapshotsRequest
-     *            - Contains the parameters for DescribeSnapshots.
+     *            Contains the parameters for DescribeSnapshots.
      * @return Result of the DescribeSnapshots operation returned by the
      *         service.
      * @throws PropertyNotFoundException
