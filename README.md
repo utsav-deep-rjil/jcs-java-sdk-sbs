@@ -21,17 +21,38 @@ CA-CERTIFICATE INSTALLATION:
 - For Linux : Place the ca-certificate inside the folder 
 */usr/local/share/ca-certificates/* and then run *update-ca-certificates --fresh* in terminal
 
-- For Mac : 
+- For Mac : Run the command 
+`sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <CERT_LOCATION>` in terminal 
+(replace `<CERT_LOCATION>` with location of the `.crt` file).
+
 - For Windows :
+Follow the steps given in this [link](http://www.sqlservermart.com/HowTo/Windows_Import_Certificate.aspx).
 
 
 - 
 **Import ca-certificate in java keytool:**
 
-- For Linux: run in terminal:
-> sudo keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt -alias "CACERT_NAME" -file /usr/local/share/ca-certificates/"CACERT_Name"
-- For Mac:
-- For Windows:
+*For Linux:*
+
+Run in terminal:
+`sudo keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt -alias <CACERT_NAME> -file /usr/local/share/ca-certificates/<CACERT_Name>`
+
+*For Mac:*
+
+Run in terminal:
+`sudo keytool -import -trustcacerts -keystore /Library/Java/JavaVirtualMachines/jdk<VERSION>.jdk/Contents/Home/jre/lib/security/cacerts -storepass changeit -noprompt -alias <CERT_NAME> -file <CERT_LOCATION>​`
+
+
+*For Windows:*
+
+- Open a command prompt window to the directory that the keytool executable file is in. By default this location is:
+`C:\Program Files\Java\jdk<version>\bin`
+ 
+- Run this command in the command prompt:
+`keytool -import -alias <CACERT_NAME> -keystore "C:\Program Files\Java\jdk<VERSION>\jre\lib\security\cacerts" -trustcacerts -file <CERT_LOCATION>`
+
+- If prompted for a password, enter the one for your java keystore. If a password was not set for this keystore, the default is: 
+`changeit`.
 
 
 Setting up the Project:
