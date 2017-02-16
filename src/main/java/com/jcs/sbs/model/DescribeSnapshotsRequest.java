@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 /**
- * Request class for describe snapshots operation.
+ * Request class for the describe snapshots operation.
  */
 public class DescribeSnapshotsRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -108,16 +108,20 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     /**
      * Sets the value of 'nextToken' which is the ID of last snapshot in the
      * list of snapshots in DescribeSnapshotResult object in previous call of
-     * describeSnapshots() method.
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} method.
      * 
-     * If the describeSnapshots() method was called with a MaxResults option,
-     * all items would not have been returned. So, to get the next set of items,
-     * one needs to pass the ID of the last seen item from the previous call.
-     * The describeSnapshots() will return the next set of items after this ID.
+     * If the {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} method was called with a MaxResults option, all
+     * items would not have been returned. So, to get the next set of items, one
+     * needs to pass the ID of the last seen item from the previous call. The
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The ID of last snapshot that was returned by the
-     *            describeSnapshot() method
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *            describeSnapshots()} method
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -127,14 +131,17 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * Returns the value of 'nextToken'(if set), after which snapshots are
      * described.
      * 
-     * If the describeSnapshots() method was called with a MaxResults option,
-     * all items would not have been returned. So, to get the next set of items,
-     * one needs to pass the ID of the last seen item from the previous call.
-     * The describeSnapshots() will return the next set of items after this ID.
+     * If the {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} method was called with a MaxResults option, all
+     * items would not have been returned. So, to get the next set of items, one
+     * needs to pass the ID of the last seen item from the previous call. The
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} will return the next set of items after this ID.
      * 
      * @return The value of the nextToken (i.e., the ID of last snapshot
-     *         obtained from previous call of describeSnapshots() method) if it
-     *         is set.
+     *         obtained from previous call of
+     *         {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *         describeSnapshots()} method) if it is set.
      */
     public String getNextToken() {
         return this.nextToken;
@@ -144,16 +151,20 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * Sets the value of 'nextToken' and returns the modified
      * DescribeSnapshotsRequest object. 'nextToken is the ID of last snapshot in
      * the list of snapshots in DescribeSnapshotResult object in previous call
-     * of describeSnapshots() method.
+     * of {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} method.
      * 
-     * If the describeSnapshots() method was called with a MaxResults option,
-     * all items would not have been returned. So, to get the next set of items,
-     * one needs to pass the ID of the last seen item from the previous call.
-     * The describeSnapshots() will return the next set of items after this ID.
+     * If the {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} method was called with a MaxResults option, all
+     * items would not have been returned. So, to get the next set of items, one
+     * needs to pass the ID of the last seen item from the previous call. The
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     * describeSnapshots()} will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The ID of last snapshot that was returned by the
-     *            describeSnapshots() method
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *            describeSnapshots()} method
      * @return The modified DescribeSnapshotsRequest object
      */
     public DescribeSnapshotsRequest withNextToken(String nextToken) {
@@ -181,8 +192,8 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
     }
 
     /**
-     * Sets the maximum number of snapshots to describe and returns the
-     * modified DescribeSnapshotsRequest object.
+     * Sets the maximum number of snapshots to describe and returns the modified
+     * DescribeSnapshotsRequest object.
      * 
      * @param maxResults
      *            The maximum number of items to describe.
@@ -198,8 +209,10 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * Returns a boolean value that tells if details will be shown or not.
      * 
      * @return Value of 'detail' field of DescribeSnapshotsRequest object. If
-     *         true, the describeSnapshot() method will describe the snapshots
-     *         in detail.
+     *         true, the
+     *         {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *         describeSnapshots()} method will describe the snapshots in
+     *         detail.
      */
     public Boolean getDetail() {
         return detail;
@@ -210,8 +223,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeSnapshotsRequest
-     *            object. If it is set true, then the describeSnapshot() method
-     *            describes the snapshots in detail.
+     *            object. If it is set true, then the
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *            describeSnapshots()} method describes the snapshots in detail.
      */
     public void setDetail(Boolean detail) {
         this.detail = detail;
@@ -223,8 +237,9 @@ public class DescribeSnapshotsRequest extends JCSRequest implements Serializable
      * 
      * @param detail
      *            Sets the value of 'detail' field of DescribeSnapshotsRequest
-     *            object. If it is set true, then the describeSnapshot() method
-     *            describes the snapshots in detail.
+     *            object. If it is set true, then the
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeSnapshots
+     *            describeSnapshots()} method describes the snapshots in detail.
      * @return Modified DescribeSnapshotsRequest object.
      */
     public DescribeSnapshotsRequest withDetail(Boolean detail) {

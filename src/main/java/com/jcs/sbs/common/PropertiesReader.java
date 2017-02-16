@@ -20,11 +20,11 @@ public class PropertiesReader {
             .getResourceAsStream(Constants.PROPERTIES_FILE_NAME);
 
     /**
-     * This method reads properties from config.properties file placed under
+     * Reads properties from config.properties file placed under
      * resources folder and returns value for given key.
      * 
      * @param key
-     *            The key to be searched in config.properties file
+     *            The key to search in config.properties file
      * @return The value (if any) corresponding to given key
      */
     public static String getProperty(String key) {

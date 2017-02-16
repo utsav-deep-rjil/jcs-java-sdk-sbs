@@ -107,9 +107,11 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * service call completes.
      * 
      * @param jcsCredentialsProvider
-     *            Object of class that implements JCSCredentialsProvider
-     *            interface (The JCS credentials provider which will provide
-     *            credentials to authenticate requests with JCS services)
+     *            Object of class that implements
+     *            {@link com.jcs.sbs.auth.JCSCredentialsProvider
+     *            JCSCredentialsProvider} interface (The JCS credentials
+     *            provider which will provide credentials to authenticate
+     *            requests with JCS services)
      * 
      * @throws PropertyNotFoundException
      */
@@ -162,16 +164,19 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
     }
 
     /**
-     * Creates an SBS volume that can be attached to an instance in the same
+     * Creates an volume that can be attached to an instance in the same
      * Availability Zone. The volume is created in the regional endpoint that
      * you send the HTTP request to. You can create a new empty volume or
      * restore a volume from an SBS snapshot. Specified by: createVolume in
      * interface JCSCompute
      * 
      * @param createVolumeRequest
-     *            Contains the parameters for CreateVolume.
-     * @return Result of the CreateVolume operation returned by the service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.CreateVolumeRequest
+     *            CreateVolumeRequest} containing values required in create
+     *            volume API
+     * @return {@link com.jcs.sbs.model.CreateVolumeResult CreateVolumeResult}
+     *         object containing values in response given by create volume API
+     * @throws Exception
      */
 
     @Override
@@ -242,12 +247,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * state (not attached to an instance). The volume may remain in the
      * deleting state for several minutes.
      * 
-     * Specified by: deleteVolume in interface JCSCompute
-     * 
      * @param deleteVolumeRequest
-     *            Contains the parameters for DeleteVolume.
-     * @return Result of the DeleteVolume operation returned by the service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.DeleteVolumeRequest
+     *            DeleteVolumeRequest} containing values required in delete
+     *            volume API
+     * @return {@link com.jcs.sbs.model.DeleteVolumeResult DeleteVolumeResult}
+     *         object containing values in response given by delete volume API
+     * @throws Exception
      */
 
     @Override
@@ -299,9 +305,14 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * remaining results. Specified by: describeVolumes in interface JCSCompute
      * 
      * @param describeVolumesRequest
-     *            Contains the parameters for DescribeVolumes.
-     * @return Result of the DescribeVolumes operation returned by the service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.DescribeVolumesRequest
+     *            DescribeVolumesRequest} containing values required in describe
+     *            volumes API
+     * @return {@link com.jcs.sbs.model.DescribeVolumesResult
+     *         DescribeVolumesResult} object containing list of
+     *         {@link com.jcs.sbs.model.Volume Volume} objects as returned by
+     *         describe volume API
+     * @throws Exception
      */
 
     @Override
@@ -395,9 +406,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * taking the snapshot. Specified by: createSnapshot in interface JCSCompute
      * 
      * @param createSnapshotRequest
-     *            Contains the parameters for CreateSnapshot.
-     * @return Result of the CreateSnapshot operation returned by the service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.CreateSnapshotRequest
+     *            CreateSnapshotRequest} containing values required in create
+     *            snapshot API
+     * @return {@link com.jcs.sbs.model.CreateSnapshotResult
+     *         CreateSnapshotResult} object containing values in response given
+     *         by create snapshot API
+     * @throws Exception
      */
 
     @Override
@@ -456,9 +471,13 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * JCSCompute
      * 
      * @param deleteSnapshotRequest
-     *            Contains the parameters for DeleteSnapshot.
-     * @return Result of the DeleteSnapshot operation returned by the service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.DeleteSnapshotRequest
+     *            DeleteSnapshotRequest} containing values required in delete
+     *            snapshot API
+     * @return {@link com.jcs.sbs.model.DeleteSnapshotResult
+     *         DeleteSnapshotResult} object containing values in response given
+     *         by delete snapshot API
+     * @throws Exception
      */
 
     @Override
@@ -517,10 +536,14 @@ public class JCSComputeClient extends JCSHttpClient implements JCSCompute {
      * JCSCompute
      * 
      * @param describeSnapshotsRequest
-     *            Contains the parameters for DescribeSnapshots.
-     * @return Result of the DescribeSnapshots operation returned by the
-     *         service.
-     * @throws PropertyNotFoundException
+     *            An object of {@link com.jcs.sbs.model.DescribeSnapshotsRequest
+     *            DescribeSnapshotsRequest} containing values required in
+     *            describe snapshots API
+     * @return {@link com.jcs.sbs.model.DescribeSnapshotsResult
+     *         DescribeSnapshotsResult} object containing a list of
+     *         {@link com.jcs.sbs.model.Snapshot Snapshot} objects as returned
+     *         by describe snapshots API
+     * @throws Exception
      */
 
     @Override

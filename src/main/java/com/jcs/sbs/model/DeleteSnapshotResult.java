@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Result class for delete snapshot operation.
+ * Result class for the delete snapshot operation.
  */
 public class DeleteSnapshotResult extends JCSResult implements Serializable, Cloneable {
 
@@ -16,16 +16,16 @@ public class DeleteSnapshotResult extends JCSResult implements Serializable, Clo
     /**
      * Returns true if the snapshot is deleted, false otherwise.
      * 
-     * @return Boolean value. True if the snapshot is deleted, false otherwise.
+     * @return Boolean value, <i>true</i> if the snapshot is deleted, false otherwise.
      */
     public boolean isDeleted() {
         return deleted;
     }
 
     /**
-     * Used internally to set boolean value indicating if snapshot is deleted or not.
+     * Sets boolean value indicating if snapshot is deleted or not.
      * 
-     * @param deleted Boolean value. True if the snapshot is deleted, false otherwise.
+     * @param deleted Boolean value, <i>true</i> if the snapshot is deleted, false otherwise.
      */
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;

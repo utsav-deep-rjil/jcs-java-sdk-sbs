@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Request class for create volume operation.
+ * Request class for the create volume operation.
  */
 public class CreateVolumeRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -33,22 +33,22 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Creates an object of CreateVolumeRequest if the volume gets created
-     * from a snapshot
+     * Creates an object of CreateVolumeRequest if the volume gets created from
+     * a snapshot.
      * 
      * @param snapshotId
-     *            The ID of the snapshot from which the volume gets created
+     *            The ID of the snapshot from which the volume gets created.
      */
     public CreateVolumeRequest(String snapshotId) {
         setSnapshotId(snapshotId);
     }
 
     /**
-     * Sets the size of the volume that gets created. Volume size is a
-     * required field for creating a volume if snapshotId is not present.
+     * Sets the size of the volume that gets created. Volume size is a required
+     * field for creating a volume if snapshotId is not present.
      * 
      * @param size
-     *            The size of the volume that gets created
+     *            The size of the volume that gets created.
      */
     public void setSize(Integer size) {
         this.size = size;
@@ -57,7 +57,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     /**
      * Returns the size of volume that gets created.
      * 
-     * @return The integer size of volume that gets created
+     * @return The integer size of volume that gets created.
      */
     public Integer getSize() {
         return this.size;
@@ -68,8 +68,8 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
      * modified object.
      * 
      * @param size
-     *            Size of the volume that gets created
-     * @return Modified object of CreateVolumeRequest
+     *            Size of the volume that gets created.
+     * @return Modified object of CreateVolumeRequest.
      */
     public CreateVolumeRequest withSize(Integer size) {
         setSize(size);
@@ -77,11 +77,11 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Sets the snapshotId in CreateVolumeRequest if the volume
-     * gets created from snapshot.
+     * Sets the snapshotId in CreateVolumeRequest if the volume gets created
+     * from snapshot.
      * 
      * @param snapshotId
-     *            The ID of the snapshot from which volume gets created
+     *            The ID of the snapshot from which volume gets created.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
@@ -90,19 +90,19 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     /**
      * Returns the Id of snapshot from which volume gets created.
      * 
-     * @return The snapshotId if it is set
+     * @return The snapshotId if it is set.
      */
     public String getSnapshotId() {
         return this.snapshotId;
     }
 
     /**
-     * Sets the snapshotId in CreateVolumeRequest if the volume
-     * gets created from snapshot
+     * Sets the snapshotId in CreateVolumeRequest if the volume gets created
+     * from snapshot.
      * 
      * @param snapshotId
-     *            The ID of the snapshot from which volume gets created
-     * @return Modified object of CreateVolumeRequest
+     *            The ID of the snapshot from which volume gets created.
+     * @return Modified object of CreateVolumeRequest.
      */
     public CreateVolumeRequest withSnapshotId(String snapshotId) {
         setSnapshotId(snapshotId);
@@ -110,9 +110,10 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Tells if the volume that gets created is encrypted or not
+     * Indicates if the volume that gets created is encrypted or not.
      * 
-     * @return Boolean value; true if volume is encrypted after creation, false otherwise.
+     * @return Boolean value; true if volume is encrypted after creation, false
+     *         otherwise.
      */
     public Boolean getEncrypted() {
         return encrypted;
@@ -124,17 +125,17 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
      * 
      * @param encrypted
      *            Boolean value to be set to 'encrypted' variable of the
-     *            CreateVolumeRequest object
+     *            CreateVolumeRequest object.
      */
     public void setEncrypted(Boolean encrypted) {
         this.encrypted = encrypted;
     }
 
     /**
-     * Used to create encrypted volume
+     * Used to create encrypted volume.
      * 
      * @return Modified object of CreateVolumeRequest with 'encrypted' set to
-     *         true
+     *         true.
      */
     public CreateVolumeRequest withEncryption() {
         setEncrypted(true);
@@ -142,7 +143,7 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Returns the type of the volume that gets created
+     * Returns the type of the volume that gets created.
      * 
      * @return A string value representing the type of volume gets created.
      */
@@ -151,20 +152,19 @@ public class CreateVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Sets the type of volume, standard(HDD) or ms1(SSD), that gets
-     * created. If volumeType is not specified then 'standard' type volume gets
-     * created.
+     * Sets the type of volume, standard(HDD) or ms1(SSD), that gets created. If
+     * volumeType is not specified then 'standard' type volume gets created.
      * 
      * @param volumeType
-     *            String value representing the volume type
+     *            String value representing the volume type.
      */
     public void setVolumeType(String volumeType) {
         this.volumeType = volumeType;
     }
 
     /**
-     * Sets the value of volumeType field in the object of
-     * CreateVolumeRequest and returns the modified object.
+     * Sets the value of volumeType field in the object of CreateVolumeRequest
+     * and returns the modified object.
      * 
      * @param volumeType
      *            String value representing the volume type.

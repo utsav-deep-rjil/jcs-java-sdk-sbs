@@ -3,11 +3,11 @@ package com.jcs.sbs.auth;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * JCSCredentialsProvider implementation that loads JCS credentials from environment variables.
+ * {@link com.jcs.sbs.auth.JCSCredentialsProvider JCSCredentialsProvider}
+ * implementation that loads JCS credentials from environment variables.
  */
 public class EnvironmentVariableCredentialsProvider implements JCSCredentialsProvider {
-    
-    
+
     /**
      * Default constructor for EnvironmentVariableCredentialsProvider object.
      */

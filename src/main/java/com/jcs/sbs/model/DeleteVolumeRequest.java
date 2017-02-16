@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Request class for delete volume operation.
+ * Request class for the delete volume operation.
  */
 public class DeleteVolumeRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -40,7 +40,7 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
     }
 
     /**
-     * Fetches the ID(if set) of the volume to delete.
+     * Returns the ID(if set) of the volume to delete.
      * 
      * @return ID of the volume to delete.
      */
@@ -50,7 +50,7 @@ public class DeleteVolumeRequest extends JCSRequest implements Serializable, Clo
 
     /**
      * Sets the ID of the volume to delete and returns the
-     * modified object of DeleteVolumeRequest
+     * modified object of DeleteVolumeRequest.
      * 
      * @param volumeId
      *            ID of the volume to delete.

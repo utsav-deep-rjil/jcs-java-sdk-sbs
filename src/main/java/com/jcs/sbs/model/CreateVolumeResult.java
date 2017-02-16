@@ -5,14 +5,13 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Result class for create volume operation.
+ * Result class for the create volume operation.
  */
 public class CreateVolumeResult extends JCSResult implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 8077929441491924782L;
 
     private Volume volume;
-
 
     /**
      * Default constructor for CreateVolumeResult object.
@@ -21,33 +20,35 @@ public class CreateVolumeResult extends JCSResult implements Serializable, Clone
     }
 
     /**
-     * Used internally in JCSComputeClient class. It sets the
-     * Volume object in the object of CreateVolumeResult
+     * Used internally in {@link com.jcs.sbs.model.JCSComputeClient
+     * JCSComputeClient} class. It sets the Volume object in the object of
+     * CreateVolumeResult
      * 
      * @param volume
-     *            Object of Volume that is created from response of create
-     *            volume API
+     *            Object of {@link com.jcs.sbs.model.Volume Volume} that is
+     *            created from response of the create volume API.
      */
     public void setVolume(Volume volume) {
         this.volume = volume;
     }
 
     /**
-     * Returns the object of volume that is created.
+     * Returns the object of {@link com.jcs.sbs.model.Volume Volume} that is
+     * created.
      * 
-     * @return Volume object that is created from the response of create volume
-     *         API
+     * @return {@link com.jcs.sbs.model.Volume Volume} object that is created
+     *         from the response of the create volume API
      */
     public Volume getVolume() {
         return this.volume;
     }
 
     /**
-     * Sets the volume object in CreateVolumeResult object and
-     * returns the modified CreateVolumeResult object
+     * Sets the {@link com.jcs.sbs.model.Volume Volume} object in CreateVolumeResult object and returns the
+     * modified CreateVolumeResult object
      * 
      * @param volume
-     *            Object of Volume that is created from response of create
+     *            Object of {@link com.jcs.sbs.model.Volume Volume} that is created from response of create
      *            volume API
      * @return Modified CreateVolumeResult object
      */

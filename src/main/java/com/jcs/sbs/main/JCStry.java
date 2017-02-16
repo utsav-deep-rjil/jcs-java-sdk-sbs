@@ -16,8 +16,7 @@ import com.jcs.sbs.service.JCSCompute;
 import com.jcs.sbs.service.impl.JCSComputeClient;
 
 /**
- * Class containing main() method. This serves as an example code for using this
- * SDK.
+ * Contains main() method. Serves as an example code for using this SDK.
  */
 public class JCStry {
 
@@ -30,7 +29,7 @@ public class JCStry {
     }
 
     /**
-     * Method to initialize JCSCompute object with its implementation class.
+     * Initializes the JCSCompute object with its implementation class.
      * 
      * @throws PropertyNotFoundException
      */
@@ -42,10 +41,10 @@ public class JCStry {
 
     }
 
-    private static String preetyPrint(String json){
+    private static String preetyPrint(String json) {
         return new GsonBuilder().setPrettyPrinting().create().toJson(new JsonParser().parse(json));
     }
-    
+
     // Covers basic describe volume test
     public static String getVolumeStatus(String volumeId) {
         try {
@@ -83,7 +82,7 @@ public class JCStry {
             return "Error";
         }
     }
-    
+
     /**
      * Main method from where SDK can run (to serve as a demo)
      * 
@@ -132,26 +131,25 @@ public class JCStry {
             // jcs.deleteSnapshot(deleteSnapshotRequest);
             // System.out.println(deleteSnapshotResult.toString());
             //
-            
-       /*     
-            DescribeSnapshotsRequest describeSnapshotsRequest = new DescribeSnapshotsRequest();
-            DescribeSnapshotsResult describeSnapshotsResult = jcs.describeSnapshots(describeSnapshotsRequest);
-            System.out.println(describeSnapshotsResult.getXml());
-            System.out.println(preetyPrint(describeSnapshotsResult.toString()));
-            System.out.println("No. of snapshots : "+describeSnapshotsResult.getSnapshots().size());
 
-           */ 
-            
+            /*
+             * DescribeSnapshotsRequest describeSnapshotsRequest = new
+             * DescribeSnapshotsRequest(); DescribeSnapshotsResult
+             * describeSnapshotsResult =
+             * jcs.describeSnapshots(describeSnapshotsRequest);
+             * System.out.println(describeSnapshotsResult.getXml());
+             * System.out.println(preetyPrint(describeSnapshotsResult.toString()
+             * ));
+             * System.out.println("No. of snapshots : "+describeSnapshotsResult.
+             * getSnapshots().size());
+             * 
+             */
+
             DescribeVolumesRequest describeVolumesRequest = new DescribeVolumesRequest();
             DescribeVolumesResult describeVolumesResult = jcs.describeVolumes(describeVolumesRequest);
             System.out.println(describeVolumesResult.getXml());
             System.out.println(preetyPrint(describeVolumesResult.toString()));
-            
 
-                        
-
-            
-            
             // CreateVolumeRequest createVolumeRequest = new
             // CreateVolumeRequest()
             // .withSize(10)
@@ -164,7 +162,7 @@ public class JCStry {
             // DeleteVolumeRequest().withVolumeId("df28d289-0436-48e6-9b0f-07ced523ded2");
             // DeleteVolumeResult deleteVolumeResult =
             // jcs.deleteVolume(deleteVolumeRequest);
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

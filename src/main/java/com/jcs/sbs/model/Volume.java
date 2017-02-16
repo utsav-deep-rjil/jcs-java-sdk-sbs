@@ -256,7 +256,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * @return An enum value representing the type of volume. Possible values
+     * @return A string value representing the type of volume. Possible values
      *         are <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      */
     public String getVolumeType() {
@@ -264,7 +264,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Sets VolumeType in Volume object. Possible values are
+     * Sets volumeType in Volume object. Possible values are
      * <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      * 
      * @param volumeType
@@ -275,7 +275,7 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Sets VolumeType in Volume object and returns the modified object.
+     * Sets volumeType in Volume object and returns the modified object.
      * Possible values are <tt>standard (or HDD)</tt> and <tt>ms1 (or SSD)</tt>.
      * 
      * @param volumeType
@@ -288,31 +288,34 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a list of Attachment objects, which indicates the list of devices
-     * attached to this volume.
+     * Returns a list of {@link com.jcs.sbs.model.Attachment Attachment}
+     * objects, which indicates the list of devices attached to this volume.
      * 
-     * @return List of Attachment objects.
+     * @return List of {@link com.jcs.sbs.model.Attachment Attachment} objects.
      */
     public List<Attachment> getAttachmentSet() {
         return attachmentSet;
     }
 
     /**
-     * Sets the list of attachments in Volume object.
+     * Sets the list of {@link com.jcs.sbs.model.Attachment Attachment} objects
+     * in Volume object.
      * 
      * @param attachmentSet
-     *            List of Attachment objects.
+     *            List of {@link com.jcs.sbs.model.Attachment Attachment}
+     *            objects.
      */
     public void setAttachmentSet(List<Attachment> attachmentSet) {
         this.attachmentSet = attachmentSet;
     }
 
     /**
-     * Sets the list of attachments in Volume object and returns the modified
-     * object.
+     * Sets the list of {@link com.jcs.sbs.model.Attachment Attachment} objects
+     * in Volume object and returns the modified object.
      * 
      * @param attachmentSet
-     *            List of Attachment objects.
+     *            List of {@link com.jcs.sbs.model.Attachment Attachment}
+     *            objects.
      * @return Modified Volume object.
      */
     public Volume withAttachmentSet(List<Attachment> attachmentSet) {

@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 /**
- * Request class for describe volumes operation.
+ * Request class for the describe volumes operation.
  */
 public class DescribeVolumesRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -117,16 +117,20 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     /**
      * Sets the value of 'nextToken' which is the ID of last volume in the list
      * of volumes in DescribeVolumeResult object in previous call of
-     * describeVolumes() method.
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method.
      * 
-     * If the describeVolumes() method was called with a MaxResults option, all
-     * items would not have been returned. So, to get the next set of items, one
-     * needs to pass the ID of the last seen item from the previous call. The
-     * describeVolumes() will return the next set of items after this ID.
+     * If the {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method was called with a MaxResults option, all items
+     * would not have been returned. So, to get the next set of items, one needs
+     * to pass the ID of the last seen item from the previous call. The
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The 'nextToken' value returned in response of previous call of
-     *            describeVolumes() method. This value is the ID of last
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *            describeVolumes()} method. This value is the ID of last
      *            snapshot that was returned by the describeSnapshot() method
      */
     public void setNextToken(String nextToken) {
@@ -136,7 +140,8 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     /**
      * Returns the value of 'nextToken' which is the ID of last volume in the
      * list of volumes in DescribeVolumeResult object in previous call of
-     * describeVolumes() method.
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method.
      * 
      * @return The value of nextToken (if it is set earlier).
      */
@@ -148,16 +153,20 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      * Sets the value of 'nextToken' and returns the modified
      * DescribeVolumesRequest object. 'nextToken is the ID of last volume in the
      * list of volumes in DescribeVolumeResult object in previous call of
-     * describeVolumes() method.
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method.
      * 
-     * If the describeVolumes() method was called with a MaxResults option, all
-     * items would not have been returned. So, to get the next set of items, one
-     * needs to pass the ID of the last seen item from the previous call. The
-     * describeVolumes() will return the next set of items after this ID.
+     * If the {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method was called with a MaxResults option, all items
+     * would not have been returned. So, to get the next set of items, one needs
+     * to pass the ID of the last seen item from the previous call. The
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} will return the next set of items after this ID.
      * 
      * @param nextToken
      *            The 'nextToken' value returned in response of previous call of
-     *            describeVolumes() method. This value is the ID of last
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *            describeVolumes()} method. This value is the ID of last
      *            snapshot that was returned by the describeSnapshot() method
      *
      * @return Modified DescribeVolumeResult object.
@@ -168,12 +177,14 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     }
 
     /**
-     * Sets the maximum number of items to be returned by describeVolumes()
-     * method in the DescribeVolumesRequest object.
+     * Sets the maximum number of items to be returned by
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method in the DescribeVolumesRequest object.
      * 
      * @param maxResults
      *            The maximum number of items to be returned by
-     *            describeVolumes() method.
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *            describeVolumes()} method.
      */
     public void setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
@@ -183,21 +194,25 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
      * Returns maximum number of items (snapshots) to be fetched.
      * 
      * @return An Integer value representing the maximum number of items to be
-     *         returned by describeVolumes() method (if maxResults value is set
-     *         in DescribeVolumesRequest object).
+     *         returned by
+     *         {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *         describeVolumes()} method (if maxResults value is set in
+     *         DescribeVolumesRequest object).
      */
     public Integer getMaxResults() {
         return this.maxResults;
     }
 
     /**
-     * Sets the maximum number of items to be returned by describeVolumes()
-     * method in the DescribeVolumesRequest object and returns the modified
-     * DescribeVolumesRequest object.
+     * Sets the maximum number of items to be returned by
+     * {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     * describeVolumes()} method in the DescribeVolumesRequest object and
+     * returns the modified DescribeVolumesRequest object.
      * 
      * @param maxResults
      *            The maximum number of items to be returned by
-     *            describeVolumes() method.
+     *            {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *            describeVolumes()} method.
      * @return Modified DescribeVolumesRequest object.
      */
     public DescribeVolumesRequest withMaxResults(Integer maxResults) {
@@ -208,9 +223,10 @@ public class DescribeVolumesRequest extends JCSRequest implements Serializable, 
     /**
      * Returns a boolean value that tells if details will be shown or not.
      * 
-     * @return Value of 'detail' field of DescribeVolumesRequest object. If
-     *         true, the describeVolumes() method will describe the volumes in
-     *         detail.
+     * @return Value of 'detail' field of DescribeVolumesRequest object. If true
+     *         then the
+     *         {@link com.jcs.sbs.service.impl.JCSComputeClient#describeVolumes
+     *         describeVolumes()} method will describe the volumes in detail.
      */
     public Boolean getDetail() {
         return detail;

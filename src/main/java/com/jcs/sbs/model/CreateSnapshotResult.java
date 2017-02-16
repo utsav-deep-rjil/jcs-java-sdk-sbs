@@ -5,14 +5,13 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Result class for create snapshot operation
+ * Result class for the create snapshot operation
  */
 public class CreateSnapshotResult extends JCSResult implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -2051402111070113334L;
 
     private Snapshot snapshot;
-
 
     /**
      * Default constructor for CreateSnapshotResult object.
@@ -22,32 +21,37 @@ public class CreateSnapshotResult extends JCSResult implements Serializable, Clo
     }
 
     /**
-     * Used internally in JCSComputeClient class to set the
-     * snapshot object
+     * Used internally in the {@link com.jcs.sbs.service.impl.JCSComputeClient
+     * JCSComputeClient} class to set the {@link com.jcs.sbs.model.Snapshot
+     * Snapshot} object
      * 
      * @param snapshot
-     *            The object of the snapshot that is created
+     *            The object of the {@link com.jcs.sbs.model.Snapshot Snapshot}
+     *            that is created.
      */
     public void setSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
     }
 
     /**
-     * Returns the object of the snapshot that is created
+     * Returns the object of the {@link com.jcs.sbs.model.Snapshot Snapshot}
+     * that is created
      * 
-     * @return The object of the snapshot that is created
+     * @return An object of the {@link com.jcs.sbs.model.Snapshot Snapshot} that
+     *         gets created.
      */
     public Snapshot getSnapshot() {
         return this.snapshot;
     }
 
     /**
-     * Adds the snapshot object, passed as the argument, in the
-     * object of CreateSnapshotResult object returns the modified object
+     * Adds the {@link com.jcs.sbs.model.Snapshot Snapshot} object, passed as
+     * the argument, in the object of CreateSnapshotResult object returns the
+     * modified object.
      * 
      * @param snapshot
-     *            The snapshot object that gets added in
-     *            CreateSnapshotResult object
+     *            The {@link com.jcs.sbs.model.Snapshot Snapshot} object that
+     *            gets added in the CreateSnapshotResult object
      * @return Modified object of CreateSnapshotResult
      */
     public CreateSnapshotResult withSnapshot(Snapshot snapshot) {

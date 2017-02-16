@@ -22,8 +22,7 @@ import com.jcs.sbs.common.Utils;
 import com.jcs.sbs.model.ProtocolAndHost;
 
 /**
- * Contains methods for adding required authorization parameters before sending
- * the actual request.
+ * Contains methods for adding required authorization parameters before sending the actual request.
  */
 public class Authorization {
 
@@ -48,7 +47,7 @@ public class Authorization {
      * @param secretKey
      *            Secret Key of the JCS account
      * @param headers
-     *            Common headers that are to be added to any API request.
+     *            Common headers that are added to any API request.
      */
     public Authorization(String url, String verb, String accessKey, String secretKey, Map<String, String> headers) {
         this.verb = verb;
@@ -78,7 +77,7 @@ public class Authorization {
      * to create request URL.
      * 
      * @param params
-     *            Query parameters that are added to API request
+     *            Query parameters that are added to the API request.
      */
     public void addParams(Map<String, String> params) {
         params.put("JCSAccessKeyId", this.accessKey);
@@ -96,9 +95,8 @@ public class Authorization {
      * parameters
      * 
      * @param params
-     *            Query parameters as map
-     * @return Query parameters converted to UTF-8 string format used in request
-     *         URLs
+     *            Query parameters that are added to the API request.
+     * @return Query parameters converted to UTF-8 string format used in request URLs.
      * @throws UnsupportedEncodingException
      */
     public String serializeParams(Map<String, String> params) throws UnsupportedEncodingException {
@@ -116,11 +114,11 @@ public class Authorization {
     }
 
     /**
-     * Generates the request string that needs to be signed
+     * Generates the request string that gets signed.
      * 
      * @param params
-     *            Request query parameters as a map
-     * @return Request String that gets signed
+     *            Query parameters that are added to the API request.
+     * @return Request String that gets signed.
      * @throws UnsupportedEncodingException
      */
     public String stringToSign(Map<String, String> params) throws UnsupportedEncodingException {
@@ -136,7 +134,7 @@ public class Authorization {
     }
 
     /**
-     * Adds authorization parameters to the passed argument 'params'
+     * Adds authorization parameters to the passed argument 'params'.
      * 
      * @param params
      *            Initial map of request query parameters in which additional

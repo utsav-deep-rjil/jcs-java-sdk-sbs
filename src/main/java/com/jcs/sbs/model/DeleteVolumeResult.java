@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Result class for delete volume operation.
+ * Result class for the delete volume operation.
  */
 public class DeleteVolumeResult extends JCSResult implements Serializable, Cloneable {
 
@@ -16,18 +16,19 @@ public class DeleteVolumeResult extends JCSResult implements Serializable, Clone
     /**
      * Returns true if the volume is deleted, false otherwise.
      * 
-     * @return Boolean value. True if the volume is deleted, false otherwise.
+     * @return Boolean value <i>true</i> if the volume is deleted, false
+     *         otherwise.
      */
     public boolean isDeleted() {
         return deleted;
     }
 
     /**
-     * Used internally to set boolean value indicating if volume is deleted or
-     * not.
+     * Sets boolean value indicating if volume is deleted or not.
      * 
      * @param deleted
-     *            Boolean value. True if the volume is deleted, false otherwise.
+     *            Boolean value <i>true</i> if the volume is deleted, false
+     *            otherwise.
      */
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;

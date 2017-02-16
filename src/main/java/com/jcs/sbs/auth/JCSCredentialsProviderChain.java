@@ -10,12 +10,16 @@ import org.apache.commons.logging.LogFactory;
 import com.jcs.sbs.exceptions.PropertyNotFoundException;
 
 /**
- * JCSCredentialsProvider implementation that read credentials from available
- * credentials providers. The credential provider classes are:
+ * {@link com.jcs.sbs.auth.JCSCredentialsProvider JCSCredentialsProvider}
+ * implementation that read credentials from available credentials providers.
+ * The credential provider classes are:
  * <ul>
- * <li>ConfigPropertiesCredentialsProvider,</li>
- * <li>EnvironmentVariableCredentialsProvider and</li>
- * <li>SystemPropertiesCredentialsProvider</li>
+ * <li>{@link com.jcs.sbs.auth.ConfigPropertiesCredentialsProvider
+ * ConfigPropertiesCredentialsProvider},</li>
+ * <li>{@link com.jcs.sbs.auth.EnvironmentVariableCredentialsProvider
+ * EnvironmentVariableCredentialsProvider} and</li>
+ * <li>{@link com.jcs.sbs.auth.SystemPropertiesCredentialsProvider
+ * SystemPropertiesCredentialsProvider}</li>
  * </ul>
  * 
  */
@@ -29,7 +33,7 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
     private JCSCredentialsProvider lastUsedProvider;
 
     /**
-     * Default constructor for creating JCSCredentialsProviderChain object
+     * Default constructor for creating JCSCredentialsProviderChain object.
      */
     public JCSCredentialsProviderChain() {
         super();
@@ -40,12 +44,17 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
      * list of credential provider classes.
      * 
      * @param credentialsProviders
-     *            List of classes that extends JCSCredentialsProvider
-     *            interface.The credential provider classes are:
+     *            List of classes that extends
+     *            {@link com.jcs.sbs.auth.JCSCredentialsProvider
+     *            JCSCredentialsProvider} interface. The credential provider
+     *            classes are:
      *            <ul>
-     *            <li>ConfigPropertiesCredentialsProvider,</li>
-     *            <li>EnvironmentVariableCredentialsProvider and</li>
-     *            <li>SystemPropertiesCredentialsProvider</li>
+     *            <li>{@link com.jcs.sbs.auth.ConfigPropertiesCredentialsProvider
+     *            ConfigPropertiesCredentialsProvider},</li>
+     *            <li>{@link com.jcs.sbs.auth.EnvironmentVariableCredentialsProvider
+     *            EnvironmentVariableCredentialsProvider} and</li>
+     *            <li>{@link com.jcs.sbs.auth.SystemPropertiesCredentialsProvider
+     *            SystemPropertiesCredentialsProvider}</li>
      *            </ul>
      */
     public JCSCredentialsProviderChain(List<? extends JCSCredentialsProvider> credentialsProviders) {
@@ -61,9 +70,12 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
      *            Comma separated list of available credentials providers as
      *            arguments. The credential provider classes are:
      *            <ul>
-     *            <li>ConfigPropertiesCredentialsProvider,</li>
-     *            <li>EnvironmentVariableCredentialsProvider and</li>
-     *            <li>SystemPropertiesCredentialsProvider</li>
+     *            <li>{@link com.jcs.sbs.auth.ConfigPropertiesCredentialsProvider
+     *            ConfigPropertiesCredentialsProvider},</li>
+     *            <li>{@link com.jcs.sbs.auth.EnvironmentVariableCredentialsProvider
+     *            EnvironmentVariableCredentialsProvider} and</li>
+     *            <li>{@link com.jcs.sbs.auth.SystemPropertiesCredentialsProvider
+     *            SystemPropertiesCredentialsProvider}</li>
      *            </ul>
      */
     public JCSCredentialsProviderChain(JCSCredentialsProvider... credentialsProviders) {
@@ -89,7 +101,7 @@ public class JCSCredentialsProviderChain implements JCSCredentialsProvider {
 
     /**
      * Sets the given boolean value <b>reuseLastProvider</b>, that tells if the
-     * last provider is to be used or not.
+     * last provider is used or not.
      * 
      * @param reuseLastProvider
      *            A boolean value to set or unset value of reuseLastProvider

@@ -39,7 +39,7 @@ public class Attachment implements Serializable, Cloneable {
     /**
      * Returns the instanceId of the device to which the volume is attached.
      * 
-     * @return Instance ID of the device in which the volume is attached.
+     * @return Instance ID of the device to which the volume is attached.
      */
     public String getInstanceId() {
         return instanceId;
@@ -49,7 +49,7 @@ public class Attachment implements Serializable, Cloneable {
      * Sets the instanceId of the device to which the volume is attached.
      * 
      * @param instanceId
-     *            Instance ID of the device in which the volume is attached.
+     *            Instance ID of the device to which the volume is attached.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;

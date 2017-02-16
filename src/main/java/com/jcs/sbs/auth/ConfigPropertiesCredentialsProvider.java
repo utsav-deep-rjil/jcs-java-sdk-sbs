@@ -6,7 +6,7 @@ import com.jcs.sbs.common.Constants;
 import com.jcs.sbs.common.PropertiesReader;
 
 /**
- * JCSCredentialsProvider implementation that loads JCS credentials from config
+ * {@link com.jcs.sbs.auth.JCSCredentialsProvider JCSCredentialsProvider} implementation that loads JCS credentials from config
  * properties file present in classpath resource folder.
  */
 public class ConfigPropertiesCredentialsProvider implements JCSCredentialsProvider {

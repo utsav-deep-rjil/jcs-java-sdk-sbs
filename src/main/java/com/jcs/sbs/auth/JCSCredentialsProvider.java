@@ -7,14 +7,16 @@ import com.jcs.sbs.exceptions.PropertyNotFoundException;
 public interface JCSCredentialsProvider {
 
     /**
-     * Returns JCSCredentials which the caller can use to authorize a JCS request.
-     * Each implementation of JCSCredentialsProvider can chose its own strategy for
-     * loading credentials.  For example, an implementation might load credentials
-     * from an existing key management system, or load new credentials when
+     * Returns {@link com.jcs.sbs.auth.JCSCredentials JCSCredentials} which the
+     * caller can use to authorize a JCS request. Each implementation of
+     * JCSCredentialsProvider can chose its own strategy for loading
+     * credentials. For example, an implementation might load credentials from
+     * an existing key management system, or load new credentials when
      * credentials are rotated.
      *
-     * @return JCSCredentials which the caller can use to authorize a JCS request.
-     * @throws PropertyNotFoundException 
+     * @return {@link com.jcs.sbs.auth.JCSCredentials JCSCredentials} which the
+     *         caller can use to authorize a JCS request.
+     * @throws PropertyNotFoundException
      */
     public JCSCredentials getCredentials() throws PropertyNotFoundException;
 

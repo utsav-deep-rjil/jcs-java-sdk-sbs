@@ -3,21 +3,21 @@ package com.jcs.sbs.auth;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Basic implementation of the JCSCredentials interface that allows callers to
- * pass in the access key and secret key in the constructor. Initiates access
- * key and secret key.
+ * Basic implementation of the {@link com.jcs.sbs.auth.JCSCredentials JCSCredentials} interface that allows callers to
+ * pass in the access and secret keys in the constructor. Initializes the access
+ * and secret keys.
  */
 public class BasicJCSCredentials implements JCSCredentials {
     private String accessKey;
     private String secretKey;
 
     /**
-     * Constructs a new BasicJCSCredentials object, with the specified access key and secret key.
+     * Constructs a new BasicJCSCredentials object, with the specified access and secret keys.
      * 
      * @param accessKey
-     *            JCS Access Key of the account
+     *            JCS Access Key
      * @param secretKey
-     *            JCS Secret Key of the account
+     *            JCS Secret Key
      */
     public BasicJCSCredentials(String accessKey, String secretKey) {
         if (StringUtils.isBlank(accessKey)) {
@@ -31,7 +31,7 @@ public class BasicJCSCredentials implements JCSCredentials {
     }
 
     /**
-     * Returns the JCS access key for this credentials object.
+     * Returns the JCS access key for the credentials object.
      */
     @Override
     public String getJCSAccessKey() {
@@ -39,7 +39,7 @@ public class BasicJCSCredentials implements JCSCredentials {
     }
 
     /**
-     * Returns the JCS secret key for this credentials object.
+     * Returns the JCS secret key for the credentials object.
      */
     @Override
     public String getJCSSecretKey() {

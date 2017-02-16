@@ -49,8 +49,8 @@ public abstract class JCSHttpClient {
     /**
      * 
      * @param headers
-     *            Headers in the form of map, that are required in the URL
-     *            of the API calls
+     *            Headers, in the form of map, required in the URL
+     *            of the internal API.
      */
     private void addCustomHeaders(Map<String, String> headers) {
         headers.put("Content-Type", "application/json");
@@ -58,7 +58,7 @@ public abstract class JCSHttpClient {
     }
 
     /**
-     * It generates final API URL, calls it and returns the HTTP response object
+     * Generates final API URL, calls it and returns the HTTP response object
      * containing the response returned by backend API.
      * 
      * @param credentials
@@ -76,8 +76,6 @@ public abstract class JCSHttpClient {
      * @throws ClientProtocolException
      * @throws IOException
      * 
-     *             This method creates the request URL, populates required
-     *             headers and then executes the request.
      */
     protected CloseableHttpResponse makeRequest(JCSCredentials credentials, Map<String, String> params,
             Map<String, String> headers) throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException,
@@ -101,11 +99,10 @@ public abstract class JCSHttpClient {
     }
 
     /**
-     * Returns the URL after adding query parameters.
+     * Returns the URL after adding the query parameters.
      * 
      * @param params
-     *            Query parameters in the form of map that are required in
-     *            the API that is called.
+     *            Query parameters that are added to the API request.
      * @return Query parameters in the form of string in URL format.
      */
     private String getUrl(Map<String, String> params) {

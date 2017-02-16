@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Request class for create snapshot operation.
+ * Request class for the create snapshot operation.
  */
 public class CreateSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -20,29 +20,29 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Creates CreateSnapshotRequest object from volume Id
+     * Creates CreateSnapshotRequest object from the given volume ID.
      * 
      * @param volumeId
-     *            Id of the volume from which the snapshot gets created
+     *            ID of the volume from which the snapshot gets created.
      */
     public CreateSnapshotRequest(String volumeId) {
         setVolumeId(volumeId);
     }
 
     /**
-     * Sets the id of the volume from which the snapshot gets created
+     * Sets the ID of the volume from which the snapshot gets created.
      * 
      * @param VolumeId
-     *            ID of the volume from which the snapshot gets created
+     *            ID of the volume from which the snapshot gets created.
      */
     public void setVolumeId(String VolumeId) {
         this.volumeId = VolumeId;
     }
 
     /**
-     * Returns the id of the volume from which the snapshot gets created
+     * Returns the ID of the volume from which the snapshot gets created.
      * 
-     * @return The volume Id from which the snapshot gets created
+     * @return The volume ID from which the snapshot gets created.
      */
     public String getVolumeId() {
         return this.volumeId;
@@ -53,14 +53,14 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
      * the modified object of CreateSnapshotRequest.
      * 
      * @param volumeId
-     *            ID of the volume from which the snapshot gets created
+     *            ID of the volume from which the snapshot gets created.
      * @return Modified CreateSnapshotRequest object.
      */
     public CreateSnapshotRequest withVolumeId(String volumeId) {
         setVolumeId(volumeId);
         return this;
-    }  
-    
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -91,7 +91,6 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
         return true;
     }
 
-
     /**
      * Creates and returns a copy of this object.
      * 
@@ -106,6 +105,5 @@ public class CreateSnapshotRequest extends JCSRequest implements Serializable, C
                     "Got a CloneNotSupportedException from Object.clone() even though we're Cloneable!", e);
         }
     }
-
 
 }

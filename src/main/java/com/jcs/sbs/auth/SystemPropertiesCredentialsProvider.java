@@ -3,7 +3,7 @@ package com.jcs.sbs.auth;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * JCSCredentialsProvider implementation that loads JCS credentials from
+ * {@link com.jcs.sbs.auth.JCSCredentialsProvider JCSCredentialsProvider} implementation that loads JCS credentials from
  * Java system properties.
  */
 public class SystemPropertiesCredentialsProvider implements JCSCredentialsProvider {

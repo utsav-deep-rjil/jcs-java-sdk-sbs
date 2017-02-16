@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Request class for delete snapshot operation.
+ * Request class for the delete snapshot operation.
  */
 public class DeleteSnapshotRequest extends JCSRequest implements Serializable, Cloneable {
 
@@ -40,7 +40,7 @@ public class DeleteSnapshotRequest extends JCSRequest implements Serializable, C
     }
 
     /**
-     * Returns the ID of the snapshot that is set.
+     * Returns the ID of the snapshot to delete (if set).
      * 
      * @return ID of the snapshot to delete.
      */

@@ -8,7 +8,8 @@ public class DefaultJCSCredentialsProviderChain extends JCSCredentialsProviderCh
     /**
      * Default constructor for DefaultJCSCredentialsProviderChain object. It
      * internally calls the constructors of classes that implements
-     * JCSCredentialsProvider interface.
+     * {@link com.jcs.sbs.auth.JCSCredentialsProvider JCSCredentialsProvider}
+     * interface.
      */
     public DefaultJCSCredentialsProviderChain() {
         super(new EnvironmentVariableCredentialsProvider(), new SystemPropertiesCredentialsProvider(),
