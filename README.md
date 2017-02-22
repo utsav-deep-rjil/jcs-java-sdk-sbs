@@ -1,5 +1,5 @@
-**JCSsdk**
-=====================
+**jcs-java-sdk-sbs**
+====================
 
 Download or clone this project. One can generate and refer to complete javadocs for this project.
 In eclipse javadocs can be generated through *Project->Generate Javadoc..*. After generating javadocs,
